@@ -1,0 +1,106 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "Amsterdam";
+  src: url("../fonts/amsterdam.otf");
+}
+.footer {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 70%;
+  height: 150px;
+  padding: 30px;
+  margin: auto;
+  box-sizing: border-box;
+  border-top: 1px solid #1B1D2A;
+}
+
+.social-container {
+  display: flex;
+  order: 3;
+}
+
+.support-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  order: 1;
+  font-family: "Amsterdam";
+  font-size: 22px;
+  color: #1B1D2A;
+}
+
+.copyright {
+  order: 2;
+  margin-right: 50px;
+  width: 200px;
+  font-family: "Amsterdam";
+  font-size: 18px;
+  color: #1B1D2A;
+  text-align: center;
+}
+
+.social-link {
+  display: block;
+  width: 26px;
+  height: 26px;
+  padding: 0 5px 0 5px;
+  text-align: center;
+  text-decoration: none;
+}
+
+.social-link:nth-child(1)::after {
+  display: block;
+  content: "";
+  width: 26px;
+  height: 26px;
+  font-family: "FontAwesome";
+  font-size: 26px;
+  color: #1B1D2A;
+}
+
+.social-link:nth-child(2)::after {
+  display: block;
+  content: "";
+  width: 26px;
+  height: 26px;
+  font-family: "FontAwesome";
+  font-size: 26px;
+  color: #1B1D2A;
+}
+
+.social-link:nth-child(3)::after {
+  display: block;
+  content: "";
+  width: 26px;
+  height: 26px;
+  font-family: "FontAwesome";
+  font-size: 26px;
+  color: #1B1D2A;
+}
+
+@media screen and (max-width: 800px) {
+  .footer {
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 400px;
+    flex-direction: column;
+  }
+
+  .support-container, .social-container, .copyright {
+    margin-top: 50px;
+  }
+
+  .social-container {
+    order: 1;
+  }
+
+  .support-container {
+    order: 2;
+  }
+
+  .copyright {
+    order: 3;
+  }
+}

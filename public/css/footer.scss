@@ -1,0 +1,87 @@
+@font-face {
+    font-family: "Amsterdam";
+    src: url('../fonts/amsterdam.otf');
+}
+
+// Colors
+$dark_blue: #1B1D2A;
+
+.footer {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 70%;
+    height: 150px;
+    padding: 30px;
+    margin: auto;
+    box-sizing: border-box;
+
+    border-top: 1px solid $dark_blue;
+}
+
+.social-container {
+    display: flex;
+    order: 3;
+}
+
+$font_size: 22px;
+.support-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    order: 1;
+
+    font-family: 'Amsterdam';
+    font-size: $font_size;
+    color: $dark_blue;
+}
+
+.copyright {
+    order: 2;
+    margin-right: 50px;
+    width: 200px;
+    font-family: 'Amsterdam';
+    font-size: $font_size - 4;
+    color: $dark_blue;
+    text-align: center;
+}
+
+.social-link {
+    display: block;
+    width: 26px;
+    height: 26px;
+    padding: 0 5px 0 5px;
+    text-align: center;
+    text-decoration: none;
+}
+
+$count: 1;
+@each $id, $icon in (1: "\f099", 2: "\f16d", 3: "\f189") {
+    .social-link:nth-child(#{$id})::after {
+        display: block;
+        content: $icon;
+        width: 26px;
+        height: 26px;
+        font-family: 'FontAwesome';
+        font-size: 26px;
+        color: $dark_blue;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .footer {
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 400px;
+        flex-direction: column;
+    }
+
+    .support-container, .social-container, .copyright {
+        margin-top: 50px;
+    }
+
+    .social-container { order: 1; }
+    .support-container { order: 2; }
+    .copyright { order: 3; }
+}

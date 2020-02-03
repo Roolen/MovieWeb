@@ -1,0 +1,119 @@
+@font-face {
+    font-family: "Awesome-Solid";
+    src: '../fonts/fa-solid-900.ttf';
+}
+// --Colors--
+$dark_blue: #1B1D2A;
+
+
+$header_font: 'Blanch';
+$header_font_size: 32px;
+
+.header {
+    display: flex;
+    align-items: center;
+    width: 70%;
+    height: 68px;
+    margin: auto;
+
+    border-bottom: solid 1px $dark_blue;
+}
+
+.header-menu {
+    display: none;
+}
+
+// ---- Change size for table phone.
+@media screen and (max-width: 800px) {
+    .header {
+        justify-content: space-between;
+        width: 100%;
+        height: 55px;
+    }
+
+    $outside_margin: 20px;
+    .header .settings-button {
+        margin-left: 0;
+        margin-right: $outside_margin;
+    }
+
+    .header .logo {
+        margin-left: $outside_margin;
+    }
+
+    .header .header-link {
+        margin: 0;
+    }
+}
+
+// ---- Change size for phone and add button of menu.
+@media screen and (max-width: 500px) {
+    .header-link {
+        display: none;
+    }
+
+    .header .settings-button {
+        margin-left: 0px;
+    }
+
+    .header {
+        justify-content: space-between;
+    }
+
+    $compensetion_offset: 19px;
+    .header .header-menu {
+        display: block;
+        position: relative;
+        margin-right: $compensetion_offset;
+        background: none;
+        color: $dark_blue;
+        font-family: $header_font;
+        font-size: $header_font_size;
+        line-height: 35px;
+        border: none;
+        box-shadow: none;
+
+        &::after {
+            content: "\f078";
+            position: absolute;
+            margin: auto;
+            top: 55%;
+            left: calc(50% - 10px);
+            font-family: "FontAwesome";
+            font-size: 16px;
+        }
+    }
+}
+
+.logo img {
+    padding-top: 6px;
+}
+
+.header-link {
+    margin-left: 80px;
+
+    font-family: $header_font;
+    font-size: $header_font_size;
+    line-height: 35px;
+    color: $dark_blue;
+    text-decoration: none;
+}
+
+$settings_size: 24px;
+.settings-button {
+    margin-left: auto;
+    width: $settings_size;
+    height: $settings_size;
+
+    $settings_icon: "\f013";
+    &::after {
+        display: block;
+        content: $settings_icon;
+        width: $settings_size;
+        height: $settings_size;
+        font-family: FontAwesome;
+        font-size: 24px;
+        text-align: center;
+        cursor: pointer;
+    }
+}

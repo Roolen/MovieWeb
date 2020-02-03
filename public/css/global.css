@@ -1,0 +1,17 @@
+@font-face {
+    font-family: "Blanch";
+    src: '../fonts/blanch.otf';
+}
+
+@font-face {
+    font-family: "Awesome-Solid";
+    src: '../fonts/fa-solid-900.ttf';
+}
+
+body {
+    background: #E9E9E9;
+}
+
+#app {
+    min-height: calc(100vh - 150px - 70px);
+}
