@@ -1,12 +1,14 @@
 <?php namespace App\Controllers;
 
-use App\Models\UserModel;
+use App\Models\UsersModel;
 
 class Home extends BaseController
 {
 	public function index()
 	{
-		return view('hello');
+		$model = new UsersModel();
+		$data['users'] = $model->getUsers();
+		return view('hello', $data);
 	}
 
 	public function showme($page = 'hello') {
