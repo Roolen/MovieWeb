@@ -39,6 +39,11 @@
   color: #1B1D2A;
   text-align: center;
 }
+@media screen and (max-width: 800px) {
+  .copyright {
+    margin-right: 0;
+  }
+}
 
 .social-link {
   display: block;

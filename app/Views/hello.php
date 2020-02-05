@@ -6,6 +6,8 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Hello</title>
 
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+
 	<link rel="stylesheet" href="<?= base_url(); ?>/css/reset.css"/>
 	<link rel="stylesheet" href="<?= base_url(); ?>/css/hello.css"/>
 	<link rel="stylesheet" href="<?= base_url(); ?>/css/footer.css"/>
@@ -49,7 +51,11 @@
         			</div>
 				</div>
 			</div>
-			<div class="head-monument"></div>
+			<div class="head-monument">
+			<p>
+				Watch<br>Share<br>Comments
+			</p>
+			</div>
 		</div>
 
 		<div class="future-section">
