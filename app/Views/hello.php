@@ -29,13 +29,13 @@
 		<div class="head-section">
 			<div class="head-hello">
 				<h1>
-					Hello <br/>
-					This Site Dedicated To Movies <br/>
-					And Serials
+					Привет <br/>
+					Это Сайт для любителей кино <br/>
+					И сериалов
 				</h1>
 			</div>
 			<div class="head-info">
-				<button class="registration-button" id="registration_button">Registration</button>
+				<button class="registration-button" id="registration_button">Регистрация</button>
 				<div class="info">
 					<div class="info-text">
 						<p>

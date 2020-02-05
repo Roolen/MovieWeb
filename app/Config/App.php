@@ -21,11 +21,7 @@ class App extends BaseConfig
 	| environments.
 	|
 	*/
-<<<<<<< HEAD
 	public $baseURL = 'http://movieweb/public/';
-=======
-	public $baseURL = "http://localhost";
->>>>>>> ae301398c32258b9a0954102675052e4f4f51d7f
 
 	/*
 	|--------------------------------------------------------------------------
