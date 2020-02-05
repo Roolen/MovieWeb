@@ -7,6 +7,7 @@
         <div class="support-container">
             <div class="support-title">Support</div>
             <div class="support-phone">+7 951 548 45 85</div>
+            <div class="support-phone">АРТЕЕЕМ СОЛНЫШКО</div>
             <div class="logo"><img src="<?= base_url(); ?>/images/Logo.svg" alt="logo"></div>
         </div>
         <div class="copyright"><em>&copy;copyrihgt 2020</em></div>
