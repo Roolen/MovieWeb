@@ -128,15 +128,16 @@
 			</div>
 		</main>
 
-		<div v-if="modal" class="modal-auth" id="modalAuth">
+		<div v-bind:class="{ 'modal-on': modal }" class="modal-auth" id="modalAuth">
 			<div class="modal-dialog">
-				<button @click="modalClose" type="button" class="close-modal"></div>
+				<button @click="modalClose" type="button" class="close-modal"></button>
 				<header>
 					<h2 class="modal-title">Authorization</h2>
 				</header>
 				<div class="modal-form">
 					<input v-model="nickname" type="text" class="field" placeholder="login">
 					<input v-model="password" type="password" class="field" placeholder="password">
+					<div class="info-warning">{{ authWarning }}</div>
 					<button @click="authorize" type="button" class="button">Authorize</button>
 				</div>
 			</div>

@@ -14,16 +14,15 @@ class UsersModel extends Model
         'phone_number'
     ];
 
-    public function getUsers($nick = false)
+    public function getUser(string $nick)
     {
-        if ($nick === false)
-        {
-            return $this->findAll();
-        }
+        $user = $this->asArray()
+                     ->where(['nickname' => $nick])
+                     ->first();
 
-        return $this->asArray()
-                    ->where(['nickname' => $nick])
-                    ->first();
+        if ($user) {
+            return $user;
+        }
     }
 
     public function createUser(object $data_user)
@@ -44,6 +43,20 @@ class UsersModel extends Model
 
         $this->insert($data_user);
         return true;
+    }
+
+    public function verifyUser(string $nick, string $password)
+    {
+        $user = $this->asArray()
+                     ->where(['nickname' => $nick])
+                     ->first();
+
+        if (! $user || ! password_verify($password, $user['password'])) {
+            return ['confirmed' => false];
+        }
+        else {
+            return ['confirmed' => true];
+        }
     }
 
     public function checkUser(string $nickname, string $email, string $phone)
@@ -90,7 +103,7 @@ class UsersModel extends Model
         }
 
         $phone = $data_user->phone_number;
-        if (! preg_match("/^[\+]{0,1}[0-9]{1}[\-]{0,1}[0-9]{3}[\-]{0,1}[0-9]{3}[\-]{0,1}[0-9]{2}[\-]{0,1}[0-9]{2}$/", $phone)) {
+        if (! preg_match("/^[0-9]{11}$/", $phone)) {
             $check['phoneIncorrect'] = true;
         }
 

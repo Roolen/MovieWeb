@@ -7,12 +7,15 @@ var vue = new Vue({
         password: "",
         phone: "",
         urlRegister: "http://localhost/home/registration",
+        urlAuthorize: "http://localhost/home/authorize",
+        urlNews: "http://localhost/news",
 
         nameWarning: "",
         nickWarning: "",
         emailWarning: "",
         passwordWarning: "",
         phoneWarning: "",
+        authWarning: "",
 
         modal: false
     },
@@ -57,41 +60,65 @@ var vue = new Vue({
             vue.phoneWarning = ""
 
             // Dublicates checks
-            if (body.nickname === true) {
+            if (body.nickname) {
                 vue.nickWarning = "Такой логин уже занят."
-            } 
+            }
 
-            if (body.email === true) {
+            if (body.email) {
                 vue.emailWarning = "Такой email уже зарегистрирован."
-            } 
+            }
 
-            if (body.phone === true) {
+            if (body.phone) {
                 vue.phoneWarning = "Такой номер телефона уже зарегистрирован."
             }
 
             // Incorrects checks
-            if (body.nameIncorrect === true) {
+            if (body.nameIncorrect) {
                 vue.nameWarning = "Некорректное имя."
             }
 
-            if (body.nickIncorrect === true) {
+            if (body.nickIncorrect) {
                 vue.nickWarning = "Некорректный логин."
             }
 
-            if (body.emailIncorrect === true) {
+            if (body.emailIncorrect) {
                 vue.emailWarning = "Некорректный адрес электронной почты."
             }
 
-            if (body.passwordIncorrect === true) {
+            if (body.passwordIncorrect) {
                 vue.passwordWarning = "Пароль должен быть не менее 6 и не более 24 символов."
             }
 
-            if (body.phoneIncorrect === true) {
+            if (body.phoneIncorrect) {
                 vue.phoneWarning = "Некорректный номер телефона."
             }
+
+            if (body.success) {
+                vue.modalOpen();
+            }
         },
-        authorize: () => {
-            
+        authorize: async () => {
+            const response = await fetch(vue.urlAuthorize, {
+                method: "POST",
+                body: JSON.stringify({
+                    nickname: vue.nickname,
+                    password: vue.password
+                })
+            })
+            const body = await response.json()
+
+            console.log(body)
+
+            vue.authWarning = ""
+            if (body.confirmed) {
+                window.location = vue.urlNews
+            }
+            else if (response.status == '500') {
+                vue.authWarning = "Проблемы подключения."
+            }
+            else {
+                vue.authWarning = "Некорректный логин или пароль."
+            }
         }
     }
 })
