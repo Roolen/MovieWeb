@@ -93,7 +93,7 @@ body {
   font-family: "Blanch";
   font-size: 92px;
   color: #1B1D2A;
-  line-height: 74px;
+  line-height: 84px;
 }
 @media screen and (max-width: 800px) {
   .head-section .head-hello {
@@ -568,4 +568,28 @@ body {
 .modal-auth .modal-form .button {
   background: #E9E9E9;
   color: #1B1D2A;
+}
+@media screen and (max-width: 550px) {
+  .modal-auth {
+    margin-left: 100px;
+    width: 300px;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 0.6em;
+  height: 0.5em;
+}
+
+::-webkit-scrollbar-track {
+  background: #1B1D2A;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #E9E9E9;
+}
+
+body {
+  scrollbar-face-color: #E9E9E9;
+  scrollbar-track-color: #1B1D2A;
 }

@@ -100,7 +100,7 @@ body {
         font-family: 'Blanch';
         font-size: 92px;
         color: $dark_blue;
-        line-height: 74px;
+        line-height: 84px;
 
         @media screen and (max-width: $table_size) {
             font-size: 68px;
@@ -549,4 +549,25 @@ body {
             color: $dark_blue;
         }
     }
+
+    @media screen and (max-width: 550px) {
+        margin-left: 100px;
+        width: 300px;
+    }
+}
+
+
+::-webkit-scrollbar {
+    width: .6em;
+    height: .5em;
+}
+::-webkit-scrollbar-track {
+    background: $dark_blue;
+}
+::-webkit-scrollbar-thumb {
+    background: $white;
+}
+body {
+    scrollbar-face-color: $white;
+    scrollbar-track-color: $dark_blue;
 }
