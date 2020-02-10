@@ -11,7 +11,7 @@ class Home extends BaseController
 		return view('hello', $data);
 	}
 
-	public function showme($page = 'hello') 
+	public function showme($page = 'hello')
 	{
 		if (! is_file(APPPATH.'/Views/'.$page.'.php'))
 		{
@@ -27,23 +27,19 @@ class Home extends BaseController
 
 	public function registration() 
 	{
-		$data_user = [
-			'first_name' => ($this->request->getPost('first_name') ?? ''),
-			'nickname' => ($this->request->getPost('nickname') ?? ''),
-			'email' => ($this->request->getPost('email') ?? ''),
-			'password' => ($this->request->getPost('password') ?? ''),
-			'phone_number' => ($this->request->getPost('phone_number') ?? '')
-		];
+		$data_user = $this->request->getJSON();
 
 		$model = new UsersModel();
-		$check = $model->checkUser($data_user['nickname'],
-								   $data_user['email'],
-								   $data_user['phone_number']);
+		$check = $model->checkUser($data_user->nickname,
+								   $data_user->email,
+								   $data_user->phone_number);
+
+		$check = $check + $model->checkDataUser($data_user);
 
 		foreach ($check as $key=>$value) {
 			if ($value) {
 				$check['success'] = false;
-				$this->response->setStatusCode(409)
+				$this->response->setStatusCode(422)
 				               ->setJSON(false);
 				echo json_encode($check);
 				return;
