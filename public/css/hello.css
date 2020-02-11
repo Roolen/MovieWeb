@@ -93,7 +93,7 @@ body {
   font-family: "Blanch";
   font-size: 92px;
   color: #1B1D2A;
-  line-height: 74px;
+  line-height: 84px;
 }
 @media screen and (max-width: 800px) {
   .head-section .head-hello {
@@ -325,7 +325,7 @@ body {
 .future-section .image-future img {
   width: 100%;
   filter: gray;
-  -webkit-filter: grayscale(100%);
+  -webkit-filter: grayscale(70%);
 }
 .future-section .info-future {
   width: 40%;
@@ -371,6 +371,52 @@ body {
   }
 }
 
+.field {
+  margin-top: 10px;
+  width: 40%;
+  height: 64px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #707070;
+  color: #1B1D2A;
+  font-family: "Amsterdam";
+  font-size: 32px;
+  text-align: center;
+}
+.field::placeholder {
+  color: #707070;
+}
+@media screen and (max-width: 800px) {
+  .field {
+    width: 60%;
+    height: 42px;
+    font-size: 24px;
+  }
+}
+
+.button {
+  margin-top: 100px;
+  width: 250px;
+  height: 60px;
+  padding: 5px 30px 5px 30px;
+  font-family: "Amsterdam";
+  font-size: 24px;
+  color: #E9E9E9;
+  background: #1B1D2A;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.info-warning {
+  padding-top: 20px;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-family: "Amsterdam";
+  font-size: 18px;
+  color: #F2784B;
+}
+
 .registration-section {
   display: flex;
   flex-direction: column;
@@ -392,16 +438,19 @@ body {
   }
 }
 .registration-section .field {
-  margin-top: 40px;
+  margin-top: 10px;
   width: 40%;
   height: 64px;
   background: none;
   border: none;
   border-bottom: 1px solid #707070;
-  color: #707070;
+  color: #1B1D2A;
   font-family: "Amsterdam";
   font-size: 32px;
   text-align: center;
+}
+.registration-section .field::placeholder {
+  color: #707070;
 }
 @media screen and (max-width: 800px) {
   .registration-section .field {
@@ -411,7 +460,7 @@ body {
   }
 }
 .registration-section .button {
-  margin-top: 50px;
+  margin-top: 100px;
   width: 250px;
   height: 60px;
   padding: 5px 30px 5px 30px;
@@ -451,4 +500,101 @@ body {
   .registration-section {
     height: 800px;
   }
+}
+
+.modal-on {
+  display: flex !important;
+}
+
+.modal-auth {
+  position: fixed;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  top: calc(50vh - 250px);
+  left: calc(50vw - 250px);
+  width: 500px;
+  height: 500px;
+  border-radius: 20px;
+  z-index: 100;
+}
+.modal-auth::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: -30px;
+  z-index: -1;
+  border-radius: 20px;
+  -webkit-filter: blur(3px);
+  filter: blur(3px);
+  box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.3);
+  background: #1B1D2A;
+}
+.modal-auth .modal-title {
+  margin-bottom: 20px;
+  font-family: "Blanch";
+  font-size: 82px;
+  line-height: 86px;
+  color: #E9E9E9;
+  text-align: center;
+}
+@media screen and (max-width: 800px) {
+  .modal-auth .modal-title {
+    font-size: 56px;
+  }
+}
+.modal-auth .close-modal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-family: "FontAwesome";
+  font-size: 32px;
+  color: #E9E9E9;
+  cursor: pointer;
+  background: none;
+  border: none;
+  box-shadow: none;
+}
+.modal-auth .modal-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+}
+.modal-auth .modal-form .field {
+  color: #E9E9E9;
+}
+.modal-auth .modal-form .field::placeholder {
+  color: #b0b0b0;
+}
+.modal-auth .modal-form .button {
+  background: #E9E9E9;
+  color: #1B1D2A;
+}
+@media screen and (max-width: 550px) {
+  .modal-auth {
+    margin-left: 100px;
+    width: 300px;
+  }
+}
+
+::-webkit-scrollbar {
+  width: 0.6em;
+  height: 0.5em;
+}
+
+::-webkit-scrollbar-track {
+  background: #1B1D2A;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #E9E9E9;
+}
+
+body {
+  scrollbar-face-color: #E9E9E9;
+  scrollbar-track-color: #1B1D2A;
 }
