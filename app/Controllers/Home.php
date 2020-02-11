@@ -4,33 +4,35 @@ use App\Models\UsersModel;
 
 class Home extends BaseController
 {
+	/**
+	 * Opened hello page.
+	 *
+	 * @return void
+	 */
 	public function index()
 	{
 		$model = new UsersModel();
 		$data['users'] = $model->getUsers();
-		return view('hello', $data);
+		echo view('hello', $data);
 	}
 
-	public function showme($page = 'hello')
-	{
-		if (! is_file(APPPATH.'/Views/'.$page.'.php'))
-		{
-			throw new \CodeIgniter\Exceptions\PageNotFoundException($page);
-		}
-
-		$data['title'] = ucfirst($page);
-
-		echo view('Share/header', $data);
-		echo view($page, $data);
-		echo view('Share/footer', $data);
-	}
-
+	/**
+	 * Trying of registration user, prepare validate getted the data.
+	 * If data of user have in data base, then return json response to caller of method.
+	 * If registration is success, then return json response to caller of method.
+	 * 'nickname', 'email', 'phone' as duplicate flags.
+	 * And registration data with postfix 'Incorrect' as validate flags.
+	 *
+	 * @return void
+	 */
 	public function registration() 
 	{
 		$data_user = $this->request->getJSON();
-
-		$data_user->phone_number = preg_replace("/[\-\(\)]/", "", $data_user->phone_number);
 		$model = new UsersModel();
+
+		$data_user->phone_number = preg_replace("/[\-\(\)\+]/", "",
+												$data_user->phone_number);
+												
 		$check = $model->checkUser($data_user->nickname,
 								   $data_user->email,
 								   $data_user->phone_number);
@@ -61,11 +63,17 @@ class Home extends BaseController
 		}
 	}
 
+	/**
+	 * Authorization user and open session of user.
+	 * Return response with json form.
+	 *
+	 * @return void
+	 */
 	public function authorize()
 	{
 		$data_user = $this->request->getJSON();
-
 		$model = new UsersModel();
+
 		$verify = $model->verifyUser($data_user->nickname, $data_user->password);
 
 		if ($verify['confirmed'] === false) {

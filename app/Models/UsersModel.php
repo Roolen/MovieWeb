@@ -14,6 +14,12 @@ class UsersModel extends Model
         'phone_number'
     ];
 
+    /**
+     * Return data of user with $nick of nickname.
+     *
+     * @param string $nick
+     * @return void
+     */
     public function getUser(string $nick)
     {
         $user = $this->asArray()
@@ -25,6 +31,12 @@ class UsersModel extends Model
         }
     }
 
+    /**
+     * Trying new user, writing him in base date.
+     *
+     * @param object $data_user
+     * @return void
+     */
     public function createUser(object $data_user)
     {
         if (
@@ -45,6 +57,13 @@ class UsersModel extends Model
         return true;
     }
 
+    /**
+     * Checking confirmite by nick/password with currents of users.
+     *
+     * @param string $nick
+     * @param string $password
+     * @return array 'confirmed' flag.
+     */
     public function verifyUser(string $nick, string $password)
     {
         $user = $this->asArray()
@@ -59,6 +78,16 @@ class UsersModel extends Model
         }
     }
 
+    /**
+     * Checking data of user on duplicates.
+     * Return response by array with flags.
+     * 'nickname', 'email', 'phone' as flags.
+     *
+     * @param string $nickname
+     * @param string $email
+     * @param string $phone
+     * @return void
+     */
     public function checkUser(string $nickname, string $email, string $phone)
     {
         $user = $this->asArray()
@@ -79,6 +108,12 @@ class UsersModel extends Model
         }
     }
 
+    /**
+     * Checking correctness for the entering data of user.
+     *
+     * @param object $data_user
+     * @return void
+     */
     public function checkDataUser(object $data_user)
     {
         $check = [];
