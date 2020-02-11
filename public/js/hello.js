@@ -95,6 +95,7 @@ var vue = new Vue({
 
             if (body.success) {
                 vue.modalOpen();
+                vue.authWarning = "Регистрация прошла успешно."
             }
         },
         authorize: async () => {
