@@ -6,9 +6,9 @@ var vue = new Vue({
         email: "",
         password: "",
         phone: "",
-        urlRegister: "http://localhost/home/registration",
-        urlAuthorize: "http://localhost/home/authorize",
-        urlNews: "http://localhost/news",
+        urlRegister: baseUrl + "/home/registration",
+        urlAuthorize: baseUrl + "/home/authorize",
+        urlNews: baseUrl + "/news",
 
         nameWarning: "",
         nickWarning: "",

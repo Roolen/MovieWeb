@@ -146,6 +146,7 @@
 		<?= view('Share/footer'); ?>
 	</div>
 
+	<script> const baseUrl = "<?= base_url(); ?>"; </script>
 	<script src="<?= base_url(); ?>/js/vue.min.js"></script>
 	<script src="<?= base_url(); ?>/js/hello.js"></script>
 </body>
