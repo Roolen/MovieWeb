@@ -10,6 +10,7 @@
 
 // Colors
 $dark_blue: #1B1D2A;
+$dark_blue_light: #1f1f2f;
 $white: #E9E9E9;
 $accent_color: #F2784B;
 
@@ -475,7 +476,13 @@ body {
     }
 }
 
-.modal-on { display: flex !important; }
+@keyframes modal-on {
+    from {opacity: 0;}
+    50% {opacity: .5;}
+    to {opacity: 1;}
+}
+
+.modal-on { animation: modal-on .3s linear; display: flex !important; }
 .modal-auth {
     position: fixed;
     display: none;
@@ -488,6 +495,9 @@ body {
 
     border-radius: 20px;
     z-index: 100;
+    opacity: 0.98;
+
+    transition: opacity .5s ease-in;
 
     &::before {
         content: "";
@@ -502,7 +512,7 @@ body {
         -webkit-filter: blur(3px);
         filter: blur(3px);
         box-shadow: 6px 6px 12px rgba(0, 0, 0, .3);
-        background: $dark_blue;
+        background: $dark_blue_light;
     }
 
     .modal-title {

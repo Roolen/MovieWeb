@@ -1,0 +1,80 @@
+$dark_blue: #1B1D2A;
+$dark_blue_light: #1f1f2f;
+$white: #E9E9E9;
+$accent_color: #F2784B;
+
+.main {
+    .user-block {
+        width: 70%;
+        margin: auto;
+        padding-top: 30px;
+        
+        .user-info {
+            display: flex;
+            margin-bottom: 20px;
+
+            @media screen and (max-width: 1400px) {
+                flex-direction: column;
+            }
+            
+            .image-user {
+                display: flex;
+                justify-content: center;
+                flex-shrink: 0;
+                position: relative;
+                margin-right: 20px;
+                width: 600px;
+                height: 320px;
+
+                background: $dark_blue_light;
+                border-radius: 15px;
+                box-shadow: 6px 6px 12px rgba(0, 0, 0, .3);
+
+                @media screen and (max-width: 800px) {
+                    width: 100%;
+                }
+                @media screen and (max-width: 1400px) {
+                    margin-right: auto;
+                    margin-left: auto;
+                }
+
+                img {
+                    width: 50%;
+                    height: 100%;
+                    filter: invert(1) blur(.5px);
+                }
+
+                .counter-describers {
+                    position: absolute;
+                    right: 10px;
+                    bottom: 10px;
+                }
+            }
+
+            .user-detail {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+
+                .user-nick {
+                    font-family: 'Blanch';
+                    font-size: 58px;
+                    line-height: 63px;
+                    color: $dark_blue;
+                }
+
+                .user-desc {
+                    font-family: 'Amsterdam';
+                    font-size: 20px;
+                    line-height: 23px;
+                    color: $dark_blue;
+                }
+
+                .default-button {
+                    margin-top: 20px;
+                    width: 140px;
+                }
+            }
+        }
+    }
+}
