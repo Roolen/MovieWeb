@@ -502,7 +502,19 @@ body {
   }
 }
 
+@keyframes modal-on {
+  from {
+    opacity: 0;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  to {
+    opacity: 1;
+  }
+}
 .modal-on {
+  animation: modal-on 0.3s linear;
   display: flex !important;
 }
 
@@ -517,6 +529,8 @@ body {
   height: 500px;
   border-radius: 20px;
   z-index: 100;
+  opacity: 0.98;
+  transition: opacity 0.5s ease-in;
 }
 .modal-auth::before {
   content: "";
@@ -528,10 +542,10 @@ body {
   margin: -30px;
   z-index: -1;
   border-radius: 20px;
-  -webkit-filter: blur(3px);
-  filter: blur(3px);
+  -webkit-filter: blur(1px);
+  filter: blur(1px);
   box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.3);
-  background: #1B1D2A;
+  background: #1f1f2f;
 }
 .modal-auth .modal-title {
   margin-bottom: 20px;

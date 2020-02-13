@@ -39,7 +39,7 @@ $accent_color: #F2784B;
                 }
 
                 img {
-                    width: 50%;
+                    width: 30%;
                     height: 100%;
                     filter: invert(1) blur(.5px);
                 }
@@ -73,6 +73,85 @@ $accent_color: #F2784B;
                 .default-button {
                     margin-top: 20px;
                     width: 140px;
+                }
+            }
+        }
+    }
+
+    .posts-block {
+        width: 70%;
+        margin: auto;
+        margin-top: 50px;
+        padding-top: 30px;
+
+        border-top: 1px solid $dark_blue;
+
+        .counter-posts {
+            font-family: 'Blanch';
+            font-size: 32px;
+            line-height: 35px;
+            color: $dark_blue;
+        }
+
+        .posts-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 20px;
+
+            .post {
+                margin-bottom: 50px;
+
+                .image-post {
+                    display: flex;
+                    justify-content: center;
+                    width: 600px;
+                    height: 320px;
+
+                    border-radius: 15px;
+                    box-shadow: 6px 6px 12px rgba(0, 0, 0, .3);
+                    background: $dark_blue_light;
+
+                    img {
+                        width: 30%;
+                        height: 100%;
+                        filter: invert(1) blur(.5px);
+                    }
+                }
+
+                .post-info {
+                    margin-top: 10px;
+                    padding-left: 10px;
+                    box-sizing: border-box;
+
+                    .title-post {
+                        font-family: 'Blanch';
+                        font-size: 46px;
+                        line-height: 42px;
+                        color: $dark_blue;
+                    }
+
+                    .text-post {
+                        width: 600px;
+                        max-height: 150px;
+
+                        overflow: hidden;
+                        font-family: 'Akrobat';
+                        font-size: 26px;
+                        line-height: 32px;
+                        color: $dark_blue;
+                    }
+
+                    .count-comments {
+                        margin-top: 10px;
+                        width: fit-content;
+                        font-family: 'Akrobat';
+                        font-size: 20px;
+                        line-height: 25px;
+                        border-bottom: 1px solid $dark_blue;
+                        color: $dark_blue;
+                        opacity: .72;
+                    }
                 }
             }
         }

@@ -23,10 +23,10 @@ var vue = new Vue({
         modalOpen: () => {
             vue.modal = true;
             const main = document.getElementById("main")
-            main.style.filter = "blur(10px)"
+            main.style.filter = "blur(5px)"
             main.style.pointerEvents = "none"
             const header = document.getElementById("header")
-            header.style.filter = "blur(10px)"
+            header.style.filter = "blur(5px)"
             header.style.pointerEvents = "none"
         },
         modalClose: () => {

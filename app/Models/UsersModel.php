@@ -18,7 +18,7 @@ class UsersModel extends Model
      * Return data of user with $nick of nickname.
      *
      * @param string $nick
-     * @return void
+     * @return array
      */
     public function getUser(string $nick)
     {
