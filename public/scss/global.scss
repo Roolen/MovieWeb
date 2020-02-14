@@ -1,11 +1,11 @@
 @font-face {
     font-family: "Blanch";
-    src: '../fonts/blanch.otf';
+    src: url('../fonts/blanch.otf');
 }
 
 @font-face {
     font-family: "Awesome-Solid";
-    src: '../fonts/fa-solid-900.ttf';
+    src: url('../fonts/fa-solid-900.ttf');
 }
 
 @font-face {
@@ -35,6 +35,17 @@ body {
     border: none;
     border-radius: 15px;
     box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.3);
+
+    transition: all .1s linear;
+
+    &:hover {
+        color: $dark_blue;
+        background: $white;
+    }
+    
+    &:active {
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
 }
 
 ::-webkit-scrollbar {

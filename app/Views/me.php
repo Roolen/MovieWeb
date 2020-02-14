@@ -9,23 +9,34 @@
                 </div>
                 <div class="user-detail">
                     <h2 class="user-nick"><?= $user_nick; ?></h2>
-                    <div class="user-desc"><?= $user_desc; ?></div>
-                    <button class="default-button" id="writeButton">Write</button>
+                    <textarea v-if="isEditDesc" class="user-desc"><?= $user_desc; ?></textarea>
+                    <div v-if="!isEditDesc" class="user-desc"><?= $user_desc; ?></div>
+                    <?php if (! $isYou) : ?>
+                        <button class="default-button write-icon" id="writeButton">Write</button>
+                    <?php else : ?>
+                        <button v-if="!isEditDesc" @click="isEditDesc = true"
+                         class="default-button desc-icon">Change Description</button>
+                        <button v-else @click="changeDesc()" class="default-button desc-icon">Apply</button>
+                    <?php endif ?>
                 </div>
             </div>
             <div class="user-manage">
-                <button class="default-button">Describe</button>
+                <?php if (! $isYou) : ?>
+                    <button class="default-button">Describe</button>
+                <?php else : ?>
+                    <button class="default-button">Change Image</button>
+                <?php endif ?>
             </div>
         </section>
-        <section class="posts-block">
+        <section v-bind:class="{ 'line-top': countPosts }" class="posts-block">
             <div class="counter-posts">{{ countPosts }} Posts</div>
             <div class="posts-container">
                 <div v-for="post in posts" class="post">
                     <div class="image-post"><img v-bind:src="post.path_image" alt="image of post" /></div>
                     <div class="author-block">
-                        <div class="avatar"></div>
-                        <div class="date-publish"></div>
-                        <div class="nickname"></div>
+                        <div class="avatar"><img src="<?= $user_image ?>" alt="avatar for post"/></div>
+                        <div class="date-publish">{{ post.date_publish }}</div>
+                        <div class="nickname"><?= $user_nick ?></div>
                     </div>
                     <div class="post-info">
                         <h3 class="title-post">{{ post.title }}</h3>

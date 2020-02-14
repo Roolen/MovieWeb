@@ -11,9 +11,10 @@ class Me extends BaseController
         $model = new UsersModel();
         
         $user = $model->getUser($nick);
+        $isYou = false;
         if ($user) {
             if ($user['id'] === $session->get('idUser')) {
-                $nick = $nick . " this you";
+                $isYou = true;
             }
         }
         else {
@@ -26,6 +27,7 @@ class Me extends BaseController
         
         $data = [
             'title' => 'Me '.$nick,
+            'isYou' => $isYou,
             'user_nick' => $nick,
             'user_desc' => $user['description'],
             'user_image' => $avatar

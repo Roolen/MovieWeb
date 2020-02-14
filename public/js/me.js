@@ -3,8 +3,10 @@ const me = new Vue ({
     data: {
         posts: [],
         countPosts: 0,
-        urlPosts: baseUrl + "/Post/posts/" + user
+        urlPosts: baseUrl + "/Post/posts/" + user,
+        isEditDesc: false
     },
+    mounted: () => { setTimeout(() => { me.getPosts() }, 100) },
     methods: {
         getPosts: async () => {
             const response = await fetch(me.urlPosts)
@@ -17,10 +19,14 @@ const me = new Vue ({
                     post.text_post = post.text_post.substring(0, 246)
                     post.text_post += "..."
                 }
+                let date = new Date(post.date_publish);
+                post.date_publish = `${date.getMonth()}.${date.getDate()}\n${date.getFullYear()}`
             }
             me.posts = body;
             me.countPosts = me.posts.length
-        }
-    },
-    mounted: () => { setTimeout(() => { me.getPosts() }, 100) }
+        },
+        changeDesc: () => {
+            me.isEditDesc = false;
+        } 
+    }
 })

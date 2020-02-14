@@ -17,6 +17,7 @@ $header_font_size: 32px;
     margin: auto;
 
     border-bottom: solid 1px $dark_blue;
+    transition: width .5s linear;
 }
 
 .header-menu {

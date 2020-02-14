@@ -55,6 +55,7 @@ $accent_color: #F2784B;
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
+                width: 100%;
 
                 .user-nick {
                     font-family: 'Blanch';
@@ -70,21 +71,42 @@ $accent_color: #F2784B;
                     color: $dark_blue;
                 }
 
+                textarea.user-desc {
+                    width: 100%;
+                    height: 100%;
+                    box-sizing: border-box;
+                    resize: none;
+                    background: none;
+                }
+
                 .default-button {
                     margin-top: 20px;
-                    width: 140px;
+                    width: fit-content;
+                }
+
+                .write-icon::before {
+                    content: "\f304";
+                    margin-right: 10px;
+                    font-family: 'Awesome-Solid';
+                    font-size: 18px;
+                }
+
+                .desc-icon::before {
+                    content: "\f570";
+                    margin-right: 10px;
+                    font-family: 'Awesome-Solid';
+                    font-size: 20px;
                 }
             }
         }
     }
 
+    .line-top { border-top: 1px solid #8B8D8A; }
     .posts-block {
         width: 70%;
         margin: auto;
         margin-top: 50px;
         padding-top: 30px;
-
-        border-top: 1px solid $dark_blue;
 
         .counter-posts {
             font-family: 'Blanch';
@@ -99,23 +121,110 @@ $accent_color: #F2784B;
             flex-wrap: wrap;
             margin-top: 20px;
 
+            @media screen and (max-width: 1200px) {
+                align-items: center;
+                flex-direction: column;
+            }
+
             .post {
+                position: relative;
+                width: 45%;
                 margin-bottom: 50px;
+
+                transition: all .5s linear;
+
+                @media screen and (max-width: 1200px) {
+                    width: 90%;
+                    border-radius: 30px;
+                }
 
                 .image-post {
                     display: flex;
                     justify-content: center;
-                    width: 600px;
+                    width: 100%;
                     height: 320px;
 
                     border-radius: 15px;
-                    box-shadow: 6px 6px 12px rgba(0, 0, 0, .3);
+                    box-shadow: 6px 6px 12px rgba(0, 0, 0, .2);
+                    transition: box-shadow .3s linear;
                     background: $dark_blue_light;
+                    cursor: pointer;
+
+                    @media screen and (max-width: 800px) {
+                        width: 100%;
+                    }
+
+                    &:hover {
+                        box-shadow: 8px 8px 14px rgba(0, 0, 0, .5);
+                    }
 
                     img {
-                        width: 30%;
+                        width: 20%;
                         height: 100%;
                         filter: invert(1) blur(.5px);
+
+                        transition: transform .5s linear;
+
+                        @media screen and (max-width: 1200px) {
+                            transform: rotateZ(360deg);
+                        }
+                    }
+                }
+
+                .author-block {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    position: absolute;
+                    top: 215px;
+                    right: 10px;
+                    width: 150px;
+                    height: 96px;
+                    box-sizing: border-box;
+                    padding-top: 5px;
+                    z-index: 1;
+
+                    &::before {
+                        content: "";
+                        display: block;
+                        position: absolute;
+                        top:0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        z-index: -1;
+                        opacity: .8;
+
+                        background: $white;
+                        border-radius: 15px;
+                    }
+
+                    .avatar {
+                        margin-top: 5px;
+                        width: 46px;
+                        height: 46px;
+
+                        img {
+                            border-radius: 50px;
+                        }
+                    }
+
+                    .date-publish {
+                        width: 54px;
+                        font-family: 'Akrobat';
+                        font-size: 24px;
+                        line-height: 29px;
+                        color: $dark_blue;
+                        text-align: center;
+                    }
+
+                    .nickname {
+                        width: 100%;
+                        font-family: 'Blanch';
+                        font-size: 24px;
+                        line-height: 20px;
+                        color: $dark_blue;
+                        text-align: center;
                     }
                 }
 
@@ -125,6 +234,7 @@ $accent_color: #F2784B;
                     box-sizing: border-box;
 
                     .title-post {
+                        width: fit-content;
                         font-family: 'Blanch';
                         font-size: 46px;
                         line-height: 42px;
@@ -132,14 +242,18 @@ $accent_color: #F2784B;
                     }
 
                     .text-post {
-                        width: 600px;
-                        max-height: 150px;
+                        width: 100%;
+                        //max-height: 150px;
 
                         overflow: hidden;
                         font-family: 'Akrobat';
                         font-size: 26px;
                         line-height: 32px;
                         color: $dark_blue;
+
+                        @media screen and (max-width: 800px) {
+                            width: 100%;
+                        }
                     }
 
                     .count-comments {
