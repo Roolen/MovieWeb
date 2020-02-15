@@ -137,6 +137,10 @@ $accent_color: #F2784B;
                     width: 90%;
                     border-radius: 30px;
                 }
+                
+                &:hover .image-post {
+                    box-shadow: 8px 8px 14px rgba(0, 0, 0, .5);
+                }
 
                 .image-post {
                     display: flex;
@@ -152,10 +156,6 @@ $accent_color: #F2784B;
 
                     @media screen and (max-width: 800px) {
                         width: 100%;
-                    }
-
-                    &:hover {
-                        box-shadow: 8px 8px 14px rgba(0, 0, 0, .5);
                     }
 
                     img {

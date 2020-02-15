@@ -126,6 +126,9 @@
     border-radius: 30px;
   }
 }
+.main .posts-block .posts-container .post:hover .image-post {
+  box-shadow: 8px 8px 14px rgba(0, 0, 0, 0.5);
+}
 .main .posts-block .posts-container .post .image-post {
   display: flex;
   justify-content: center;
@@ -141,9 +144,6 @@
   .main .posts-block .posts-container .post .image-post {
     width: 100%;
   }
-}
-.main .posts-block .posts-container .post .image-post:hover {
-  box-shadow: 8px 8px 14px rgba(0, 0, 0, 0.5);
 }
 .main .posts-block .posts-container .post .image-post img {
   width: 20%;
