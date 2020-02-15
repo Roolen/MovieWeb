@@ -11,7 +11,8 @@ class UsersModel extends Model
         'nickname',
         'email',
         'password',
-        'phone_number'
+        'phone_number',
+        'description'
     ];
 
     /**
@@ -24,6 +25,17 @@ class UsersModel extends Model
     {
         $user = $this->asArray()
                      ->where(['nickname' => $nick])
+                     ->first();
+
+        if ($user) {
+            return $user;
+        }
+    }
+
+    public function getUserById(int $id)
+    {
+        $user = $this->asArray()
+                     ->where(['id' => $id])
                      ->first();
 
         if ($user) {
@@ -48,6 +60,21 @@ class UsersModel extends Model
 
         $this->insert($data_user);
         return true;
+    }
+
+    public function changeDescription(string $newDesc, int $idUser)
+    {
+        $user = $this->asArray()
+                     ->where(['id' => $idUser])
+                     ->first();
+
+        if ($user && mb_strlen($newDesc, 'utf8') <= 451) {
+            $this->update($idUser, ['description' => $newDesc]);
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     /**

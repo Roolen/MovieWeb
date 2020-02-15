@@ -36,4 +36,26 @@ class Me extends BaseController
         echo view('me', $data);
         echo view('Share/footer.php');
     }
+
+    public function changeDescription()
+    {
+        $request = $this->request->getJSON();
+
+        $session = session();
+        $model = new UsersModel();
+
+        if (! $session->get('idUser')) {
+            $this->response->setJSON(false);
+            echo json_encode(['isAuth' => false]);
+        }
+        $id = (int)$session->get('idUser');
+        $user = $model->getUserById($id);
+
+        $desc = $request->newDesc;
+        if ($user) {
+            $model->changeDescription($desc, $id);
+            $this->response->setJSON(false);
+            echo json_encode(['success' => true]);
+        }
+    }
 }

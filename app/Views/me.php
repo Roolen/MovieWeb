@@ -9,8 +9,8 @@
                 </div>
                 <div class="user-detail">
                     <h2 class="user-nick"><?= $user_nick; ?></h2>
-                    <textarea v-if="isEditDesc" class="user-desc"><?= $user_desc; ?></textarea>
-                    <div v-if="!isEditDesc" class="user-desc"><?= $user_desc; ?></div>
+                    <textarea v-if="isEditDesc" class="user-desc" v-model="description" maxlength="451" required></textarea>
+                    <div v-if="!isEditDesc" class="user-desc">{{ description }}</div>
                     <?php if (! $isYou) : ?>
                         <button class="default-button write-icon" id="writeButton">Write</button>
                     <?php else : ?>
@@ -51,6 +51,7 @@
     <script>
         const baseUrl = "<?= base_url(); ?>"
         const user = "<?= $user_nick ?>"
+        const description = "<?= $user_desc; ?>"
     </script>
 </div>
 <script src="<?= base_url(); ?>/js/vue.min.js"></script>

@@ -1,16 +1,18 @@
-const me = new Vue ({
+const me = new Vue({
     el: "#me-app",
     data: {
         posts: [],
         countPosts: 0,
         urlPosts: baseUrl + "/Post/posts/" + user,
-        isEditDesc: false
+        urlChangeDesc: baseUrl + "/me/changeDescription",
+        isEditDesc: false,
+        description: description
     },
     mounted: () => { setTimeout(() => { me.getPosts() }, 100) },
     methods: {
         getPosts: async () => {
             const response = await fetch(me.urlPosts)
-            
+
             const body = await response.json()
             console.log(body)
 
@@ -25,8 +27,28 @@ const me = new Vue ({
             me.posts = body;
             me.countPosts = me.posts.length
         },
-        changeDesc: () => {
-            me.isEditDesc = false;
-        } 
+        changeDesc: async () => {
+            try {
+                const response = await fetch(me.urlChangeDesc, {
+                    method: "POST",
+                    body: JSON.stringify({
+                        newDesc: me.description
+                    })
+                })
+
+                const body = await response.json();
+
+                if (!body.isAuth) {
+                    console.log("Failed to change description, you don't authorizition")
+                }
+
+                if (body.success) {
+                    me.isEditDesc = false;
+                }
+            }
+            catch (e) {
+                console.log(e)
+            }
+        }
     }
 })
