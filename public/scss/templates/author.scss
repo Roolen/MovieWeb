@@ -1,0 +1,58 @@
+@import "../color.scss";
+
+.author-block {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    position: absolute;
+    top: 215px;
+    right: 10px;
+    width: 150px;
+    height: 96px;
+    box-sizing: border-box;
+    padding-top: 5px;
+    z-index: 1;
+    
+    &::before {
+        content: "";
+        display: block;
+        position: absolute;
+        top:0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        opacity: .8;
+        
+        background: $white;
+        border-radius: 15px;
+    }
+    
+    .avatar {
+        margin-top: 5px;
+        width: 46px;
+        height: 46px;
+        
+        img {
+            border-radius: 50px;
+        }
+    }
+    
+    .date-publish {
+        width: 54px;
+        font-family: 'Akrobat';
+        font-size: 24px;
+        line-height: 29px;
+        color: $dark_blue;
+        text-align: center;
+    }
+    
+    .nickname {
+        width: 100%;
+        font-family: 'Blanch';
+        font-size: 24px;
+        line-height: 20px;
+        color: $dark_blue;
+        text-align: center;
+    }
+}

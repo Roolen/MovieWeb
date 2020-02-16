@@ -15,6 +15,20 @@ class PostsModel extends Model
         'text_post'
     ];
 
+    public function getPost(string $title)
+    {
+        $post = $this->asArray()
+                     ->where(['title' => $title])
+                     ->first();
+
+        if ($post) {
+            return $post;
+        }
+        else {
+            return false;
+        }
+    }
+
     public function getPosts(int $id)
     {
         $posts = $this->asArray()

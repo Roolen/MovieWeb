@@ -47,6 +47,7 @@ class Me extends BaseController
         if (! $session->get('idUser')) {
             $this->response->setJSON(false);
             echo json_encode(['isAuth' => false]);
+            return;
         }
         $id = (int)$session->get('idUser');
         $user = $model->getUserById($id);

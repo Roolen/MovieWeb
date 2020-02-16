@@ -33,11 +33,11 @@
             <div class="posts-container">
                 <div v-for="post in posts" class="post">
                     <div class="image-post"><img v-bind:src="post.path_image" alt="image of post" /></div>
-                    <div class="author-block">
-                        <div class="avatar"><img src="<?= $user_image ?>" alt="avatar for post"/></div>
-                        <div class="date-publish">{{ post.date_publish }}</div>
-                        <div class="nickname"><?= $user_nick ?></div>
-                    </div>
+                    <?=
+                        view('Templates/authorBlock', ['user_image' => $user_image,
+                                                       'user_nick' => $user_nick,
+                                                       'date_publish' => "{{ post.date_publish }}"]);
+                    ?>
                     <div class="post-info">
                         <h3 class="title-post">{{ post.title }}</h3>
                         <div class="rating-line"></div>
