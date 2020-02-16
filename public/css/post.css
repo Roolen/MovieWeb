@@ -104,3 +104,51 @@
   line-height: 32px;
   color: #1B1D2A;
 }
+.main .comments-block {
+  margin: auto;
+  margin-bottom: 100px;
+  width: 80%;
+}
+.main .comments-block .counter-comments {
+  margin-bottom: 20px;
+  font-family: "Blanch";
+  font-size: 48px;
+  line-height: 53px;
+  color: #1B1D2A;
+}
+.main .comments-block .comment {
+  margin-bottom: 30px;
+}
+.main .comments-block .comment .comment-head {
+  display: flex;
+}
+.main .comments-block .comment .comment-head .avatar {
+  width: 54px;
+  height: 54px;
+  border-radius: 50px;
+  box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.2);
+}
+.main .comments-block .comment .comment-head .avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+}
+.main .comments-block .comment .comment-head .info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  font-family: "Akrobat";
+  font-size: 24px;
+  line-height: 24px;
+  color: #1B1D2A;
+}
+.main .comments-block .comment .comment-head .info .rating {
+  font-size: 20px;
+}
+.main .comments-block .comment .text-comment {
+  margin-top: 20px;
+  font-family: "Akrobat";
+  font-size: 20px;
+  line-height: 24px;
+  color: #1B1D2A;
+}

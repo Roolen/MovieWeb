@@ -43,6 +43,17 @@ class UsersModel extends Model
         }
     }
 
+    public function getUserSById(array $idS)
+    {
+        $users = $this->asArray()
+                      ->whereIn('id', $idS)
+                      ->findAll();
+
+        if ($users) {
+            return $users;
+        }
+    }
+
     /**
      * Trying new user, writing him in base date.
      *
