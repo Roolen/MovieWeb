@@ -39,7 +39,8 @@
                                                      'path_image' => "post.path_image",
                                                      'title' => "{{ post.title }}",
                                                      'text' => "{{ post.text_post }}",
-                                                     'comments' => "comments"]);
+                                                     'comments' => "comments",
+                                                     'adress' => '\''.base_url().'/post/\''.' + post.title']);
                     ?>
                 </div>
             </div>

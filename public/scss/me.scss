@@ -1,5 +1,6 @@
 @import "color.scss";
 @import "templates/author.scss";
+@import "templates/postBlock.scss";
 
 .main {
     .user-block {
@@ -122,94 +123,6 @@
             @media screen and (max-width: 1200px) {
                 align-items: center;
                 flex-direction: column;
-            }
-
-            .post {
-                position: relative;
-                width: 45%;
-                margin-bottom: 50px;
-
-                transition: all .5s linear;
-
-                @media screen and (max-width: 1200px) {
-                    width: 90%;
-                    border-radius: 30px;
-                }
-                
-                &:hover .image-post {
-                    box-shadow: 8px 8px 14px rgba(0, 0, 0, .5);
-                }
-
-                .image-post {
-                    display: flex;
-                    justify-content: center;
-                    width: 100%;
-                    height: 320px;
-
-                    border-radius: 15px;
-                    box-shadow: 6px 6px 12px rgba(0, 0, 0, .2);
-                    transition: box-shadow .3s linear;
-                    background: $dark_blue_light;
-                    cursor: pointer;
-
-                    @media screen and (max-width: 800px) {
-                        width: 100%;
-                    }
-
-                    img {
-                        width: 20%;
-                        height: 100%;
-                        filter: invert(1) blur(.5px);
-
-                        transition: transform .5s linear;
-
-                        @media screen and (max-width: 1200px) {
-                            transform: rotateZ(360deg);
-                        }
-                    }
-                }
-
-                
-
-                .post-info {
-                    margin-top: 10px;
-                    padding-left: 10px;
-                    box-sizing: border-box;
-
-                    .title-post {
-                        width: fit-content;
-                        font-family: 'Blanch';
-                        font-size: 46px;
-                        line-height: 42px;
-                        color: $dark_blue;
-                    }
-
-                    .text-post {
-                        width: 100%;
-                        //max-height: 150px;
-
-                        overflow: hidden;
-                        font-family: 'Akrobat';
-                        font-size: 26px;
-                        line-height: 32px;
-                        color: $dark_blue;
-
-                        @media screen and (max-width: 800px) {
-                            width: 100%;
-                        }
-                    }
-
-                    .count-comments {
-                        margin-top: 10px;
-                        width: fit-content;
-                        font-family: 'Akrobat';
-                        font-size: 20px;
-                        line-height: 25px;
-                        border-bottom: 1px solid $dark_blue;
-                        color: $dark_blue;
-                        opacity: .72;
-                    }
-                }
             }
         }
     }
