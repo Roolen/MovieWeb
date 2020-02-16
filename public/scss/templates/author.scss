@@ -49,10 +49,14 @@
     
     .nickname {
         width: 100%;
-        font-family: 'Blanch';
-        font-size: 24px;
-        line-height: 20px;
-        color: $dark_blue;
         text-align: center;
+
+        a {
+            font-family: 'Blanch';
+            font-size: 24px;
+            line-height: 20px;
+            color: $dark_blue;
+            text-decoration: none;
+        }
     }
 }
