@@ -21,6 +21,7 @@
     </main>
     <script>
         const baseUrl = "<?= base_url(); ?>"
+        const title = "<?= $title ?>"
     </script>
 </div>
 <script src="<?= base_url(); ?>/js/vue.min.js"></script>

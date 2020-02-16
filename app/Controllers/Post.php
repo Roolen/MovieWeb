@@ -3,6 +3,7 @@
 use App\Models\PostsModel;
 use App\Models\UsersModel;
 use App\Models\TagsModel;
+use App\Models\CommentsModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
 
 class Post extends BaseController
@@ -64,6 +65,43 @@ class Post extends BaseController
             $this->response->setStatusCode(200)
                            ->setJSON(false);
             echo json_encode(['empty' => true]);
+        }
+    }
+
+    public function comments(string $titlePost)
+    {
+        $titlePost = str_replace("%20", " ", $titlePost);
+
+        $postsModel = new PostsModel();
+        $post = $postsModel->getPost($titlePost);
+
+        if (! $post) throw new PageNotFoundException($titlePost);
+
+        $idPost = $post['id'];
+        $commentsModel = new CommentsModel();
+        $comments = $commentsModel->getComments($idPost);
+
+        $usersModel = new UsersModel();
+        $user = $usersModel->getUserById($post['id_author']);
+
+        for ($i = 0; $i < count($comments); $i++) {
+            $comment = &$comments[$i];
+            unset($comment['id']);
+            unset($comment['id_post']);
+            unset($comment['id_author']);
+            $comment['author'] = $user['nickname'];
+            $comment['avatar'] = ($user['path_avatar'])
+                                 ? $user['path_avatar']
+                                 : base_url() . "/images/employee.svg";
+        }
+
+        if (! $comments) {
+            $this->response->setJSON(false);
+            echo json_encode(['isComments' => false]);
+        }
+        else {
+            $this->response->setJSON(false);
+            echo json_encode($comments);
         }
     }
 }
