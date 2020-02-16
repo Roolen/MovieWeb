@@ -72,7 +72,7 @@ class UsersModel extends Model
         }
 
         $password = $data_user->password;
-        $data_user->password = password_hash($password, PASSWORD_ARGON2ID);
+        $data_user->password = password_hash($password, PASSWORD_BCRYPT);
 
         $this->insert($data_user);
         return true;
