@@ -21,6 +21,11 @@ const post = new Vue({
             const body = await response.json()
 
             console.log(body)
+
+            if (body) {
+                post.comments = body
+                post.countComments = body.length
+            }
         }
     }
 })

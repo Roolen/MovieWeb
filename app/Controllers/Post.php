@@ -82,10 +82,10 @@ class Post extends BaseController
         $comments = $commentsModel->getComments($idPost);
 
         $usersModel = new UsersModel();
-        $user = $usersModel->getUserById($post['id_author']);
-
+        
         for ($i = 0; $i < count($comments); $i++) {
             $comment = &$comments[$i];
+            $user = $usersModel->getUserById($comment['id_author']);
             unset($comment['id']);
             unset($comment['id_post']);
             unset($comment['id_author']);

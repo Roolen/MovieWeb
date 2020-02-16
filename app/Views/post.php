@@ -16,7 +16,18 @@
             <div class="rating-button"></div>
         </section>
         <section class="comments-block">
-
+            <div class="counter-comments">{{ countComments }} Комментариев</div>
+            <div v-for="comment in comments" class="comment">
+                <header class="comment-head">
+                    <div class="avatar"><img :src="comment.avatar" alt="avatar"/></div>
+                    <div class="info">
+                        <div class="nick">{{ comment.author }}</div>
+                        <div class="rating">{{ comment.rating }}<div class="rating-buttons"></div></div>
+                    </div>
+                </header>
+                <div class="text-comment">{{ comment.text_comment }}</div>
+            </div>
+            <button class="default-button">Написать комментарий</button>
         </section>
     </main>
     <script>

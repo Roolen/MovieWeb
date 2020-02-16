@@ -32,18 +32,15 @@
             <div class="counter-posts">{{ countPosts }} Posts</div>
             <div class="posts-container">
                 <div v-for="post in posts" class="post">
-                    <div class="image-post"><img v-bind:src="post.path_image" alt="image of post" /></div>
                     <?=
-                        view('Templates/authorBlock', ['user_image' => $user_image,
-                                                       'user_nick' => $user_nick,
-                                                       'date_publish' => "{{ post.date_publish }}"]);
+                        view('Templates/postBlock', ['user_image' => $user_image,
+                                                     'user_nick' => $user_nick,
+                                                     'date_publish' => "{{ post.date_publish }}",
+                                                     'path_image' => "post.path_image",
+                                                     'title' => "{{ post.title }}",
+                                                     'text' => "{{ post.text_post }}",
+                                                     'comments' => "comments"]);
                     ?>
-                    <div class="post-info">
-                        <h3 class="title-post">{{ post.title }}</h3>
-                        <div class="rating-line"></div>
-                        <div class="text-post">{{ post.text_post }}</div>
-                        <div class="count-comments">comments</div>
-                    </div>
                 </div>
             </div>
         </section>

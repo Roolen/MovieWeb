@@ -63,4 +63,63 @@
             color: $dark_blue;
         }
     }
+
+    .comments-block {
+        margin: auto;
+        margin-bottom: 100px;
+        width: 80%;
+
+        .counter-comments {
+            margin-bottom: 20px;
+            font-family: 'Blanch';
+            font-size: 48px;
+            line-height: 53px;
+            color: $dark_blue;
+        }
+
+        .comment {
+            margin-bottom: 30px;
+            
+            .comment-head {
+                display: flex;
+
+                .avatar {
+                    width: 54px;
+                    height: 54px;
+
+                    border-radius: 50px;
+                    box-shadow: 5px 5px 12px rgba(0, 0, 0, .2);
+                    
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 50px;
+                    }
+                }
+
+                .info {
+                    display: flex;
+                    flex-direction: column;
+                    margin-left: 20px;
+
+                    font-family: 'Akrobat';
+                    font-size: 24px;
+                    line-height: 24px;
+                    color: $dark_blue;
+
+                    .rating {
+                        font-size: 20px;
+                    }
+                }
+            }
+
+            .text-comment {
+                margin-top: 20px;
+                font-family: 'Akrobat';
+                font-size: 20px;
+                line-height: 24px;
+                color: $dark_blue;
+            }
+        }
+    }
 }
