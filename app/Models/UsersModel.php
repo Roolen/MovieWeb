@@ -51,8 +51,13 @@ class UsersModel extends Model
      */
     public function createUser(object $data_user)
     {
-        foreach ($data_user->array_values as $value) {
-            if ($value === '') return false;
+        if ($data_user->first_name   == "" ||
+            $data_user->nickname     == "" ||
+            $data_user->email        == "" ||
+            $data_user->password     == "" ||
+            $data_user->phone_number == "") 
+        {
+            return false;
         }
 
         $password = $data_user->password;
