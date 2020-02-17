@@ -37,14 +37,15 @@
             <div class="posts-container">
                 <div v-for="post in posts" class="post">
                     <?=
-                        view('Templates/postBlock', ['user_image' => $user_image,
+                        view('Templates/postBlock', ['user_image' => '\''.$user_image.'\'',
                                                      'user_nick' => $user_nick,
                                                      'date_publish' => "{{ post.date_publish }}",
                                                      'path_image' => "post.path_image",
                                                      'title' => "{{ post.title }}",
                                                      'text' => "{{ post.text_post }}",
                                                      'comments' => "comments",
-                                                     'adress' => '\''.base_url().'/post/\''.' + post.title']);
+                                                     'adress' => '\''.base_url().'/post/\''.' + post.title',
+                                                     'address_user' => '\''.base_url().'/me/'.$user_nick.'\'']);
                     ?>
                 </div>
             </div>

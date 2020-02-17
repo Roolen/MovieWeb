@@ -4,9 +4,10 @@
         <header class="header-post">
             <div class="image-post"><img src="<?= $image ?>" alt="Post image"/></div>
                 <?=
-                    view('Templates/authorBlock', ['user_image' => $imageAuthor,
+                    view('Templates/authorBlock', ['user_image' => '\''.$imageAuthor.'\'',
                                                    'user_nick' => $nickAuthor,
-                                                   'date_publish' => "{{ formatDate(\"".$date."\") }}"]);
+                                                   'date_publish' => "{{ formatDate(\"".$date."\") }}",
+                                                   'address_user' => '\''.base_url().'/me/'.$nickAuthor.'\'']);
                 ?>
             <div class="tags-block"><?= implode(", ", $tags) ?></div>
             <div class="title-post"><?= $title ?></div>
