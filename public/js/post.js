@@ -7,7 +7,8 @@ const post = new Vue({
         comments: [],
         countComments: 0,
         isEditComment: false,
-        textComment: ""
+        textComment: "",
+        heightField: "100px"
     },
     computed: {
         
@@ -17,6 +18,13 @@ const post = new Vue({
         formatDate(dateString) {
             let date = new Date(dateString)
             return `${date.getMonth()}.${date.getDate()}\n${date.getFullYear()}`
+        },
+        resizeField: () => {
+            let field = $('#commentField')[0]
+
+            if (field.scrollTop > 0) {
+                field.style.height = field.scrollHeight + "px"
+            }
         },
         getComments: async () => {
             const response = await fetch(post.urlComments)

@@ -33,7 +33,7 @@
             <?php endif ?>
             <div v-if="isEditComment" class="edit-comment-block">
                 <div class="label-edit-comment">Напишите комментарий</div>
-                <textarea v-model="textComment" class="comment-field"></textarea>
+                <textarea @keyup="resizeField()" v-model="textComment" id="commentField" class="comment-field"></textarea>
                 <button @click="writeComment()" class="default-button">Отправить</button>
             </div>
         </section>

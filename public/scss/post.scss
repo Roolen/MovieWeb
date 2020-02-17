@@ -139,10 +139,10 @@
                 margin-bottom: 20px;
                 width: 80%;
                 min-height: 100px;
-                height: fit-content;
                 resize: none;
                 background: none;
                 border-color: $dark_blue;
+                overflow: hidden;
 
                 font-family: 'Akrobat';
                 font-size: 24px;
