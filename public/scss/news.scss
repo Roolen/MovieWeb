@@ -6,6 +6,7 @@
     width: 70%;
     margin: auto;
     padding-top: 30px;
+    box-sizing: border-box;
 
     .posts-container {
         display: flex;
@@ -16,5 +17,16 @@
                 align-items: center;
                 flex-direction: column;
         }
+    }
+
+    .empty-news {
+        margin: auto;
+        margin-top: 100px;
+        width: 10%;
+        height: 100px;
+
+        font-family: 'Blanch';
+        font-size: 32px;
+        color: $dark_blue;
     }
 }

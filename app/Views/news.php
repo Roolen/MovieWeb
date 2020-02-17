@@ -1,6 +1,7 @@
 <link rel="stylesheet" href="<?= base_url(); ?>/css/news.css" />
 <div id="news-app">
     <main class="main">
+        <div v-if="posts.length < 1" class="empty-news">Новостей нет</div>
         <div class="posts-container">
             <div v-for="post in posts" class="post">
                 <?=

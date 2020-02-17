@@ -14,6 +14,10 @@ const news = new Vue({
             const body = await response.json()
             console.log(body)
 
+            if (!body.news) {
+                return
+            }
+
             for (post of body) {
                 if (post.text_post.length > 250) {
                     post.text_post = post.text_post.substring(0, 246)
