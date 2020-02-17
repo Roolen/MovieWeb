@@ -24,4 +24,15 @@ class CommentsModel extends Model
                ? $commentS
                : false;
     }
+
+    public function setComment(int $idAuthor, int $idPost, string $text)
+    {
+        $comment = $this->insert(['id_author' => $idAuthor,
+                                  'id_post' => $idPost,
+                                  'text_comment' => $text]);
+
+        return ($comment)
+               ? true
+               : false;
+    }
 }

@@ -155,3 +155,31 @@
   line-height: 24px;
   color: #1B1D2A;
 }
+.main .comments-block .edit-comment-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+.main .comments-block .edit-comment-block .label-edit-comment {
+  font-family: "Blanch";
+  font-size: 32px;
+  line-height: 48px;
+  color: #1B1D2A;
+}
+.main .comments-block .edit-comment-block .comment-field {
+  margin-bottom: 20px;
+  width: 80%;
+  min-height: 100px;
+  height: fit-content;
+  resize: none;
+  background: none;
+  border-color: #1B1D2A;
+  font-family: "Akrobat";
+  font-size: 24px;
+  line-height: 24px;
+  color: #1B1D2A;
+}
+.main .comments-block .edit-comment-block .default-button {
+  width: fit-content;
+}

@@ -105,6 +105,43 @@ class Post extends BaseController
         echo json_encode($comments);
     }
 
+    public function createComment()
+    {
+        $request = $this->request->getJSON(true);
+        $session = session();
+
+        if (!$session->has('isAuth')) {
+            $this->response->setJSON(false);
+            echo json_encode(['isAuth' => false]);
+            return;
+        }
+
+        $idUser = (int)$session->get('idUser');
+        $text = $request['text'];
+        $titlePost = $request['titlePost'];
+
+        $postsModel = new PostsModel();
+        $post = $postsModel->getPost($titlePost);
+
+        if (!$post) {
+            $this->response->setJSON(false);
+            echo json_encode(['titleIncorrect' => true]);
+            return;
+        }
+
+        $commentsModel = new CommentsModel();
+        $status = $commentsModel->setComment($idUser, $post['id'], $text);
+
+        if ($status) {
+            $this->response->setJSON(false);
+            echo json_encode(['isCreate' => true]);
+        }
+        else {
+            $this->response->setJSON(false);
+            echo json_encode(['isCreate' => false]);
+        }
+    }
+
     public function getNews()
     {
         $session = session();

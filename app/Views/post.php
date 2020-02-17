@@ -28,7 +28,14 @@
                 </header>
                 <div class="text-comment">{{ comment.text_comment }}</div>
             </div>
-            <button class="default-button">Написать комментарий</button>
+            <?php if (session()->has('isAuth')) : ?>
+            <button v-if="!isEditComment" @click="isEditComment = !isEditComment" class="default-button">Написать комментарий</button>
+            <?php endif ?>
+            <div v-if="isEditComment" class="edit-comment-block">
+                <div class="label-edit-comment">Напишите комментарий</div>
+                <textarea v-model="textComment" class="comment-field"></textarea>
+                <button @click="writeComment()" class="default-button">Отправить</button>
+            </div>
         </section>
     </main>
     <script>

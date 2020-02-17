@@ -121,5 +121,38 @@
                 color: $dark_blue;
             }
         }
+
+        .edit-comment-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+
+            .label-edit-comment {
+                font-family: 'Blanch';
+                font-size: 32px;
+                line-height: 48px;
+                color: $dark_blue;
+            }
+
+            .comment-field {
+                margin-bottom: 20px;
+                width: 80%;
+                min-height: 100px;
+                height: fit-content;
+                resize: none;
+                background: none;
+                border-color: $dark_blue;
+
+                font-family: 'Akrobat';
+                font-size: 24px;
+                line-height: 24px;
+                color: $dark_blue;
+            }
+
+            .default-button {
+                width: fit-content;
+            }
+        }
     }
 }
