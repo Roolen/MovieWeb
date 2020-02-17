@@ -22,7 +22,7 @@ const post = new Vue({
 
             console.log(body)
 
-            if (body) {
+            if (body.isComments != false) {
                 post.comments = body
                 post.countComments = body.length
             }

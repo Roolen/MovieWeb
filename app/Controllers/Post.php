@@ -82,6 +82,11 @@ class Post extends BaseController
         $commentsModel = new CommentsModel();
         $comments = $commentsModel->getComments($idPost);
 
+        if (! $comments) {
+            $this->response->setJSON(false);
+            echo json_encode(['isComments' => false]);
+        }
+
         $usersModel = new UsersModel();
         
         for ($i = 0; $i < count($comments); $i++) {
@@ -96,14 +101,8 @@ class Post extends BaseController
                                  : base_url() . "/images/employee.svg";
         }
 
-        if (! $comments) {
-            $this->response->setJSON(false);
-            echo json_encode(['isComments' => false]);
-        }
-        else {
-            $this->response->setJSON(false);
-            echo json_encode($comments);
-        }
+        $this->response->setJSON(false);
+        echo json_encode($comments);
     }
 
     public function getNews()
