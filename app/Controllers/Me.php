@@ -1,6 +1,7 @@
 <?php namespace App\Controllers;
 
 use App\Models\UsersModel;
+use App\Models\SubscriptionsModel;
 use \CodeIgniter\Exceptions\PageNotFoundException;
 
 class Me extends BaseController
@@ -35,6 +36,79 @@ class Me extends BaseController
         echo view('Share/header.php', $data);
         echo view('me', $data);
         echo view('Share/footer.php');
+    }
+
+    public function subscribe(string $nickAuthor)
+    {
+        $session = session();
+        if (! $session->has('isAuth')) {
+            $this->response->setJSON(false);
+            echo json_encode(['isAuth' => false]);
+            return;
+        }
+
+        $usersModel = new UsersModel();
+        $author = $usersModel->getUser($nickAuthor);
+        $idUser = (int)$session->get('idUser');
+
+        $subModel = new SubscriptionsModel();
+        $isSub = $subModel->setSubscribe($idUser, $author['id']);
+
+        if ($isSub) {
+            $this->response->setStatusCode(201)
+                           ->setJSON(false);
+            echo json_encode(['isSubscribe' => true]);
+        }
+        else {
+            $this->response->setStatusCode(500)
+                           ->setJSON(false);
+            echo json_encode(['isSubscribe' => false]);
+        }
+    }
+
+    public function checkSubscribe(string $nickAuthor)
+    {
+        $session = session();
+        if (! $session->has('isAuth')) {
+            $this->response->setJSON(false);
+            echo json_encode(['isSub' => false]);
+            return;
+        }
+
+        $usersModel = new UsersModel();
+        $author = $usersModel->getUser($nickAuthor);
+        $idSub = (int)$session->get('idUser');
+
+        $subModel = new SubscriptionsModel();
+        $isSub = $subModel->checkSubscribe($idSub, $author['id']);
+
+        if ($isSub) {
+            $this->response->setJSON(false);
+            echo json_encode(['isSubscribe' => true]);
+        }
+        else {
+            $this->response->setStatusCode(500)
+                           ->setJSON(false);
+            echo json_encode(['isSubscribe' => false]);
+        }
+    }
+
+    public function countSubscribers(string $nickAuthor)
+    {
+        $usersModel = new UsersModel();
+        $author = $usersModel->getUser($nickAuthor);
+
+        $subModel = new SubscriptionsModel();
+        $countSubs = $subModel->getCountSubscribers($author['id']);
+
+        if ($countSubs) {
+            $this->response->setJSON(false);
+            echo json_encode(['countSubs' => $countSubs]);
+        }
+        else {
+            $this->response->setJSON(false);
+            echo json_encode(['countSubs' => 0]);
+        }
     }
 
     public function changeDescription()

@@ -5,10 +5,19 @@ const me = new Vue({
         countPosts: 0,
         urlPosts: baseUrl + "/Post/posts/" + user,
         urlChangeDesc: baseUrl + "/me/changeDescription",
+        urlSubscribe: baseUrl + "/me/subscribe/" + user,
+        urlCheckSub: baseUrl + "/me/checkSubscribe/" + user,
+        urlCountSubs: baseUrl + "/me/countSubscribers/" + user,
         isEditDesc: false,
-        description: description
+        description: description,
+        isSubscribe: false,
+        countSubs: 0
     },
-    mounted: () => { setTimeout(() => { me.getPosts() }, 100) },
+    mounted: () => {
+        setTimeout(() => { me.getPosts()
+                           me.checkSubscribe()
+                           me.getCountSubs() }, 100) 
+    },
     methods: {
         getPosts: async () => {
             const response = await fetch(me.urlPosts)
@@ -27,6 +36,18 @@ const me = new Vue({
             me.posts = body;
             me.countPosts = me.posts.length
         },
+        getCountSubs: async () => {
+            try {
+                const response = await fetch(me.urlCountSubs)
+
+                const body = await response.json()
+
+                me.countSubs = body.countSubs
+            }
+            catch (e) {
+                console.log(e)
+            }
+        },
         changeDesc: async () => {
             try {
                 const response = await fetch(me.urlChangeDesc, {
@@ -36,7 +57,7 @@ const me = new Vue({
                     })
                 })
 
-                const body = await response.json();
+                const body = await response.json()
 
                 if (!body.isAuth) {
                     console.log("Failed to change description, you don't authorizition")
@@ -44,6 +65,35 @@ const me = new Vue({
 
                 if (body.success) {
                     me.isEditDesc = false;
+                }
+            }
+            catch (e) {
+                console.log(e)
+            }
+        },
+        checkSubscribe: async () => {
+            try {
+                const response = await fetch(me.urlCheckSub)
+
+                const body = await response.json()
+
+                if (body.isSubscribe) {
+                    me.isSubscribe = true;
+                }
+            }
+            catch (e) {
+                console.log(e)
+            }
+        },
+        subscribe: async () => {
+            try {
+                const response = await fetch(me.urlSubscribe)
+
+                const body = await response.json()
+
+                if (body.isSubscribe) {
+                    me.isSubscribe = true
+                    me.getCountSubs()
                 }
             }
             catch (e) {

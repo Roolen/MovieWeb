@@ -5,7 +5,10 @@
             <div class="user-info">
                 <div class="image-user">
                     <img src="<?= $user_image; ?>" alt="user image" />
-                    <div class="counter-describers"></div>
+                    <div class="counter-describers">
+                        <div class="count">{{ countSubs }}</div>
+                        <div class="subscribers">Subscribers</div>
+                    </div>
                 </div>
                 <div class="user-detail">
                     <h2 class="user-nick"><?= $user_nick; ?></h2>
@@ -22,7 +25,8 @@
             </div>
             <div class="user-manage">
                 <?php if (! $isYou) : ?>
-                    <button class="default-button">Describe</button>
+                    <button v-if="!isSubscribe" @click="subscribe()" class="default-button">Subscribe</button>
+                    <button v-else class="default-button">Describe</button>
                 <?php else : ?>
                     <button class="default-button">Change Image</button>
                 <?php endif ?>
