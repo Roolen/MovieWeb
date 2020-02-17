@@ -21,12 +21,9 @@ class PostsModel extends Model
                      ->where(['title' => $title])
                      ->first();
 
-        if ($post) {
-            return $post;
-        }
-        else {
-            return false;
-        }
+        return ($post)
+               ? $post
+               : false;
     }
 
     public function getPosts(int $id)

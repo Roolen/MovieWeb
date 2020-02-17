@@ -60,12 +60,9 @@ class SubscriptionsModel extends Model
                     ->where(['id_user_author' => $idAuthor])
                     ->first();
         
-        if ($sub) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return ($sub)
+               ? true
+               : false;
     }
 
     public function getCountSubscribers(string $idAuthor)
@@ -74,11 +71,8 @@ class SubscriptionsModel extends Model
                      ->where(['id_user_author' => $idAuthor])
                      ->findAll();
         
-        if ($subs) {
-            return count($subs);
-        }
-        else {
-            return false;
-        }
+        return ($subs)
+               ? count($subs)
+               : false;
     }
 }

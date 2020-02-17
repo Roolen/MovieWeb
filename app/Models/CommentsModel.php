@@ -20,11 +20,8 @@ class CommentsModel extends Model
                          ->where(['id_post' => $idPost])
                          ->findAll();
 
-        if ($commentS) {
-            return $commentS;
-        }
-        else {
-            return false;
-        }
+        return ($commentS)
+               ? $commentS
+               : false;
     }
 }
