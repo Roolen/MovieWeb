@@ -47,4 +47,23 @@ class PostsModel extends Model
             return $posts;
         }
     }
+
+    public function getPostsByAuthors(array $ids)
+    {
+        $posts = $this->asArray()
+                      ->whereIn('id_author', $ids)
+                      ->findAll();
+
+        if ($posts) {
+            for ($i = 0; $i < count($posts); $i++) {
+                unset($posts[$i]['id']);
+                unset($posts[$i]['is_scetch']);
+                if (! $posts[$i]['path_image']) {
+                    $posts[$i]['path_image'] = base_url() . "/images/post.svg";
+                }
+            }
+
+            return $posts;
+        }
+    }
 }

@@ -1,0 +1,20 @@
+@import "color.scss";
+@import "Templates/author.scss";
+@import "Templates/postBlock.scss";
+
+.main {
+    width: 70%;
+    margin: auto;
+    padding-top: 30px;
+
+    .posts-container {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        @media screen and (max-width: 1200px) {
+                align-items: center;
+                flex-direction: column;
+        }
+    }
+}

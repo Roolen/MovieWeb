@@ -76,6 +76,7 @@ $routes->get('/', 'Home::index');
 $routes->post('me/changeDescription', 'Me::changeDescription');
 $routes->get('me/(:alpha)', 'Me::index/$1');
 $routes->get('post/comments/(:any)', 'Post::comments/$1');
+$routes->get('post/getNews', 'Post::getNews');
 $routes->get('post/(:any)', 'Post::index/$1');
 
 /**

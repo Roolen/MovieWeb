@@ -21,6 +21,24 @@ class SubscriptionsModel extends Model
         }
     }
 
+    public function getAuthorsIds(int $idUser)
+    {
+        $authors = $this->asArray()
+                        ->where(['id_subscriber' => $idUser])
+                        ->findAll();
+                    
+        if ($authors) {
+            $ids = [];
+            foreach ($authors as $author) {
+                $ids[] = $author['id_user_author'];
+            }
+            return $ids;
+        }
+        else {
+            return false;
+        }
+    }
+
     public function checkSubscribe(int $isSub, int $idAuthor)
     {
         $sub = $this->asArray()

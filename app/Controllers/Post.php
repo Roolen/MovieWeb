@@ -4,6 +4,7 @@ use App\Models\PostsModel;
 use App\Models\UsersModel;
 use App\Models\TagsModel;
 use App\Models\CommentsModel;
+use App\Models\SubscriptionsModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
 
 class Post extends BaseController
@@ -102,6 +103,46 @@ class Post extends BaseController
         else {
             $this->response->setJSON(false);
             echo json_encode($comments);
+        }
+    }
+
+    public function getNews()
+    {
+        $session = session();
+
+        $subModel = new SubscriptionsModel();
+        $idAuthors = $subModel->getAuthorsIds((int)$session->get('idUser'));
+
+        if (! $idAuthors) {
+            $this->response->setJSON(false);
+            echo json_encode(['news' => false]);
+            return;
+        }
+
+        $postsModel = new PostsModel();
+        $posts = $postsModel->getPostsByAuthors($idAuthors);
+
+        $usersModel = new UsersModel();
+
+        for ($i = 0; $i < count($posts); $i++) {
+            $post = &$posts[$i];
+            $author = $usersModel->getUserById($post['id_author']);
+            unset($post['id']);
+            unset($post['id_author']);
+            $post['author'] = $author['nickname'];
+            $post['authorAvatar'] = ($author['path_avatar'])
+                                     ? $author['path_avatar']
+                                     : base_url() . "/images/employee.svg";
+
+        }
+
+        if ($posts) {
+            $this->response->setJSON(false);
+            echo json_encode($posts);
+        }
+        else {
+            $this->response->setJSON(false);
+            echo json_encode(['empty' => true]);
         }
     }
 }
