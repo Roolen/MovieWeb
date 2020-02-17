@@ -66,6 +66,32 @@ class Me extends BaseController
         }
     }
 
+    public function describe(string $nickAuthor)
+    {
+        $session = session();
+        if (! $session->has('isAuth')) {
+            $this->response->setJSON(false);
+            echo json_encode(['isAuth' => false]);
+            return;
+        }
+
+        $usersModel = new UsersModel();
+        $author = $usersModel->getUser($nickAuthor);
+        $idUser = (int)$session->get('idUser');
+
+        $subModel = new SubscriptionsModel();
+        $isDescribe = $subModel->unsetSubscribe($idUser, $author['id']);
+
+        if ($isDescribe) {
+            $this->response->setJSON(false);
+            echo json_encode(['isDescribe' => true]);
+        }
+        else {
+            $this->response->setJSON(false);
+            echo json_encode(['isDescribe' => false]);
+        }
+    }
+
     public function checkSubscribe(string $nickAuthor)
     {
         $session = session();

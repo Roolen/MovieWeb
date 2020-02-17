@@ -14,11 +14,25 @@ class SubscriptionsModel extends Model
     public function setSubscribe(int $idSub, int $idAuthor)
     {
         $sub = $this->insert(['id_subscriber' => $idSub,
-                        'id_user_author' => $idAuthor]);
+                              'id_user_author' => $idAuthor]);
 
         if ($sub) {
             return true;
         }
+    }
+
+    public function unsetSubscribe(int $idSub, int $idAuthor)
+    {
+        $subscrip = $this->asArray()
+                    ->where(['id_subscriber' => $idSub])
+                    ->where(['id_user_author' => $idAuthor])
+                    ->first();
+
+        $status = $this->delete($subscrip['id']);
+
+        return ($status)
+               ? true
+               : false;
     }
 
     public function getAuthorsIds(int $idUser)

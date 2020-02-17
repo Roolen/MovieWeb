@@ -6,6 +6,7 @@ const me = new Vue({
         urlPosts: baseUrl + "/Post/posts/" + user,
         urlChangeDesc: baseUrl + "/me/changeDescription",
         urlSubscribe: baseUrl + "/me/subscribe/" + user,
+        urlDescribe: baseUrl + "/me/describe/" + user,
         urlCheckSub: baseUrl + "/me/checkSubscribe/" + user,
         urlCountSubs: baseUrl + "/me/countSubscribers/" + user,
         isEditDesc: false,
@@ -93,6 +94,21 @@ const me = new Vue({
 
                 if (body.isSubscribe) {
                     me.isSubscribe = true
+                    me.getCountSubs()
+                }
+            }
+            catch (e) {
+                console.log(e)
+            }
+        },
+        describe: async () => {
+            try {
+                const response = await fetch(me.urlDescribe)
+
+                const body = await response.json()
+
+                if (body.isDescribe) {
+                    me.isSubscribe = false
                     me.getCountSubs()
                 }
             }

@@ -26,7 +26,7 @@
             <div class="user-manage">
                 <?php if (! $isYou) : ?>
                     <button v-if="!isSubscribe" @click="subscribe()" class="default-button">Subscribe</button>
-                    <button v-else class="default-button">Describe</button>
+                    <button v-else @click="describe()" class="default-button">Describe</button>
                 <?php else : ?>
                     <button class="default-button">Change Image</button>
                 <?php endif ?>
