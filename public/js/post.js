@@ -27,7 +27,7 @@ const post = new Vue({
             }
         },
         getComments: async () => {
-            const response = await fetch(post.urlComments)
+            const response = await fetch(encodeURI(post.urlComments))
 
             const body = await response.json()
 

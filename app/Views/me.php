@@ -36,6 +36,7 @@
             <div class="counter-posts">{{ countPosts }} Posts</div>
             <div class="posts-container">
                 <div v-for="post in posts" class="post">
+                    
                     <?=
                         view('Templates/postBlock', ['user_image' => '\''.$user_image.'\'',
                                                      'user_nick' => $user_nick,
@@ -44,7 +45,7 @@
                                                      'title' => "{{ post.title }}",
                                                      'text' => "{{ post.text_post }}",
                                                      'comments' => "comments",
-                                                     'adress' => '\''.base_url().'/post/\''.' + post.title',
+                                                     'adress' => 'post.address',
                                                      'address_user' => '\''.base_url().'/me/'.$user_nick.'\'']);
                     ?>
                 </div>

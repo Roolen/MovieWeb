@@ -11,7 +11,8 @@ class Post extends BaseController
 {
     public function index(string $titlePost)
     {
-        $titlePost = str_replace("%20", " ", $titlePost);
+        $titlePost = rawurldecode($titlePost);
+
         $model = new PostsModel();
         $post = $model->getPost($titlePost);
 
@@ -57,6 +58,11 @@ class Post extends BaseController
         $postsModel = new PostsModel();
         $post_s = $postsModel->getPosts($userId);
 
+        for ($i = 0; $i < count($post_s); $i++) {
+            $post = &$post_s[$i];
+            $post['address'] = base_url().'/post/'.rawurlencode($post['title']);
+        }
+
         if ($post_s) {
             $this->response->setStatusCode(200)
                            ->setJSON(false);
@@ -71,7 +77,7 @@ class Post extends BaseController
 
     public function comments(string $titlePost)
     {
-        $titlePost = str_replace("%20", " ", $titlePost);
+        $titlePost = rawurldecode($titlePost);
 
         $postsModel = new PostsModel();
         $post = $postsModel->getPost($titlePost);
