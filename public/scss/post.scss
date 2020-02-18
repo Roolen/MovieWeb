@@ -11,6 +11,10 @@
         margin: auto;
         margin-top: 30px;
 
+        @media screen and (max-width: 800px) {
+            width: 100%;
+        }
+
         .image-post {
             display: flex;
             justify-content: center;
@@ -19,6 +23,10 @@
             background: $dark_blue;
             border-radius: 15px;
             box-shadow: 12px 12px 14px rgba(0, 0, 0, .3);
+
+            @media screen and (max-width: 800px) {
+                height: 280px;
+            }
 
             img {
                 width: 10%;
@@ -29,6 +37,10 @@
 
         .author-block {
             top: 332px;
+
+            @media screen and (max-width: 800px) {
+                top: 175px;
+            }
         }
 
         .tags-block {
@@ -56,11 +68,19 @@
         margin-bottom: 60px;
         width: 80%;
 
+        @media screen and (max-width: 800px) {
+            width: 100%;
+        }
+
         .text-post {
             font-family: 'Akrobat';
-            font-size: 26px;
+            font-size: 24px;
             line-height: 32px;
             color: $dark_blue;
+
+            @media screen and (max-width: 800px) {
+                font-size: 20px;
+            }
         }
     }
 

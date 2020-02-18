@@ -62,6 +62,11 @@
   margin: auto;
   margin-top: 30px;
 }
+@media screen and (max-width: 800px) {
+  .main .header-post {
+    width: 100%;
+  }
+}
 .main .header-post .image-post {
   display: flex;
   justify-content: center;
@@ -71,6 +76,11 @@
   border-radius: 15px;
   box-shadow: 12px 12px 14px rgba(0, 0, 0, 0.3);
 }
+@media screen and (max-width: 800px) {
+  .main .header-post .image-post {
+    height: 280px;
+  }
+}
 .main .header-post .image-post img {
   width: 10%;
   height: 100%;
@@ -78,6 +88,11 @@
 }
 .main .header-post .author-block {
   top: 332px;
+}
+@media screen and (max-width: 800px) {
+  .main .header-post .author-block {
+    top: 175px;
+  }
 }
 .main .header-post .tags-block {
   margin-top: 10px;
@@ -101,11 +116,21 @@
   margin-bottom: 60px;
   width: 80%;
 }
+@media screen and (max-width: 800px) {
+  .main .post {
+    width: 100%;
+  }
+}
 .main .post .text-post {
   font-family: "Akrobat";
-  font-size: 26px;
+  font-size: 24px;
   line-height: 32px;
   color: #1B1D2A;
+}
+@media screen and (max-width: 800px) {
+  .main .post .text-post {
+    font-size: 20px;
+  }
 }
 .main .comments-block {
   margin: auto;
