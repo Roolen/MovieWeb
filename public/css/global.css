@@ -1,17 +1,56 @@
 @font-face {
-    font-family: "Blanch";
-    src: '../fonts/blanch.otf';
+  font-family: "Blanch";
+  src: url("../fonts/blanch.otf");
+}
+@font-face {
+  font-family: "Awesome-Solid";
+  src: url("../fonts/fa-solid-900.ttf");
+}
+@font-face {
+  font-family: "Akrobat";
+  src: url("../fonts/AkrobatRegular.ttf");
+}
+body {
+  background: #E9E9E9;
 }
 
-@font-face {
-    font-family: "Awesome-Solid";
-    src: '../fonts/fa-solid-900.ttf';
+.main {
+  min-height: calc(100vh - 150px - 70px);
+}
+
+.default-button {
+  padding: 5px 30px 5px 30px;
+  font-family: "Amsterdam";
+  font-size: 24px;
+  color: #E9E9E9;
+  background: #1B1D2A;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.1s linear;
+}
+.default-button:hover {
+  color: #1B1D2A;
+  background: #E9E9E9;
+}
+.default-button:active {
+  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+::-webkit-scrollbar {
+  width: 0.6em;
+  height: 0.5em;
+}
+
+::-webkit-scrollbar-track {
+  background: #1B1D2A;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #E9E9E9;
 }
 
 body {
-    background: #E9E9E9;
-}
-
-#app {
-    min-height: calc(100vh - 150px - 70px);
+  scrollbar-face-color: #E9E9E9;
+  scrollbar-track-color: #1B1D2A;
 }

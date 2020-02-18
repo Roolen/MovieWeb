@@ -1,0 +1,210 @@
+.author-block {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: absolute;
+  top: 215px;
+  right: 10px;
+  width: 150px;
+  height: 96px;
+  box-sizing: border-box;
+  padding-top: 5px;
+  z-index: 1;
+}
+.author-block::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  opacity: 0.8;
+  background: #E9E9E9;
+  border-radius: 15px;
+}
+.author-block .avatar {
+  margin-top: 5px;
+  width: 46px;
+  height: 46px;
+}
+.author-block .avatar img {
+  border-radius: 50px;
+}
+.author-block .date-publish {
+  width: 54px;
+  font-family: "Akrobat";
+  font-size: 24px;
+  line-height: 29px;
+  color: #1B1D2A;
+  text-align: center;
+}
+.author-block .nickname {
+  width: 100%;
+  text-align: center;
+}
+.author-block .nickname a {
+  font-family: "Blanch";
+  font-size: 24px;
+  line-height: 20px;
+  color: #1B1D2A;
+  text-decoration: none;
+}
+
+.main {
+  width: 70%;
+  margin: auto;
+}
+.main .header-post {
+  position: relative;
+  width: 80%;
+  margin: auto;
+  margin-top: 30px;
+}
+@media screen and (max-width: 800px) {
+  .main .header-post {
+    width: 100%;
+  }
+}
+.main .header-post .image-post {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 440px;
+  background: #1B1D2A;
+  border-radius: 15px;
+  box-shadow: 12px 12px 14px rgba(0, 0, 0, 0.3);
+}
+@media screen and (max-width: 800px) {
+  .main .header-post .image-post {
+    height: 280px;
+  }
+}
+.main .header-post .image-post img {
+  width: 10%;
+  height: 100%;
+  filter: invert(1) blur(0.5px);
+}
+.main .header-post .author-block {
+  top: 332px;
+}
+@media screen and (max-width: 800px) {
+  .main .header-post .author-block {
+    top: 175px;
+  }
+}
+.main .header-post .tags-block {
+  margin-top: 10px;
+  margin-left: 5px;
+  font-family: "Akrobat";
+  font-size: 20px;
+  line-height: 23px;
+  color: #1B1D2A;
+}
+.main .header-post .title-post {
+  font-family: "Blanch";
+  font-size: 48px;
+  line-height: 53px;
+  color: #1B1D2A;
+  text-align: center;
+}
+.main .post {
+  margin-top: 30px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 60px;
+  width: 80%;
+}
+@media screen and (max-width: 800px) {
+  .main .post {
+    width: 100%;
+  }
+}
+.main .post .text-post {
+  font-family: "Akrobat";
+  font-size: 24px;
+  line-height: 32px;
+  color: #1B1D2A;
+}
+@media screen and (max-width: 800px) {
+  .main .post .text-post {
+    font-size: 20px;
+  }
+}
+.main .comments-block {
+  margin: auto;
+  margin-bottom: 100px;
+  width: 80%;
+}
+.main .comments-block .counter-comments {
+  margin-bottom: 20px;
+  font-family: "Blanch";
+  font-size: 48px;
+  line-height: 53px;
+  color: #1B1D2A;
+}
+.main .comments-block .comment {
+  margin-bottom: 30px;
+}
+.main .comments-block .comment .comment-head {
+  display: flex;
+}
+.main .comments-block .comment .comment-head .avatar {
+  width: 54px;
+  height: 54px;
+  border-radius: 50px;
+  box-shadow: 5px 5px 12px rgba(0, 0, 0, 0.2);
+}
+.main .comments-block .comment .comment-head .avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50px;
+}
+.main .comments-block .comment .comment-head .info {
+  display: flex;
+  flex-direction: column;
+  margin-left: 20px;
+  font-family: "Akrobat";
+  font-size: 24px;
+  line-height: 24px;
+  color: #1B1D2A;
+}
+.main .comments-block .comment .comment-head .info .rating {
+  font-size: 20px;
+}
+.main .comments-block .comment .text-comment {
+  margin-top: 20px;
+  font-family: "Akrobat";
+  font-size: 20px;
+  line-height: 24px;
+  color: #1B1D2A;
+}
+.main .comments-block .edit-comment-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 50px;
+}
+.main .comments-block .edit-comment-block .label-edit-comment {
+  font-family: "Blanch";
+  font-size: 32px;
+  line-height: 48px;
+  color: #1B1D2A;
+}
+.main .comments-block .edit-comment-block .comment-field {
+  margin-bottom: 20px;
+  width: 80%;
+  min-height: 100px;
+  resize: none;
+  background: none;
+  border-color: #1B1D2A;
+  overflow: hidden;
+  font-family: "Akrobat";
+  font-size: 24px;
+  line-height: 24px;
+  color: #1B1D2A;
+}
+.main .comments-block .edit-comment-block .default-button {
+  width: fit-content;
+}

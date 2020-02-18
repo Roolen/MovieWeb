@@ -1,0 +1,53 @@
+.author-block {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  position: absolute;
+  top: 215px;
+  right: 10px;
+  width: 150px;
+  height: 96px;
+  box-sizing: border-box;
+  padding-top: 5px;
+  z-index: 1;
+}
+.author-block::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  opacity: 0.8;
+  background: #E9E9E9;
+  border-radius: 15px;
+}
+.author-block .avatar {
+  margin-top: 5px;
+  width: 46px;
+  height: 46px;
+}
+.author-block .avatar img {
+  border-radius: 50px;
+}
+.author-block .date-publish {
+  width: 54px;
+  font-family: "Akrobat";
+  font-size: 24px;
+  line-height: 29px;
+  color: #1B1D2A;
+  text-align: center;
+}
+.author-block .nickname {
+  width: 100%;
+  text-align: center;
+}
+.author-block .nickname a {
+  font-family: "Blanch";
+  font-size: 24px;
+  line-height: 20px;
+  color: #1B1D2A;
+  text-decoration: none;
+}

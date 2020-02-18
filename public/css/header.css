@@ -10,6 +10,7 @@
   height: 68px;
   margin: auto;
   border-bottom: solid 1px #1B1D2A;
+  transition: width 0.5s linear;
 }
 
 .header-menu {

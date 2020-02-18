@@ -4,24 +4,94 @@ use App\Models\UsersModel;
 
 class Home extends BaseController
 {
+	/**
+	 * Opened hello page.
+	 *
+	 * @return void
+	 */
 	public function index()
 	{
 		$model = new UsersModel();
 		$data['users'] = $model->getUsers();
-		return view('hello', $data);
+		echo view('hello', $data);
 	}
 
-	public function showme($page = 'hello') {
-		if (! is_file(APPPATH.'/Views/'.$page.'.php'))
-		{
-			throw new \CodeIgniter\Exceptions\PageNotFoundException($page);
+	/**
+	 * Trying of registration user, prepare validate getted the data.
+	 * If data of user have in data base, then return json response to caller of method.
+	 * If registration is success, then return json response to caller of method.
+	 * 'nickname', 'email', 'phone' as duplicate flags.
+	 * And registration data with postfix 'Incorrect' as validate flags.
+	 *
+	 * @return void
+	 */
+	public function registration() 
+	{
+		$data_user = $this->request->getJSON();
+		$model = new UsersModel();
+
+		$data_user->phone_number = preg_replace("/[\-\(\)\+]/", "",
+												$data_user->phone_number);
+												
+		$check = $model->checkUser($data_user->nickname,
+								   $data_user->email,
+								   $data_user->phone_number);
+
+		$check = $check + $model->checkDataUser($data_user);
+
+		foreach ($check as $key=>$value) {
+			if ($value) {
+				$check['success'] = false;
+				$this->response->setStatusCode(422)
+				               ->setJSON(false);
+				echo json_encode($check);
+				return;
+			}
 		}
 
-		$data['title'] = ucfirst($page);
+		if ($model->createUser($data_user)) {
+			$check['success'] = true;
+			$this->response->setStatusCode(201)
+			               ->setJSON(false);
+			echo json_encode($check);
+		}
+		else {
+			$check['success'] = false;
+			$this->response->setStatusCode(400)
+			               ->setJSON(false);
+			echo json_encode($check);
+		}
+	}
 
-		echo view('Share/header', $data);
-		echo view($page, $data);
-		echo view('Share/footer', $data);
+	/**
+	 * Authorization user and open session of user.
+	 * Return response with json form.
+	 *
+	 * @return void
+	 */
+	public function authorize()
+	{
+		$data_user = $this->request->getJSON();
+		$model = new UsersModel();
+
+		$verify = $model->verifyUser($data_user->nickname, $data_user->password);
+
+		if ($verify['confirmed'] === false) {
+			$this->response->setStatusCode(401)
+						   ->setJSON(false);
+			echo json_encode($verify);
+			return;
+		}
+
+		$model = new UsersModel();
+		$user = $model->getUser($data_user->nickname);
+		$this->response->setStatusCode(200)
+					   ->setJSON(false);
+		echo json_encode($verify);
+
+		$session = session();
+		$session->set(['isAuth' => true]);
+		$session->set(['idUser' => $user['id']]);
 	}
 
 }

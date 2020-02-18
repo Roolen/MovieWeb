@@ -1,0 +1,64 @@
+@font-face {
+    font-family: "Blanch";
+    src: url('../fonts/blanch.otf');
+}
+
+@font-face {
+    font-family: "Awesome-Solid";
+    src: url('../fonts/fa-solid-900.ttf');
+}
+
+@font-face {
+    font-family: "Akrobat";
+    src: url('../fonts/AkrobatRegular.ttf');
+}
+
+$dark_blue: #1B1D2A;
+$dark_blue_light: #1f1f2f;
+$white: #E9E9E9;
+$accent_color: #F2784B;
+
+body {
+    background: $white;
+}
+
+.main {
+    min-height: calc(100vh - 150px - 70px);
+}
+
+.default-button {
+    padding: 5px 30px 5px 30px;
+    font-family: 'Amsterdam';
+    font-size: 24px;
+    color: $white;
+    background: $dark_blue;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.3);
+
+    transition: all .1s linear;
+
+    &:hover {
+        color: $dark_blue;
+        background: $white;
+    }
+    
+    &:active {
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+}
+
+::-webkit-scrollbar {
+    width: .6em;
+    height: .5em;
+}
+::-webkit-scrollbar-track {
+    background: $dark_blue;
+}
+::-webkit-scrollbar-thumb {
+    background: $white;
+}
+body {
+    scrollbar-face-color: $white;
+    scrollbar-track-color: $dark_blue;
+}

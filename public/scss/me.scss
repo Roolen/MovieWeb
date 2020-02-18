@@ -1,0 +1,152 @@
+@import "color.scss";
+@import "templates/author.scss";
+@import "templates/postBlock.scss";
+
+.main {
+    .user-block {
+        width: 70%;
+        margin: auto;
+        padding-top: 30px;
+        
+        .user-info {
+            display: flex;
+            margin-bottom: 20px;
+
+            @media screen and (max-width: 1400px) {
+                flex-direction: column;
+            }
+            
+            .image-user {
+                display: flex;
+                justify-content: center;
+                flex-shrink: 0;
+                position: relative;
+                margin-right: 20px;
+                width: 600px;
+                height: 320px;
+
+                background: $dark_blue_light;
+                border-radius: 15px;
+                box-shadow: 6px 6px 12px rgba(0, 0, 0, .3);
+
+                @media screen and (max-width: 800px) {
+                    width: 100%;
+                }
+                @media screen and (max-width: 1400px) {
+                    margin-right: auto;
+                    margin-left: auto;
+                }
+
+                img {
+                    width: 30%;
+                    height: 100%;
+                    filter: invert(1) blur(.5px);
+                }
+
+                .counter-describers {
+                    position: absolute;
+                    right: 15px;
+                    bottom: 15px;
+                    padding: 10px;
+                    z-index: 1;
+
+                    font-family: 'Blanch';
+                    font-size: 32px;
+                    line-height: 35px;
+                    color: $dark_blue;
+                    text-align: center;
+
+                    &::before {
+                        content: "";
+                        display: block;
+                        position: absolute;
+                        top: 0;
+                        left: 0;
+                        right: 0;
+                        bottom: 0;
+                        z-index: -1;
+                        opacity: .8;
+
+                        background: $white;
+                        border-radius: 15px;
+                    }
+                }
+            }
+
+            .user-detail {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                width: 100%;
+
+                .user-nick {
+                    font-family: 'Blanch';
+                    font-size: 58px;
+                    line-height: 63px;
+                    color: $dark_blue;
+                }
+
+                .user-desc {
+                    font-family: 'Amsterdam';
+                    font-size: 20px;
+                    line-height: 23px;
+                    color: $dark_blue;
+                }
+
+                textarea.user-desc {
+                    width: 100%;
+                    height: 100%;
+                    box-sizing: border-box;
+                    resize: none;
+                    background: none;
+                }
+
+                .default-button {
+                    margin-top: 20px;
+                    width: fit-content;
+                }
+
+                .write-icon::before {
+                    content: "\f304";
+                    margin-right: 10px;
+                    font-family: 'Awesome-Solid';
+                    font-size: 18px;
+                }
+
+                .desc-icon::before {
+                    content: "\f570";
+                    margin-right: 10px;
+                    font-family: 'Awesome-Solid';
+                    font-size: 20px;
+                }
+            }
+        }
+    }
+
+    .line-top { border-top: 1px solid #8B8D8A; }
+    .posts-block {
+        width: 70%;
+        margin: auto;
+        margin-top: 50px;
+        padding-top: 30px;
+
+        .counter-posts {
+            font-family: 'Blanch';
+            font-size: 32px;
+            line-height: 35px;
+            color: $dark_blue;
+        }
+
+        .posts-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-top: 20px;
+
+            @media screen and (max-width: 1200px) {
+                align-items: center;
+                flex-direction: column;
+            }
+        }
+    }
+}

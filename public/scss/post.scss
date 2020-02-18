@@ -1,0 +1,178 @@
+@import "color.scss";
+@import "templates/author.scss";
+
+.main {
+    width: 70%;
+    margin: auto;
+
+    .header-post {
+        position: relative;
+        width: 80%;
+        margin: auto;
+        margin-top: 30px;
+
+        @media screen and (max-width: 800px) {
+            width: 100%;
+        }
+
+        .image-post {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            height: 440px;
+            background: $dark_blue;
+            border-radius: 15px;
+            box-shadow: 12px 12px 14px rgba(0, 0, 0, .3);
+
+            @media screen and (max-width: 800px) {
+                height: 280px;
+            }
+
+            img {
+                width: 10%;
+                height: 100%;
+                filter: invert(1) blur(.5px);
+            }
+        }
+
+        .author-block {
+            top: 332px;
+
+            @media screen and (max-width: 800px) {
+                top: 175px;
+            }
+        }
+
+        .tags-block {
+            margin-top: 10px;
+            margin-left: 5px;
+            font-family: 'Akrobat';
+            font-size: 20px;
+            line-height: 23px;
+            color: $dark_blue;
+        }
+
+        .title-post {
+            font-family: 'Blanch';
+            font-size: 48px;
+            line-height: 53px;
+            color: $dark_blue;
+            text-align: center;
+        }
+    }
+
+    .post {
+        margin-top: 30px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 60px;
+        width: 80%;
+
+        @media screen and (max-width: 800px) {
+            width: 100%;
+        }
+
+        .text-post {
+            font-family: 'Akrobat';
+            font-size: 24px;
+            line-height: 32px;
+            color: $dark_blue;
+
+            @media screen and (max-width: 800px) {
+                font-size: 20px;
+            }
+        }
+    }
+
+    .comments-block {
+        margin: auto;
+        margin-bottom: 100px;
+        width: 80%;
+
+        .counter-comments {
+            margin-bottom: 20px;
+            font-family: 'Blanch';
+            font-size: 48px;
+            line-height: 53px;
+            color: $dark_blue;
+        }
+
+        .comment {
+            margin-bottom: 30px;
+            
+            .comment-head {
+                display: flex;
+
+                .avatar {
+                    width: 54px;
+                    height: 54px;
+
+                    border-radius: 50px;
+                    box-shadow: 5px 5px 12px rgba(0, 0, 0, .2);
+                    
+                    img {
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 50px;
+                    }
+                }
+
+                .info {
+                    display: flex;
+                    flex-direction: column;
+                    margin-left: 20px;
+
+                    font-family: 'Akrobat';
+                    font-size: 24px;
+                    line-height: 24px;
+                    color: $dark_blue;
+
+                    .rating {
+                        font-size: 20px;
+                    }
+                }
+            }
+
+            .text-comment {
+                margin-top: 20px;
+                font-family: 'Akrobat';
+                font-size: 20px;
+                line-height: 24px;
+                color: $dark_blue;
+            }
+        }
+
+        .edit-comment-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+
+            .label-edit-comment {
+                font-family: 'Blanch';
+                font-size: 32px;
+                line-height: 48px;
+                color: $dark_blue;
+            }
+
+            .comment-field {
+                margin-bottom: 20px;
+                width: 80%;
+                min-height: 100px;
+                resize: none;
+                background: none;
+                border-color: $dark_blue;
+                overflow: hidden;
+
+                font-family: 'Akrobat';
+                font-size: 24px;
+                line-height: 24px;
+                color: $dark_blue;
+            }
+
+            .default-button {
+                width: fit-content;
+            }
+        }
+    }
+}
