@@ -28,4 +28,19 @@ class PostTagModel extends Model
 
         return $tag_id_s;
     }
+
+    public function setTagsOfPost(int $idPost, array $tags)
+    {
+        if ($tags[0] === '') return false;
+
+        $status = [];
+        for ($i = 0; $i < count($tags); $i++) {
+            $status[] = $this->insert(['id_post' => $idPost,
+                           'id_tag' => $tags[$i]]);
+        }
+
+        return ($status)
+               ? true
+               : false;
+    }
 }

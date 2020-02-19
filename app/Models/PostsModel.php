@@ -63,4 +63,17 @@ class PostsModel extends Model
             return $posts;
         }
     }
+
+    public function createPost(array $dataPost)
+    {
+        if ($dataPost['title'] == '' ||
+            $dataPost['id_author'] == '' ||
+            $dataPost['text_post'] == '')
+        {
+                return false;
+        }
+
+        $idPost = $this->insert($dataPost);
+        return $idPost;
+    }
 }

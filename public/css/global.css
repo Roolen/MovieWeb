@@ -37,6 +37,36 @@ body {
   box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+.field, .default-field {
+  margin-top: 10px;
+  width: 40%;
+  height: 64px;
+  background: none;
+  border: none;
+  border-bottom: 1px solid #707070;
+  color: #1B1D2A;
+  font-family: "Amsterdam";
+  font-size: 32px;
+  text-align: center;
+}
+.field::placeholder, .default-field::placeholder {
+  color: #707070;
+  transition: opacity 0.3s ease-in;
+}
+.field:focus::placeholder, .default-field:focus::placeholder {
+  opacity: 0;
+}
+.field:focus, .default-field:focus {
+  border-color: #1B1D2A;
+}
+@media screen and (max-width: 800px) {
+  .field, .default-field {
+    width: 60%;
+    height: 42px;
+    font-size: 24px;
+  }
+}
+
 ::-webkit-scrollbar {
   width: 0.6em;
   height: 0.5em;

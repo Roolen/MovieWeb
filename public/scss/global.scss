@@ -48,6 +48,38 @@ body {
     }
 }
 
+.field, .default-field {
+    margin-top: 10px;
+    width: 40%;
+    height: 64px;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #707070;
+    color: $dark_blue;
+    font-family: 'Amsterdam';
+    font-size: 32px;
+    text-align: center;
+
+    &::placeholder {
+        color: #707070;
+        transition: opacity .3s ease-in;
+    }
+
+    &:focus::placeholder {
+        opacity: 0;
+    }
+
+    &:focus {
+        border-color: $dark_blue;
+    }
+
+    @media screen and (max-width: 800px) {
+        width: 60%;
+        height: 42px;
+        font-size: 24px;
+    }
+}
+
 ::-webkit-scrollbar {
     width: .6em;
     height: .5em;
