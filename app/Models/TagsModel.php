@@ -32,4 +32,15 @@ class TagsModel extends Model
             return false;
         }
     }
+
+    public function setTag(string $tagName)
+    {
+        $tag = $this->asArray()
+                    ->where(['name_tag' => $tagName])
+                    ->first();
+
+        return ($tag)
+               ? $tag['id']
+               : $this->insert(['name_tag' => $tagName]);
+    }
 }

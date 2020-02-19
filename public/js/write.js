@@ -26,7 +26,7 @@ const write = new Vue({
                 console.log(body)
     
                 write.messageStyle = "color: red;"
-                
+
                 if (body.success) {
                     write.messagePublish = "Статья опубликована"
                     write.messageStyle = "color: green;"
@@ -38,7 +38,7 @@ const write = new Vue({
                     write.messagePublish = "Введите заголовок и текст"
                 }
                 else {
-                    write.messagePublish = "Некоректные данные"
+                    write.messagePublish = "Ошибка сервера"
                 }  
             }
             catch (e) {

@@ -33,10 +33,12 @@ class PostTagModel extends Model
     {
         if ($tags[0] === '') return false;
 
+        $tagsModel = new TagsModel();
         $status = [];
         for ($i = 0; $i < count($tags); $i++) {
+            $tag = $tags[$i];
             $status[] = $this->insert(['id_post' => $idPost,
-                           'id_tag' => $tags[$i]]);
+                                       'id_tag' => $tagsModel->setTag($tag)]);
         }
 
         return ($status)
