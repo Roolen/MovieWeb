@@ -25,10 +25,10 @@
             </div>
             <div class="user-manage">
                 <?php if (! $isYou) : ?>
-                    <button v-if="!isSubscribe" @click="subscribe()" class="default-button">Subscribe</button>
-                    <button v-else @click="describe()" class="default-button">Describe</button>
+                    <button v-if="!isSubscribe" @click="subscribe()" class="default-button sub-icon">Subscribe</button>
+                    <button v-else @click="describe()" class="default-button unsub-icon">Describe</button>
                 <?php else : ?>
-                    <button class="default-button">Change Image</button>
+                    <button class="default-button image-icon">Change Image</button>
                 <?php endif ?>
             </div>
         </section>

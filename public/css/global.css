@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @font-face {
   font-family: "Blanch";
   src: url("../fonts/blanch.otf");
@@ -38,6 +39,7 @@ body {
 }
 .default-button:focus {
   background: #E9E9E9;
+  color: #1B1D2A;
 }
 
 .field, .default-field {
@@ -68,6 +70,41 @@ body {
     height: 42px;
     font-size: 24px;
   }
+}
+
+.write-icon::before {
+  content: "";
+  margin-right: 10px;
+  font-family: "Awesome-Solid";
+  font-size: 18px;
+}
+
+.desc-icon::before {
+  content: "";
+  margin-right: 10px;
+  font-family: "Awesome-Solid";
+  font-size: 20px;
+}
+
+.image-icon::before {
+  content: "";
+  margin-right: 10px;
+  font-family: "Awesome-Solid";
+  font-size: 20px;
+}
+
+.sub-icon::before {
+  content: "";
+  margin-right: 10px;
+  font-family: "Awesome-Solid";
+  font-size: 20px;
+}
+
+.unsub-icon::before {
+  content: "";
+  margin-right: 10px;
+  font-family: "Awesome-Solid";
+  font-size: 20px;
 }
 
 ::-webkit-scrollbar {
