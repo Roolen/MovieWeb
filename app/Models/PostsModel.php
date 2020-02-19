@@ -70,10 +70,18 @@ class PostsModel extends Model
             $dataPost['id_author'] == '' ||
             $dataPost['text_post'] == '')
         {
-                return false;
+                return ['success' => false, 'isEmpty' => true];
+        }
+
+        $post = $this->asArray()
+                     ->where(['title' => $dataPost['title']])
+                     ->first();
+
+        if ($post) {
+            return ['success' => false, 'isDuplicate' => true];
         }
 
         $idPost = $this->insert($dataPost);
-        return $idPost;
+        return ['success' => true, 'idPost' => $idPost];
     }
 }

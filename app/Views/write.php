@@ -4,11 +4,11 @@
         <h2 class="title-label">Новая статья</h2>
         <input v-model="title" type="text" class="default-field title-field" placeholder="Заголовок">
         <h2 class="text-label">Текст</h2>
-        <textarea v-model="text" class="text-field" required></textarea>
+        <textarea v-model="text" class="text-field" placeholder="Напишите текст поста..." required></textarea>
         <input v-model="tags" type="text" class="default-field tag-field" placeholder="Тэги">
         <div class="tag-message">Тэги пишуться через запятую</div>
         <button class="default-button add-image">Добавить изображение</button>
-        <div class="message-publish">{{ messagePublish }}</div>
+        <div :style="messageStyle" class="message-publish">{{ messagePublish }}</div>
         <button @click="createPost()" class="default-button publish-button">Опубликовать</button>
     </main>
 </div>

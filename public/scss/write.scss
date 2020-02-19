@@ -30,12 +30,24 @@
         min-height: 300px;
         resize: none;
         background: none;
-        border-color: $dark_blue;
+        border-color: #707070;
 
         font-family: 'Akrobat';
         font-size: 22px;
         line-height: 28px;
         color: $dark_blue;
+
+        &::placeholder {
+            transition: opacity .3s ease-in;
+        }
+
+        &:focus::placeholder {
+            opacity: 0;
+        }
+
+        &:focus {
+            border-color: $dark_blue;
+        }
     }
 
     .tag-field {
@@ -62,8 +74,17 @@
         align-self: flex-end;
     }
 
+    .message-publish {
+        margin-top: 50px;
+        margin-bottom: 20px;
+
+        font-family: 'Blanch';
+        font-size: 32px;
+        line-height: 36px;
+        color: $dark_blue;
+    }
+
     .publish-button {
-        margin-top: 100px;
         height: 90px;
     }
 }

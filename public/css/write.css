@@ -25,11 +25,20 @@
   min-height: 300px;
   resize: none;
   background: none;
-  border-color: #1B1D2A;
+  border-color: #707070;
   font-family: "Akrobat";
   font-size: 22px;
   line-height: 28px;
   color: #1B1D2A;
+}
+.main .text-field::placeholder {
+  transition: opacity 0.3s ease-in;
+}
+.main .text-field:focus::placeholder {
+  opacity: 0;
+}
+.main .text-field:focus {
+  border-color: #1B1D2A;
 }
 .main .tag-field {
   margin-top: 10px;
@@ -52,7 +61,14 @@
   margin-right: 5%;
   align-self: flex-end;
 }
+.main .message-publish {
+  margin-top: 50px;
+  margin-bottom: 20px;
+  font-family: "Blanch";
+  font-size: 32px;
+  line-height: 36px;
+  color: #1B1D2A;
+}
 .main .publish-button {
-  margin-top: 100px;
   height: 90px;
 }

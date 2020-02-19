@@ -29,7 +29,7 @@ class Write extends BaseController
         $text = $request['text'];
         $tagsLine = $request['tags'];
 
-        $tagsLine = str_replace(" ", "", $tagsLine);
+        $tagsLine = str_replace(" ", null, $tagsLine);
         $tags = explode(',', $tagsLine);
 
         $postsModel = new PostsModel();
@@ -40,18 +40,18 @@ class Write extends BaseController
             'text_post' => $text
         ];
 
-        $idPost = $postsModel->createPost($dataPost);
+        $post = $postsModel->createPost($dataPost);
+
+        if (! $post['success']) {
+            $this->response->setJSON(false);
+            echo json_encode($post);
+            return;
+        }
 
         $tagsModel = new PostTagModel();
-        $status = $tagsModel->setTagsOfPost($idPost, $tags);
+        $status = $tagsModel->setTagsOfPost($post['idPost'], $tags);
 
-        if ($idPost) {
-            $this->response->setJSON(false);
-            echo json_encode(['success' => true]);
-        }
-        else {
-            $this->response->setJSON(false);
-            echo json_encode(['success' => false]);
-        }
+        $this->response->setJSON(false);
+        echo json_encode(['success' => true]);
     }
 }
