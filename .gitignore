@@ -67,6 +67,8 @@ php_errors.log
 access.log
 error.log
 
+public/write/
+
 #-------------------------
 # User Guide Temp Files
 #-------------------------
