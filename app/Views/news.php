@@ -9,7 +9,7 @@
                                                  'user_nick' => '{{ post.author }}',
                                                  'date_publish' => '{{ post.date_publish }}',
                                                  'path_image' => 'post.path_image',
-                                                 'isImage' => $isImage,
+                                                 'isImage' => 'post.isImage',
                                                  'title' => '{{ post.title }}',
                                                  'text' => '{{ post.text_post }}',
                                                  'comments' => "comments",
