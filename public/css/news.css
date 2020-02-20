@@ -67,7 +67,7 @@
   }
 }
 .post:hover .image-post {
-  box-shadow: 8px 8px 14px rgba(0, 0, 0, 0.5);
+  box-shadow: -8px 8px 14px rgba(0, 0, 0, 0.5), 5px -5px 14px rgba(0, 0, 0, 0.5);
 }
 .post .image-post {
   display: flex;
