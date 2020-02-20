@@ -108,6 +108,13 @@ body {
   font-size: 20px;
 }
 
+.plus-icon::before {
+  content: "";
+  margin-right: 10px;
+  font-family: "Awesome-Solid";
+  font-size: 20px;
+}
+
 ::-webkit-scrollbar {
   width: 0.6em;
   height: 0.5em;

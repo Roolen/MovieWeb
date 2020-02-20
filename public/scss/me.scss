@@ -40,6 +40,7 @@
                 img {
                     width: 100%;
                     object-fit: cover;
+                    border-radius: 15px;
                 }
                 
                 .default-image {
@@ -118,6 +119,10 @@
 
                 .file-input {
                     display: none;
+                }
+
+                *:nth-child(n) {
+                    margin-top: 20px;
                 }
             }
     }

@@ -121,6 +121,13 @@ body {
     font-size: 20px;
 }
 
+.plus-icon::before {
+    content: "\f0fe";
+    margin-right: 10px;
+    font-family: 'Awesome-Solid';
+    font-size: 20px;
+}
+
 ::-webkit-scrollbar {
     width: .6em;
     height: .5em;
