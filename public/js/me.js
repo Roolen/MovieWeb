@@ -119,7 +119,7 @@ const me = new Vue({
             }
         },
         addPost: () => {
-            location.replace(baseUrl + "/write/index")
+            location.href = baseUrl + "/write/index"
         },
         changeImage: async (event) => {
             let formats = ["image/jpg", "image/jpeg", "image/png"]
@@ -143,6 +143,7 @@ const me = new Vue({
 
                 if (body.success) {
                     alert("Аватар изменён")
+                    location.href = location.href
                 }
                 else {
                     alert("Ошибка при изменении аватара")
