@@ -115,8 +115,7 @@ class Me extends BaseController
             echo json_encode(['isSubscribe' => true]);
         }
         else {
-            $this->response->setStatusCode(500)
-                           ->setJSON(false);
+            $this->response->setJSON(false);
             echo json_encode(['isSubscribe' => false]);
         }
     }
