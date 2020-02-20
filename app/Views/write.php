@@ -7,7 +7,8 @@
         <textarea v-model="text" class="text-field" placeholder="Напишите текст поста..." required></textarea>
         <input v-model="tags" type="text" class="default-field tag-field" placeholder="Тэги">
         <div class="tag-message">Тэги пишуться через запятую</div>
-        <button class="default-button add-image">Добавить изображение</button>
+        <label for="file-input" class="default-button add-image">Добавить изображение</label>
+        <input @change="changeImage" class="file-input" id="file-input" type="file" accept=".jpg, .png, .jpeg" />
         <div :style="messageStyle" class="message-publish">{{ messagePublish }}</div>
         <button @click="createPost()" class="default-button publish-button">Опубликовать</button>
     </main>

@@ -74,6 +74,10 @@
         align-self: flex-end;
     }
 
+    .file-input {
+        visibility: hidden;
+    }
+
     .message-publish {
         margin-top: 50px;
         margin-bottom: 20px;

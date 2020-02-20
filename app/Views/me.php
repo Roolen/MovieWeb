@@ -42,6 +42,7 @@
                                                      'user_nick' => $user_nick,
                                                      'date_publish' => "{{ post.date_publish }}",
                                                      'path_image' => "post.path_image",
+                                                     'isImage' => "post.isImage",
                                                      'title' => "{{ post.title }}",
                                                      'text' => "{{ post.text_post }}",
                                                      'comments' => "comments",

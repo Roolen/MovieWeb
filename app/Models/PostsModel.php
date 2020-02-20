@@ -34,10 +34,12 @@ class PostsModel extends Model
 
         if ($posts) {
             for ($i = 0; $i < count($posts); $i++) {
-                unset($posts[$i]['id']);
-                unset($posts[$i]['is_scetch']);
-                if (! $posts[$i]['path_image']) {
-                    $posts[$i]['path_image'] = base_url() . "/images/post.svg";
+                $post = &$posts[$i];
+                unset($post['id']);
+                unset($post['is_scetch']);
+                $post['isImage'] = ($post['path_image'])?true:false;
+                if (! $post['path_image']) {
+                    $post['path_image'] = base_url() . "/images/post.svg";
                 }
             }
 
@@ -83,5 +85,14 @@ class PostsModel extends Model
 
         $idPost = $this->insert($dataPost);
         return ['success' => true, 'idPost' => $idPost];
+    }
+
+    public function setImage(string $imagePath, string $titlePost)
+    {
+        $post = $this->asArray()
+                     ->where(['title' => $titlePost])
+                     ->first();
+
+        $this->update($post['id'], ['path_image' => $imagePath]);
     }
 }

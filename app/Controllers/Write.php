@@ -22,6 +22,7 @@ class Write extends BaseController
 
     public function createPost()
     {
+        helper('filesystem');
         $session = session();
         $request = $this->request->getJSON(true);
 
@@ -31,7 +32,7 @@ class Write extends BaseController
 
         $tagsLine = str_replace(" ", null, $tagsLine);
         $tags = explode(',', $tagsLine);
-
+        
         $postsModel = new PostsModel();
         $dataPost = [
             'title' => $title,
@@ -39,19 +40,36 @@ class Write extends BaseController
             'is_scetch' => false,
             'text_post' => $text
         ];
-
+        
         $post = $postsModel->createPost($dataPost);
-
+        
         if (! $post['success']) {
             $this->response->setJSON(false);
             echo json_encode($post);
             return;
         }
-
+        
         $tagsModel = new PostTagModel();
         $status = $tagsModel->setTagsOfPost($post['idPost'], $tags);
-
+        
         $this->response->setJSON(false);
         echo json_encode(['success' => true]);
+    }
+    
+    public function loadImage(string $titlePost)
+    {
+        helper('filesystem');
+        $titlePost = rawurldecode($titlePost);
+        
+        $request = $this->request->getBody();
+        
+        $pathImage = ROOTPATH.'public/write/images/posts/'.$titlePost.'.png';
+        write_file($pathImage, $request, 'wb');
+        
+        $postsModel = new PostsModel();
+        $postsModel->setImage(base_url()."/write/images/posts/".$titlePost.'.png', $titlePost);
+        
+        $this->response->setJSON(false);
+        return json_encode(['success' => true]);
     }
 }

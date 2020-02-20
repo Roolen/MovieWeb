@@ -4,6 +4,7 @@ const post = new Vue({
         datePublish: "",
         urlComments: baseUrl + "/post/comments/" + title,
         urlCreateComment: baseUrl + "/post/createComment",
+        isPostImage: (!_isImage),
         comments: [],
         countComments: 0,
         isEditComment: false,

@@ -1,5 +1,7 @@
 <a :href="<?= $adress; ?>">
-    <div class="image-post"><img v-bind:src="<?= $path_image ?>" alt="image of post" /></div>
+    <div class="image-post">
+        <img v-bind:class="{'default-image':!<?= $isImage ?>}" v-bind:src="<?= $path_image ?>" alt="image of post" />
+    </div>
         <?=
             view('Templates/authorBlock', ['user_image' => $user_image,
                                            'user_nick' => $user_nick,

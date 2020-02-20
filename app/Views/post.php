@@ -2,7 +2,7 @@
 <div id="post-app">
     <main class="main">
         <header class="header-post">
-            <div class="image-post"><img src="<?= $image ?>" alt="Post image"/></div>
+            <div class="image-post"><img :class="{'default-image':isPostImage}" src="<?= $image ?>" alt="Post image"/></div>
                 <?=
                     view('Templates/authorBlock', ['user_image' => '\''.$imageAuthor.'\'',
                                                    'user_nick' => $nickAuthor,
@@ -41,6 +41,7 @@
     <script>
         const baseUrl = "<?= base_url(); ?>"
         const title = "<?= $title ?>"
+        const _isImage = <?= ($isImage)?1:0 ?>
     </script>
 </div>
 <script src="<?= base_url(); ?>/js/vue.min.js"></script>

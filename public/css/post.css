@@ -82,8 +82,14 @@
   }
 }
 .main .header-post .image-post img {
+  width: 100%;
+  overflow: hidden;
+  object-fit: cover;
+}
+.main .header-post .image-post .default-image {
   width: 10%;
   height: 100%;
+  object-fit: fill;
   filter: invert(1) blur(0.5px);
 }
 .main .header-post .author-block {

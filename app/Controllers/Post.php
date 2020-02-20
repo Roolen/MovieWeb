@@ -6,6 +6,7 @@ use App\Models\TagsModel;
 use App\Models\CommentsModel;
 use App\Models\SubscriptionsModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
+use JsonException;
 
 class Post extends BaseController
 {
@@ -30,6 +31,7 @@ class Post extends BaseController
             'rating' => $post['rating'],
             'text' => $post['text_post'],
             'tags' => $tags,
+            'isImage' => ($post['path_image'])?true:false,
             'image' => ($post['path_image'])
                        ? $post['path_image']
                        : base_url() . "/images/post.svg",
@@ -58,21 +60,19 @@ class Post extends BaseController
         $postsModel = new PostsModel();
         $post_s = $postsModel->getPosts($userId);
 
+        if (! $post_s) {
+            $this->response->setJSON(false);
+            echo json_encode(['empty' => true]);
+        }
+
         for ($i = 0; $i < count($post_s); $i++) {
             $post = &$post_s[$i];
             $post['address'] = base_url().'/post/'.rawurlencode($post['title']);
         }
 
-        if ($post_s) {
-            $this->response->setStatusCode(200)
-                           ->setJSON(false);
-            echo json_encode($post_s);
-        }
-        else {
-            $this->response->setStatusCode(200)
-                           ->setJSON(false);
-            echo json_encode(['empty' => true]);
-        }
+        $this->response->setStatusCode(200)
+                       ->setJSON(false);
+        echo json_encode($post_s);
     }
 
     public function comments(string $titlePost)
@@ -90,7 +90,7 @@ class Post extends BaseController
 
         if (! $comments) {
             $this->response->setJSON(false);
-            echo json_encode(['isComments' => false]);
+            return json_encode(['isComments' => false]);
         }
 
         $usersModel = new UsersModel();
@@ -108,7 +108,7 @@ class Post extends BaseController
         }
 
         $this->response->setJSON(false);
-        echo json_encode($comments);
+        return json_encode($comments);
     }
 
     public function createComment()
