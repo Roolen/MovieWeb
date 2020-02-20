@@ -4,7 +4,7 @@
         <section class="user-block">
             <div class="user-info">
                 <div class="image-user">
-                    <img src="<?= $user_image; ?>" alt="user image" />
+                    <img src="<?= $user_image; ?>" :class="{'default-image':!isAvatar}" alt="user image" />
                     <div class="counter-describers">
                         <div class="count">{{ countSubs }}</div>
                         <div class="subscribers">Subscribers</div>
@@ -28,7 +28,8 @@
                     <button v-if="!isSubscribe" @click="subscribe()" class="default-button sub-icon">Subscribe</button>
                     <button v-else @click="describe()" class="default-button unsub-icon">Describe</button>
                 <?php else : ?>
-                    <button class="default-button image-icon">Change Image</button>
+                    <label for="fileInput" class="default-button image-icon">Change Image</label>
+                    <input @change="changeImage" id="fileInput" class="file-input" type="file" accept=".jpg, .jpeg, .png" />
                     <button @click="addPost()" class="default-button">Add Post</button>
                 <?php endif ?>
             </div>
@@ -58,6 +59,7 @@
         const baseUrl = "<?= base_url(); ?>"
         const user = "<?= $user_nick ?>"
         const description = "<?= $user_desc; ?>"
+        const isAvatar = <?= ($isAvatar)?1:0 ?>
     </script>
 </div>
 <script src="<?= base_url(); ?>/js/vue.min.js"></script>

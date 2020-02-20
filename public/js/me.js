@@ -9,6 +9,8 @@ const me = new Vue({
         urlDescribe: baseUrl + "/me/describe/" + user,
         urlCheckSub: baseUrl + "/me/checkSubscribe/" + user,
         urlCountSubs: baseUrl + "/me/countSubscribers/" + user,
+        urlChangeAvatar: baseUrl + "/me/changeImage",
+        isAvatar: (isAvatar == 1),
         isEditDesc: false,
         description: description,
         isSubscribe: false,
@@ -118,6 +120,38 @@ const me = new Vue({
         },
         addPost: () => {
             location.replace(baseUrl + "/write/index")
+        },
+        changeImage: async (event) => {
+            let formats = ["image/jpg", "image/jpeg", "image/png"]
+            let isFormat = false
+            let file = event.target.files[0]
+
+            for (format of formats) {
+                if (file.type == format) {
+                    isFormat = true
+                }
+            }
+
+            if (isFormat) {
+                let res = await fetch(me.urlChangeAvatar, {
+                    method: "POST",
+                    body: file
+                })
+                const body = await res.json()
+
+                console.log(body)
+
+                if (body.success) {
+                    alert("Аватар изменён")
+                }
+                else {
+                    alert("Ошибка при изменении аватара")
+                }
+            }
+            else {
+                alert("Неверный формат")
+            }
+            
         }
     }
 })

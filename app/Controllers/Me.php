@@ -22,6 +22,7 @@ class Me extends BaseController
             throw new PageNotFoundException($nick);
         }
 
+        $isAvatar = ($user['path_avatar'])?true:false;
         $avatar = ($user['path_avatar'])
                   ? $user['path_avatar']
                   : base_url()."/images/employee.svg";
@@ -31,7 +32,8 @@ class Me extends BaseController
             'isYou' => $isYou,
             'user_nick' => $nick,
             'user_desc' => $user['description'],
-            'user_image' => $avatar
+            'user_image' => $avatar,
+            'isAvatar' => $isAvatar
         ];
         echo view('Share/header.php', $data);
         echo view('me', $data);
@@ -157,6 +159,37 @@ class Me extends BaseController
             $model->changeDescription($desc, $id);
             $this->response->setJSON(false);
             echo json_encode(['success' => true]);
+        }
+    }
+
+    public function changeImage()
+    {
+        helper('filesystem');
+        $session = session();
+        $request = $this->request->getBody();
+
+        if (! $session->has('isAuth')) {
+            $this->response->setJSON(false);
+            return json_encode(['isAuth' => false]);
+        }
+
+        $usersModel = new UsersModel();
+        $idUser = (int)$session->get('idUser');
+        $user = $usersModel->getUserById($idUser);
+
+        $imagePath = ROOTPATH.'public/write/images/users/'.$user['nickname'].'.png';
+        write_file($imagePath, $request, 'wb');
+
+        $sitePath = base_url()."/write/images/users/".$user['nickname'].'.png';
+        $status = $usersModel->changeAvatar($idUser, $sitePath);
+
+        if ($status) {
+            $this->response->setJSON(false);
+            return json_encode(['success' => true]);
+        }
+        else {
+            $this->response->setJSON(false);
+            return json_encode(['success' => false]);
         }
     }
 }

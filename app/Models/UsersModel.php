@@ -12,7 +12,8 @@ class UsersModel extends Model
         'email',
         'password',
         'phone_number',
-        'description'
+        'description',
+        'path_avatar'
     ];
 
     /**
@@ -91,6 +92,15 @@ class UsersModel extends Model
         else {
             return false;
         }
+    }
+
+    public function changeAvatar(int $idUser, string $pathImage)
+    {
+        $status = $this->update($idUser, ['path_avatar' => $pathImage]);
+
+        return ($status)
+               ? true
+               : false;
     }
 
     /**
