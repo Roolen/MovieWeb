@@ -30,7 +30,7 @@
                 <?php else : ?>
                     <label for="fileInput" class="default-button image-icon">Change Image</label>
                     <input @change="changeImage" id="fileInput" class="file-input" type="file" accept=".jpg, .jpeg, .png" />
-                    <button @click="addPost()" class="default-button">Add Post</button>
+                    <button @click="addPost()" class="default-button plus-icon">Add Post</button>
                 <?php endif ?>
             </div>
         </section>
