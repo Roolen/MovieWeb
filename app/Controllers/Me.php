@@ -43,10 +43,10 @@ class Me extends BaseController
     public function subscribe(string $nickAuthor)
     {
         $session = session();
+
+        $this->response->setJSON(false);
         if (! $session->has('isAuth')) {
-            $this->response->setJSON(false);
-            echo json_encode(['isAuth' => false]);
-            return;
+            return json_encode(['isAuth' => false]);
         }
 
         $usersModel = new UsersModel();
@@ -57,24 +57,22 @@ class Me extends BaseController
         $isSub = $subModel->setSubscribe($idUser, $author['id']);
 
         if ($isSub) {
-            $this->response->setStatusCode(201)
-                           ->setJSON(false);
-            echo json_encode(['isSubscribe' => true]);
+            $this->response->setStatusCode(201);
+            return json_encode(['isSubscribe' => true]);
         }
         else {
-            $this->response->setStatusCode(500)
-                           ->setJSON(false);
-            echo json_encode(['isSubscribe' => false]);
+            $this->response->setStatusCode(500);
+            return json_encode(['isSubscribe' => false]);
         }
     }
 
     public function describe(string $nickAuthor)
     {
         $session = session();
+
+        $this->response->setJSON(false);
         if (! $session->has('isAuth')) {
-            $this->response->setJSON(false);
-            echo json_encode(['isAuth' => false]);
-            return;
+            return json_encode(['isAuth' => false]);
         }
 
         $usersModel = new UsersModel();
@@ -85,22 +83,20 @@ class Me extends BaseController
         $isDescribe = $subModel->unsetSubscribe($idUser, $author['id']);
 
         if ($isDescribe) {
-            $this->response->setJSON(false);
-            echo json_encode(['isDescribe' => true]);
+            return json_encode(['isDescribe' => true]);
         }
         else {
-            $this->response->setJSON(false);
-            echo json_encode(['isDescribe' => false]);
+            return json_encode(['isDescribe' => false]);
         }
     }
 
     public function checkSubscribe(string $nickAuthor)
     {
         $session = session();
+
+        $this->response->setJSON(false);
         if (! $session->has('isAuth')) {
-            $this->response->setJSON(false);
-            echo json_encode(['isSub' => false]);
-            return;
+            return json_encode(['isSub' => false]);
         }
 
         $usersModel = new UsersModel();
@@ -111,12 +107,10 @@ class Me extends BaseController
         $isSub = $subModel->checkSubscribe($idSub, $author['id']);
 
         if ($isSub) {
-            $this->response->setJSON(false);
-            echo json_encode(['isSubscribe' => true]);
+            return json_encode(['isSubscribe' => true]);
         }
         else {
-            $this->response->setJSON(false);
-            echo json_encode(['isSubscribe' => false]);
+            return json_encode(['isSubscribe' => false]);
         }
     }
 
@@ -128,13 +122,12 @@ class Me extends BaseController
         $subModel = new SubscriptionsModel();
         $countSubs = $subModel->getCountSubscribers($author['id']);
 
+        $this->response->setJSON(false);
         if ($countSubs) {
-            $this->response->setJSON(false);
-            echo json_encode(['countSubs' => $countSubs]);
+            return json_encode(['countSubs' => $countSubs]);
         }
         else {
-            $this->response->setJSON(false);
-            echo json_encode(['countSubs' => 0]);
+            return json_encode(['countSubs' => 0]);
         }
     }
 
@@ -145,10 +138,9 @@ class Me extends BaseController
         $session = session();
         $model = new UsersModel();
 
+        $this->response->setJSON(false);
         if (! $session->get('idUser')) {
-            $this->response->setJSON(false);
-            echo json_encode(['isAuth' => false]);
-            return;
+            return json_encode(['isAuth' => false]);
         }
         $id = (int)$session->get('idUser');
         $user = $model->getUserById($id);
@@ -156,8 +148,7 @@ class Me extends BaseController
         $desc = $request->newDesc;
         if ($user) {
             $model->changeDescription($desc, $id);
-            $this->response->setJSON(false);
-            echo json_encode(['success' => true]);
+            return json_encode(['success' => true]);
         }
     }
 
@@ -167,8 +158,8 @@ class Me extends BaseController
         $session = session();
         $request = $this->request->getBody();
 
+        $this->response->setJSON(false);
         if (! $session->has('isAuth')) {
-            $this->response->setJSON(false);
             return json_encode(['isAuth' => false]);
         }
 

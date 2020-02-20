@@ -43,17 +43,16 @@ class Write extends BaseController
         
         $post = $postsModel->createPost($dataPost);
         
+        $this->response->setJSON(false);
+
         if (! $post['success']) {
-            $this->response->setJSON(false);
-            echo json_encode($post);
-            return;
+            return json_encode($post);
         }
         
         $tagsModel = new PostTagModel();
         $status = $tagsModel->setTagsOfPost($post['idPost'], $tags);
         
-        $this->response->setJSON(false);
-        echo json_encode(['success' => true]);
+        return json_encode(['success' => true]);
     }
     
     public function loadImage(string $titlePost)

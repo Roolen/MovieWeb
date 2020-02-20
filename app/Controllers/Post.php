@@ -60,9 +60,9 @@ class Post extends BaseController
         $postsModel = new PostsModel();
         $post_s = $postsModel->getPosts($userId);
 
+        $this->response->setJSON(false);
         if (! $post_s) {
-            $this->response->setJSON(false);
-            echo json_encode(['empty' => true]);
+            return json_encode(['empty' => true]);
         }
 
         for ($i = 0; $i < count($post_s); $i++) {
@@ -70,9 +70,8 @@ class Post extends BaseController
             $post['address'] = base_url().'/post/'.rawurlencode($post['title']);
         }
 
-        $this->response->setStatusCode(200)
-                       ->setJSON(false);
-        echo json_encode($post_s);
+        $this->response->setStatusCode(200);
+        return json_encode($post_s);
     }
 
     public function comments(string $titlePost)
@@ -88,8 +87,9 @@ class Post extends BaseController
         $commentsModel = new CommentsModel();
         $comments = $commentsModel->getComments($idPost);
 
+        $this->response->setJSON(false);
+
         if (! $comments) {
-            $this->response->setJSON(false);
             return json_encode(['isComments' => false]);
         }
 
@@ -107,7 +107,6 @@ class Post extends BaseController
                                  : base_url() . "/images/employee.svg";
         }
 
-        $this->response->setJSON(false);
         return json_encode($comments);
     }
 
@@ -116,10 +115,10 @@ class Post extends BaseController
         $request = $this->request->getJSON(true);
         $session = session();
 
+        $this->response->setJSON(false);
+
         if (!$session->has('isAuth')) {
-            $this->response->setJSON(false);
-            echo json_encode(['isAuth' => false]);
-            return;
+            return json_encode(['isAuth' => false]);
         }
 
         $idUser = (int)$session->get('idUser');
@@ -130,21 +129,17 @@ class Post extends BaseController
         $post = $postsModel->getPost($titlePost);
 
         if (!$post) {
-            $this->response->setJSON(false);
-            echo json_encode(['titleIncorrect' => true]);
-            return;
+            return json_encode(['titleIncorrect' => true]);
         }
 
         $commentsModel = new CommentsModel();
         $status = $commentsModel->setComment($idUser, $post['id'], $text);
 
         if ($status) {
-            $this->response->setJSON(false);
-            echo json_encode(['isCreate' => true]);
+            return json_encode(['isCreate' => true]);
         }
         else {
-            $this->response->setJSON(false);
-            echo json_encode(['isCreate' => false]);
+            return json_encode(['isCreate' => false]);
         }
     }
 
@@ -155,10 +150,10 @@ class Post extends BaseController
         $subModel = new SubscriptionsModel();
         $idAuthors = $subModel->getAuthorsIds((int)$session->get('idUser'));
 
+        $this->response->setJSON(false);
+
         if (! $idAuthors) {
-            $this->response->setJSON(false);
-            echo json_encode(['news' => false]);
-            return;
+            return json_encode(['news' => false]);
         }
 
         $postsModel = new PostsModel();
@@ -179,12 +174,10 @@ class Post extends BaseController
         }
 
         if ($posts) {
-            $this->response->setJSON(false);
-            echo json_encode($posts);
+            return json_encode($posts);
         }
         else {
-            $this->response->setJSON(false);
-            echo json_encode(['empty' => true]);
+            return json_encode(['empty' => true]);
         }
     }
 }
