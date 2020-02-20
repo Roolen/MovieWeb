@@ -115,6 +115,9 @@ const me = new Vue({
             catch (e) {
                 console.log(e)
             }
+        },
+        addPost: () => {
+            location.replace(baseUrl + "/write/index")
         }
     }
 })

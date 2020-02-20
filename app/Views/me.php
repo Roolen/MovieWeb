@@ -29,6 +29,7 @@
                     <button v-else @click="describe()" class="default-button unsub-icon">Describe</button>
                 <?php else : ?>
                     <button class="default-button image-icon">Change Image</button>
+                    <button @click="addPost()" class="default-button">Add Post</button>
                 <?php endif ?>
             </div>
         </section>
