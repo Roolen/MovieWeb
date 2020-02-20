@@ -10,6 +10,12 @@ class TagsModel extends Model
         'name_tag'
     ];
 
+    /**
+     * Получить все теги поста.
+     *
+     * @param integer $idPost id поста
+     * @return array|bool массив тэгов или false
+     */
     public function getTags(int $idPost)
     {
         $postTagModel = new PostTagModel();
@@ -33,6 +39,12 @@ class TagsModel extends Model
         }
     }
 
+    /**
+     * Создать новый тэг, если он ещё не существует.
+     *
+     * @param string $tagName строка тэга
+     * @return int id нового тэга или имеющего такое же содержимое
+     */
     public function setTag(string $tagName)
     {
         $tag = $this->asArray()

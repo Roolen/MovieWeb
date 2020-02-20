@@ -11,6 +11,12 @@ class PostTagModel extends Model
         'id_tag'
     ];
 
+    /**
+     * Получить все id тэгов поста.
+     *
+     * @param integer $idPost id поста
+     * @return array[int]|bool массив с id's тэгов или false если их нету
+     */
     public function getTagsOfPost(int $idPost)
     {
         $post_tags = $this->asArray()
@@ -29,6 +35,13 @@ class PostTagModel extends Model
         return $tag_id_s;
     }
 
+    /**
+     * Установить тэги для поста.
+     *
+     * @param integer $idPost id поста
+     * @param array $tags массив id's тэгов
+     * @return bool успешность установки тэгов
+     */
     public function setTagsOfPost(int $idPost, array $tags)
     {
         if ($tags[0] === '') return false;

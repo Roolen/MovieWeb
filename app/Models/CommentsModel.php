@@ -14,6 +14,12 @@ class CommentsModel extends Model
         'is_report'
     ];
 
+    /**
+     * Получить комментарии к посту.
+     *
+     * @param integer $idPost id поста
+     * @return array|bool массив с данными коментариев к посту или false если их нет
+     */
     public function getComments(int $idPost)
     {
         $commentS = $this->asArray()
@@ -25,6 +31,14 @@ class CommentsModel extends Model
                : false;
     }
 
+    /**
+     * Установить новый комментарий для поста.
+     *
+     * @param integer $idAuthor id автора
+     * @param integer $idPost id поста
+     * @param string $text текст сомментария
+     * @return bool успешность создания комментария
+     */
     public function setComment(int $idAuthor, int $idPost, string $text)
     {
         $comment = $this->insert(['id_author' => $idAuthor,
