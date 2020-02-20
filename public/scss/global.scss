@@ -41,6 +41,7 @@ body {
     &:hover {
         color: $dark_blue;
         background: $white;
+        cursor: pointer;
     }
     
     &:active {
