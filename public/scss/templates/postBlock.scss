@@ -41,10 +41,6 @@
             border-radius: 15px;
             
             transition: transform .5s linear;
-            
-            @media screen and (max-width: 1200px) {
-                transform: rotateZ(360deg);
-            }
         }
         
         .default-image {
@@ -52,6 +48,10 @@
             height: 100%;
             object-fit: fill;
             filter: invert(1) blur(.5px);
+
+            @media screen and (max-width: 1200px) {
+                transform: rotateZ(360deg);
+            }
         }
     }
     

@@ -140,12 +140,12 @@ body {
     height: .5em;
 }
 ::-webkit-scrollbar-track {
-    background: $dark_blue;
-}
-::-webkit-scrollbar-thumb {
     background: $white;
 }
+::-webkit-scrollbar-thumb {
+    background: $dark_blue;
+}
 body {
-    scrollbar-face-color: $white;
-    scrollbar-track-color: $dark_blue;
+    scrollbar-track-color: $white;
+    scrollbar-face-color: $dark_blue;
 }

@@ -53,9 +53,9 @@
   position: relative;
   margin: auto;
   margin-top: 30px;
-  margin-bottom: 50px;
   width: 70%;
-  padding-bottom: 100px;
+  padding-bottom: 120px;
+  box-sizing: border-box;
 }
 @media screen and (max-width: 500px) {
   .main {
@@ -66,7 +66,10 @@
   }
 }
 .main .empty-text {
-  margin-top: 100px;
+  position: absolute;
+  top: 300px;
+  left: 0;
+  right: 0;
   font-family: "Blanch";
   font-size: 32px;
   color: #1B1D2A;
@@ -132,6 +135,8 @@
   margin-right: 20px;
   width: 100%;
   height: 100%;
+  padding: 10px;
+  box-sizing: border-box;
   resize: none;
   background: none;
   border: 1px solid #707070;

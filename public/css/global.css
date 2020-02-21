@@ -128,14 +128,14 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: #1B1D2A;
-}
-
-::-webkit-scrollbar-thumb {
   background: #E9E9E9;
 }
 
+::-webkit-scrollbar-thumb {
+  background: #1B1D2A;
+}
+
 body {
-  scrollbar-face-color: #E9E9E9;
-  scrollbar-track-color: #1B1D2A;
+  scrollbar-track-color: #E9E9E9;
+  scrollbar-face-color: #1B1D2A;
 }
