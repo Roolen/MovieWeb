@@ -128,6 +128,13 @@ body {
     font-size: 20px;
 }
 
+.search-icon::before {
+    content: "\f002";
+    margin-right: 10px;
+    font-family: 'Awesome-solid';
+    font-size: 20px;
+}
+
 ::-webkit-scrollbar {
     width: .6em;
     height: .5em;
