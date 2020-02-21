@@ -58,6 +58,7 @@ const mail = new Vue({
 
             if (body.success) {
                 mail.getMessages(mail.activeUser)
+                mail.textMessage = ""
             }
         },
         nickSender: (isUser) => {
