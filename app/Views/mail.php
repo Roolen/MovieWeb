@@ -7,6 +7,7 @@
         </div>
     </aside>
     <main class="main">
+        <div v-if="!isMessages" class="empty-text">Нажмите на пользователя в меню слево</div>
         <div class="messages-block" id="messagesBlock">
             <div v-for="message in messages" :class="{'user-message':message.isUser}" class="message">
                 <div class="nick">{{ nickSender(message.isUser) }}</div>
