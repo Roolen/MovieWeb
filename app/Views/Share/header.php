@@ -17,11 +17,17 @@
     <script src="<?= base_url(); ?>/js/vue.min.js"></script>
 </head>
 <body>
+    <?php
+        $user = new App\Libraries\User();
+        $meLink = ($user->has())
+                  ? base_url().'/me/'.$user->getNickname()
+                  : base_url();
+    ?>
     <header class="header">
         <div class="logo"><img src="<?= base_url(); ?>/images/Logo.svg" alt="logo"/></div>
         <button class="header-menu" id="header_menu">Новости</button>
-        <a class="header-link" href="#"> <div id="i_am_link">Я</div> </a>
-        <a class="header-link" href="#"> <div id="news_link">Новости</div> </a>
+        <a class="header-link" href="<?= $meLink; ?>"> <div id="i_am_link">Я</div> </a>
+        <a class="header-link" href="<?= base_url(); ?>/news"> <div id="news_link">Новости</div> </a>
         <a class="header-link" href="#"> <div id="search_link">Поиск</div> </a>
         <a class="header-link" href="#"> <div id="messages_link">Сообщения</div> </a>
         <div class="settings-button" id="settings_button"></div>
