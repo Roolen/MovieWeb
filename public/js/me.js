@@ -37,9 +37,10 @@ const me = new Vue({
                     post.text_post += "..."
                 }
                 let date = new Date(post.date_publish);
-                post.date_publish = `${date.getMonth()}.${date.getDate()}\n${date.getFullYear()}`
+                post.date_publish = `${date.getMonth()+1}.${date.getDate()}\n${date.getFullYear()}`
             }
-            me.posts = body;
+            me.posts = body
+            me.posts.reverse()
             me.countPosts = me.posts.length
         },
         getCountSubs: async () => {
