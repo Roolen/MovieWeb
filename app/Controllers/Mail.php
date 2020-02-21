@@ -19,7 +19,6 @@ class Mail extends BaseController
 
         echo view('Share/header', $data);
         echo view('mail');
-        echo view('Share/footer');
     }
 
     public function senders()
