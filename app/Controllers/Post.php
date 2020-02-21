@@ -25,6 +25,8 @@ class Post extends BaseController
         $tagsModel = new TagsModel();
         $tags = $tagsModel->getTags($post['id']);
 
+        $post['text_post'] = nl2br($post['text_post']);
+
         $data = [
             'title' => $titlePost,
             'date' => $post['date_publish'],
