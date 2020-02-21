@@ -6,6 +6,7 @@ use App\Models\TagsModel;
 use App\Models\CommentsModel;
 use App\Models\SubscriptionsModel;
 use CodeIgniter\Exceptions\PageNotFoundException;
+use JsonException;
 
 class Post extends BaseController
 {
@@ -24,12 +25,15 @@ class Post extends BaseController
         $tagsModel = new TagsModel();
         $tags = $tagsModel->getTags($post['id']);
 
+        $post['text_post'] = nl2br($post['text_post']);
+
         $data = [
             'title' => $titlePost,
             'date' => $post['date_publish'],
             'rating' => $post['rating'],
             'text' => $post['text_post'],
             'tags' => $tags,
+            'isImage' => ($post['path_image'])?true:false,
             'image' => ($post['path_image'])
                        ? $post['path_image']
                        : base_url() . "/images/post.svg",
@@ -58,21 +62,18 @@ class Post extends BaseController
         $postsModel = new PostsModel();
         $post_s = $postsModel->getPosts($userId);
 
+        $this->response->setJSON(false);
+        if (! $post_s) {
+            return json_encode(['empty' => true]);
+        }
+
         for ($i = 0; $i < count($post_s); $i++) {
             $post = &$post_s[$i];
             $post['address'] = base_url().'/post/'.rawurlencode($post['title']);
         }
 
-        if ($post_s) {
-            $this->response->setStatusCode(200)
-                           ->setJSON(false);
-            echo json_encode($post_s);
-        }
-        else {
-            $this->response->setStatusCode(200)
-                           ->setJSON(false);
-            echo json_encode(['empty' => true]);
-        }
+        $this->response->setStatusCode(200);
+        return json_encode($post_s);
     }
 
     public function comments(string $titlePost)
@@ -88,9 +89,10 @@ class Post extends BaseController
         $commentsModel = new CommentsModel();
         $comments = $commentsModel->getComments($idPost);
 
+        $this->response->setJSON(false);
+
         if (! $comments) {
-            $this->response->setJSON(false);
-            echo json_encode(['isComments' => false]);
+            return json_encode(['isComments' => false]);
         }
 
         $usersModel = new UsersModel();
@@ -107,8 +109,7 @@ class Post extends BaseController
                                  : base_url() . "/images/employee.svg";
         }
 
-        $this->response->setJSON(false);
-        echo json_encode($comments);
+        return json_encode($comments);
     }
 
     public function createComment()
@@ -116,10 +117,10 @@ class Post extends BaseController
         $request = $this->request->getJSON(true);
         $session = session();
 
+        $this->response->setJSON(false);
+
         if (!$session->has('isAuth')) {
-            $this->response->setJSON(false);
-            echo json_encode(['isAuth' => false]);
-            return;
+            return json_encode(['isAuth' => false]);
         }
 
         $idUser = (int)$session->get('idUser');
@@ -130,21 +131,17 @@ class Post extends BaseController
         $post = $postsModel->getPost($titlePost);
 
         if (!$post) {
-            $this->response->setJSON(false);
-            echo json_encode(['titleIncorrect' => true]);
-            return;
+            return json_encode(['titleIncorrect' => true]);
         }
 
         $commentsModel = new CommentsModel();
         $status = $commentsModel->setComment($idUser, $post['id'], $text);
 
         if ($status) {
-            $this->response->setJSON(false);
-            echo json_encode(['isCreate' => true]);
+            return json_encode(['isCreate' => true]);
         }
         else {
-            $this->response->setJSON(false);
-            echo json_encode(['isCreate' => false]);
+            return json_encode(['isCreate' => false]);
         }
     }
 
@@ -155,10 +152,10 @@ class Post extends BaseController
         $subModel = new SubscriptionsModel();
         $idAuthors = $subModel->getAuthorsIds((int)$session->get('idUser'));
 
+        $this->response->setJSON(false);
+
         if (! $idAuthors) {
-            $this->response->setJSON(false);
-            echo json_encode(['news' => false]);
-            return;
+            return json_encode(['isEmpty' => true]);
         }
 
         $postsModel = new PostsModel();
@@ -179,12 +176,10 @@ class Post extends BaseController
         }
 
         if ($posts) {
-            $this->response->setJSON(false);
-            echo json_encode($posts);
+            return json_encode($posts);
         }
         else {
-            $this->response->setJSON(false);
-            echo json_encode(['empty' => true]);
+            return json_encode(['empty' => true]);
         }
     }
 }

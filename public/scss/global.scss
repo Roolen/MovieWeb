@@ -41,11 +41,98 @@ body {
     &:hover {
         color: $dark_blue;
         background: $white;
+        cursor: pointer;
     }
     
     &:active {
         box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     }
+
+    &:focus {
+        background: $white;
+        color: $dark_blue;
+    }
+}
+
+.field, .default-field {
+    margin-top: 10px;
+    width: 40%;
+    height: 64px;
+    background: none;
+    border: none;
+    border-bottom: 1px solid #707070;
+    color: $dark_blue;
+    font-family: 'Amsterdam';
+    font-size: 32px;
+    text-align: center;
+
+    &::placeholder {
+        color: #707070;
+        transition: opacity .3s ease-in;
+    }
+
+    &:focus::placeholder {
+        opacity: 0;
+    }
+
+    &:focus {
+        border-color: $dark_blue;
+    }
+
+    @media screen and (max-width: 800px) {
+        width: 60%;
+        height: 42px;
+        font-size: 24px;
+    }
+}
+
+.write-icon::before {
+    content: "\f304";
+    margin-right: 10px;
+    font-family: 'Awesome-Solid';
+    font-size: 18px;
+}
+
+.desc-icon::before {
+    content: "\f570";
+    margin-right: 10px;
+    font-family: 'Awesome-Solid';
+    font-size: 20px;
+}
+
+.image-icon::before {
+    content: "\f3e0";
+    margin-right: 10px;
+    font-family: 'Awesome-Solid';
+    font-size: 20px;
+}
+
+.sub-icon::before {
+    content: "\f234";
+    margin-right: 10px;
+    font-family: 'Awesome-Solid';
+    font-size: 20px;
+}
+
+.unsub-icon::before {
+    content: "\f503";
+    margin-right: 10px;
+    font-family: 'Awesome-Solid';
+    font-size: 20px;
+}
+
+.plus-icon::before {
+    content: "\f0fe";
+    margin-right: 10px;
+    font-family: 'Awesome-Solid';
+    font-size: 20px;
+}
+
+.search-icon::before {
+    content: "\f002";
+    margin-right: 10px;
+    font-family: 'Awesome-solid';
+    font-size: 20px;
 }
 
 ::-webkit-scrollbar {

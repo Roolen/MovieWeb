@@ -11,16 +11,30 @@ class SubscriptionsModel extends Model
         'id_user_author'
     ];
 
+    /**
+     * Установить новую подписку.
+     *
+     * @param integer $idSub id подписчика
+     * @param integer $idAuthor id автора
+     * @return bool успешность создания подписки
+     */
     public function setSubscribe(int $idSub, int $idAuthor)
     {
         $sub = $this->insert(['id_subscriber' => $idSub,
                               'id_user_author' => $idAuthor]);
 
-        if ($sub) {
-            return true;
-        }
+        return ($sub)
+               ? true
+               : false;
     }
 
+    /**
+     * Отменяет подписку на автора.
+     *
+     * @param integer $idSub id подписчика
+     * @param integer $idAuthor id автора
+     * @return bool успешность отмены подписки
+     */
     public function unsetSubscribe(int $idSub, int $idAuthor)
     {
         $subscrip = $this->asArray()
@@ -35,6 +49,12 @@ class SubscriptionsModel extends Model
                : false;
     }
 
+    /**
+     * Получить id всех авторов, на которых подписан пользователь
+     *
+     * @param integer $idUser id пользователя
+     * @return array|bool массив с id авторов или false если их нет
+     */
     public function getAuthorsIds(int $idUser)
     {
         $authors = $this->asArray()
@@ -53,6 +73,13 @@ class SubscriptionsModel extends Model
         }
     }
 
+    /**
+     * Проверяет подписан ли пользователь на автора.
+     *
+     * @param integer $isSub id пользователя
+     * @param integer $idAuthor id автора
+     * @return bool флаг подписки пользователя
+     */
     public function checkSubscribe(int $isSub, int $idAuthor)
     {
         $sub = $this->asArray()
@@ -65,6 +92,12 @@ class SubscriptionsModel extends Model
                : false;
     }
 
+    /**
+     * Получить количество подписчиков автора.
+     *
+     * @param string $idAuthor id автора
+     * @return int|bool количество подписчиков или false если их нет
+     */
     public function getCountSubscribers(string $idAuthor)
     {
         $subs = $this->asArray()

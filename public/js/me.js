@@ -9,10 +9,15 @@ const me = new Vue({
         urlDescribe: baseUrl + "/me/describe/" + user,
         urlCheckSub: baseUrl + "/me/checkSubscribe/" + user,
         urlCountSubs: baseUrl + "/me/countSubscribers/" + user,
+        urlChangeAvatar: baseUrl + "/me/changeImage",
+        urlSendMessage: baseUrl + "/mail/sendMessage",
+        isAvatar: (isAvatar == 1),
         isEditDesc: false,
         description: description,
         isSubscribe: false,
-        countSubs: 0
+        countSubs: 0,
+        textMessage: "",
+        isEditMessage: false
     },
     mounted: () => {
         setTimeout(() => { me.getPosts()
@@ -114,6 +119,61 @@ const me = new Vue({
             }
             catch (e) {
                 console.log(e)
+            }
+        },
+        addPost: () => {
+            location.href = baseUrl + "/write/index"
+        },
+        changeImage: async (event) => {
+            let formats = ["image/jpg", "image/jpeg", "image/png"]
+            let isFormat = false
+            let file = event.target.files[0]
+
+            for (format of formats) {
+                if (file.type == format) {
+                    isFormat = true
+                }
+            }
+
+            if (isFormat) {
+                let res = await fetch(me.urlChangeAvatar, {
+                    method: "POST",
+                    body: file
+                })
+                const body = await res.json()
+
+                console.log(body)
+
+                if (body.success) {
+                    alert("Аватар изменён")
+                    location.href = location.href
+                }
+                else {
+                    alert("Ошибка при изменении аватара")
+                }
+            }
+            else {
+                alert("Неверный формат")
+            }
+            
+        },
+        sendMessage: async () => {
+            const response = await fetch(me.urlSendMessage, {
+                method: "POST",
+                body: JSON.stringify({
+                    nick: user,
+                    text: me.textMessage
+                })
+            })
+
+            const body = await response.json()
+
+            if (body.success) {
+                alert("Сообщение успешно отправленно\n" +
+                "Перейдите на страницу сообщений, для дальнейшего общения.")
+
+                me.isEditMessage = false;
+                me.textMessage = ""
             }
         }
     }

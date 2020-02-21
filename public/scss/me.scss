@@ -38,8 +38,15 @@
                 }
 
                 img {
+                    width: 100%;
+                    object-fit: cover;
+                    border-radius: 15px;
+                }
+                
+                .default-image {
                     width: 30%;
                     height: 100%;
+                    object-fit: fill;
                     filter: invert(1) blur(.5px);
                 }
 
@@ -105,22 +112,19 @@
                     margin-top: 20px;
                     width: fit-content;
                 }
-
-                .write-icon::before {
-                    content: "\f304";
-                    margin-right: 10px;
-                    font-family: 'Awesome-Solid';
-                    font-size: 18px;
-                }
-
-                .desc-icon::before {
-                    content: "\f570";
-                    margin-right: 10px;
-                    font-family: 'Awesome-Solid';
-                    font-size: 20px;
-                }
             }
         }
+
+        .user-manage {
+
+                .file-input {
+                    display: none;
+                }
+
+                *:nth-child(n) {
+                    margin-top: 20px;
+                }
+            }
     }
 
     .line-top { border-top: 1px solid #8B8D8A; }

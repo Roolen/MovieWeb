@@ -13,7 +13,9 @@
     }
     
     &:hover .image-post {
-        box-shadow: 8px 8px 14px rgba(0, 0, 0, .5);
+        box-shadow: 
+        - 8px 8px 14px rgba(0, 0, 0, .5),
+        - -5px -5px 14px rgba(0, 0, 0, .5);
     }
     
     .image-post {
@@ -33,15 +35,23 @@
         }
         
         img {
-            width: 20%;
-            height: 100%;
-            filter: invert(1) blur(.5px);
+            width: 100%;
+            overflow: hidden;
+            object-fit: cover;
+            border-radius: 15px;
             
             transition: transform .5s linear;
             
             @media screen and (max-width: 1200px) {
                 transform: rotateZ(360deg);
             }
+        }
+        
+        .default-image {
+            width: 30%;
+            height: 100%;
+            object-fit: fill;
+            filter: invert(1) blur(.5px);
         }
     }
     

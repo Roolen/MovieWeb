@@ -11,7 +11,7 @@
   }
 }
 .post:hover .image-post {
-  box-shadow: 8px 8px 14px rgba(0, 0, 0, 0.5);
+  box-shadow: -8px 8px 14px rgba(0, 0, 0, 0.5), 5px -5px 14px rgba(0, 0, 0, 0.5);
 }
 .post .image-post {
   display: flex;
@@ -30,15 +30,22 @@
   }
 }
 .post .image-post img {
-  width: 20%;
-  height: 100%;
-  filter: invert(1) blur(0.5px);
+  width: 100%;
+  overflow: hidden;
+  object-fit: cover;
+  border-radius: 15px;
   transition: transform 0.5s linear;
 }
 @media screen and (max-width: 1200px) {
   .post .image-post img {
     transform: rotateZ(360deg);
   }
+}
+.post .image-post .default-image {
+  width: 30%;
+  height: 100%;
+  object-fit: fill;
+  filter: invert(1) blur(0.5px);
 }
 .post .post-info {
   margin-top: 10px;

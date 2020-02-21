@@ -39,27 +39,25 @@ class Home extends BaseController
 
 		$check = $check + $model->checkDataUser($data_user);
 
+		$this->response->setJSON(false);
+
 		foreach ($check as $key=>$value) {
 			if ($value) {
 				$check['success'] = false;
-				$this->response->setStatusCode(422)
-				               ->setJSON(false);
-				echo json_encode($check);
-				return;
+				$this->response->setStatusCode(422);
+				return json_encode($check);
 			}
 		}
 
 		if ($model->createUser($data_user)) {
 			$check['success'] = true;
-			$this->response->setStatusCode(201)
-			               ->setJSON(false);
-			echo json_encode($check);
+			$this->response->setStatusCode(201);
+			return json_encode($check);
 		}
 		else {
 			$check['success'] = false;
-			$this->response->setStatusCode(400)
-			               ->setJSON(false);
-			echo json_encode($check);
+			$this->response->setStatusCode(400);
+			return json_encode($check);
 		}
 	}
 
@@ -76,17 +74,15 @@ class Home extends BaseController
 
 		$verify = $model->verifyUser($data_user->nickname, $data_user->password);
 
+		$this->response->setJSON(false);
 		if ($verify['confirmed'] === false) {
-			$this->response->setStatusCode(401)
-						   ->setJSON(false);
-			echo json_encode($verify);
-			return;
+			$this->response->setStatusCode(401);
+			return json_encode($verify);
 		}
 
 		$model = new UsersModel();
 		$user = $model->getUser($data_user->nickname);
-		$this->response->setStatusCode(200)
-					   ->setJSON(false);
+		$this->response->setStatusCode(200);
 		echo json_encode($verify);
 
 		$session = session();

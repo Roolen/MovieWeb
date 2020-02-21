@@ -1,8 +1,12 @@
-<link rel="stylesheet" href="<?= base_url(); ?>/css/news.css" />
-<div id="news-app">
+<link rel="stylesheet" href="<?= base_url(); ?>/css/search.css" />
+<div id="search-app">
     <main class="main">
-        <div v-if="posts.length < 1" class="empty-news">Новостей нет</div>
-        <div class="posts-container">
+        <div class="search-block">
+            <input v-model="textSearch" type="text" class="default-field" placeholder="Введите слово..."/>
+            <button @click="searchPosts()" class="default-button search-icon">Search</button>
+        </div>
+        <div v-if="!isFind" class="empty-text">Ничего не найдено</div>
+        <div class="posts-block">
             <div v-for="post in posts" class="post">
                 <?=
                     view('Templates/postBlock', ['user_image' => "post.authorAvatar",
@@ -20,5 +24,8 @@
         </div>
     </main>
 </div>
+<script>
+    const baseUrl = "<?= base_url(); ?>"
+</script>
 <script src="<?= base_url(); ?>/js/vue.min.js"></script>
-<script src="<?= base_url(); ?>/js/news.js"></script>
+<script src="<?= base_url(); ?>/js/search.js"></script>

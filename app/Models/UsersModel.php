@@ -12,14 +12,15 @@ class UsersModel extends Model
         'email',
         'password',
         'phone_number',
-        'description'
+        'description',
+        'path_avatar'
     ];
 
     /**
-     * Return data of user with $nick of nickname.
+     * Возвращает данные пользователя по никнэйму.
      *
-     * @param string $nick
-     * @return array
+     * @param string $nick никнэйм
+     * @return array Массив пользовательскийх данных.
      */
     public function getUser(string $nick)
     {
@@ -32,6 +33,12 @@ class UsersModel extends Model
         }
     }
 
+    /**
+     * Возвращает данные пользователя по id.
+     *
+     * @param integer $id id пользователя.
+     * @return array пользовательские данные.
+     */
     public function getUserById(int $id)
     {
         $user = $this->asArray()
@@ -43,6 +50,12 @@ class UsersModel extends Model
         }
     }
 
+    /**
+     * Возвращает данные множества пользователей по их id.
+     *
+     * @param array $idS массив содержащий id пользователей.
+     * @return array массив пользовательских данных.
+     */
     public function getUserSById(array $idS)
     {
         $users = $this->asArray()
@@ -55,10 +68,15 @@ class UsersModel extends Model
     }
 
     /**
-     * Trying new user, writing him in base date.
+     * Пытаеться добавить нового пользователя, добавляя его в базу данных.
      *
-     * @param object $data_user
-     * @return void
+     * @param object $data_user дынные пользователя
+     * 'first_name' - имя
+     * 'nickname' - логин
+     * 'email' - электронная почта
+     * 'password' - пароль
+     * 'pone_number' - номер телефона
+     * @return bool статус успешности
      */
     public function createUser(object $data_user)
     {
@@ -78,6 +96,13 @@ class UsersModel extends Model
         return true;
     }
 
+    /**
+     * Изменяет описание пользователя.
+     *
+     * @param string $newDesc строка нового описания
+     * @param integer $idUser id пользователя
+     * @return bool статус изменения
+     */
     public function changeDescription(string $newDesc, int $idUser)
     {
         $user = $this->asArray()
@@ -94,11 +119,27 @@ class UsersModel extends Model
     }
 
     /**
-     * Checking confirmite by nick/password with currents of users.
+     * Изменяет путь к аватару пользователя.
      *
-     * @param string $nick
-     * @param string $password
-     * @return array 'confirmed' flag.
+     * @param integer $idUser id пользователя
+     * @param string $pathImage url адрес изображения
+     * @return bool статус успешности
+     */
+    public function changeAvatar(int $idUser, string $pathImage)
+    {
+        $status = $this->update($idUser, ['path_avatar' => $pathImage]);
+
+        return ($status)
+               ? true
+               : false;
+    }
+
+    /**
+     * Проверяет правильность пары логин/пароль.
+     *
+     * @param string $nick никнэйм пользователя
+     * @param string $password пароль пользователя
+     * @return array массив, где элемент 'confirmed' содержит флаг проверки.
      */
     public function verifyUser(string $nick, string $password)
     {
@@ -115,14 +156,15 @@ class UsersModel extends Model
     }
 
     /**
-     * Checking data of user on duplicates.
-     * Return response by array with flags.
-     * 'nickname', 'email', 'phone' as flags.
+     * Проверяет данные пользователя на повторения с данными в базе данных.
      *
-     * @param string $nickname
-     * @param string $email
-     * @param string $phone
-     * @return void
+     * @param string $nickname логин пользователя
+     * @param string $email электронная почта пользователя
+     * @param string $phone номер телефона пользователя
+     * @return array массив с флагами проверки на повторения, где:
+     * 'nickname' - повторение логина
+     * 'email' - повторение электронной почты
+     * 'phone' - повторение номера телефона
      */
     public function checkUser(string $nickname, string $email, string $phone)
     {
@@ -145,10 +187,15 @@ class UsersModel extends Model
     }
 
     /**
-     * Checking correctness for the entering data of user.
+     * Проверяет корректность объект с данными пользователя.
      *
-     * @param object $data_user
-     * @return void
+     * @param object $data_user пользовательские данные
+     * @return array массив с флагами проверок данных, где:
+     * 'nameIncorrect' - некорректность имени
+     * 'nickIncorrect' - некорректность логина
+     * 'emailIncorrect' - некорректность электронной почты
+     * 'passwordIncorrect' - некорректность пароля
+     * 'phoneIncorrect' - некорректность номера телефона
      */
     public function checkDataUser(object $data_user)
     {

@@ -15,6 +15,14 @@ class PostsModel extends Model
         'text_post'
     ];
 
+    /**
+     * Получить данные поста.
+     *
+     * @param string $title заголовок поста
+     * @return array|bool массив с данными поста или false, где данные:
+     * 'id', 'id_author', 'rating', 'title', 'path_image', 'is_scetch',
+     * 'text_post', 'date_publish'
+     */
     public function getPost(string $title)
     {
         $post = $this->asArray()
@@ -26,18 +34,27 @@ class PostsModel extends Model
                : false;
     }
 
-    public function getPosts(int $id)
+    /**
+     * Получить данные всех постов автора.
+     *
+     * @param integer $id id автора
+     * @return array массив с данными постов, где:
+     * 'id_author', 'rating', 'title', 'path_image', 'is_scetch',
+     * 'text_post', 'date_publish', 'isImage'
+     */
+    public function getPosts(int $idAuthor)
     {
         $posts = $this->asArray()
-                      ->where(['id_author' => $id])
+                      ->where(['id_author' => $idAuthor])
                       ->findAll();
 
         if ($posts) {
             for ($i = 0; $i < count($posts); $i++) {
-                unset($posts[$i]['id']);
-                unset($posts[$i]['is_scetch']);
-                if (! $posts[$i]['path_image']) {
-                    $posts[$i]['path_image'] = base_url() . "/images/post.svg";
+                $post = &$posts[$i];
+                unset($post['id']);
+                $post['isImage'] = ($post['path_image'])?true:false;
+                if (! $post['path_image']) {
+                    $post['path_image'] = base_url() . "/images/post.svg";
                 }
             }
 
@@ -45,6 +62,14 @@ class PostsModel extends Model
         }
     }
 
+    /**
+     * Получить все посты множества авторов по их id's
+     *
+     * @param array $ids массив идентификаторов
+     * @return array массив с данными постов, где:
+     * 'id_author', 'rating', 'title', 'path_image', 'is_scetch',
+     * 'text_post', 'date_publish', 'isImage'
+     */
     public function getPostsByAuthors(array $ids)
     {
         $posts = $this->asArray()
@@ -53,14 +78,85 @@ class PostsModel extends Model
 
         if ($posts) {
             for ($i = 0; $i < count($posts); $i++) {
-                unset($posts[$i]['id']);
-                unset($posts[$i]['is_scetch']);
-                if (! $posts[$i]['path_image']) {
-                    $posts[$i]['path_image'] = base_url() . "/images/post.svg";
+                $post = &$posts[$i];
+                unset($post['id']);
+                $post['isImage'] = ($post['path_image'])?true:false;
+                if (! $post['path_image']) {
+                    $post['path_image'] = base_url() . "/images/post.svg";
                 }
             }
 
             return $posts;
         }
+    }
+
+    /**
+     * Находит посты содержащие искомую строку.
+     *
+     * @param string $searchLine искомая строка
+     * @return array|bool массив найденых постов или false если ничего не найдено
+     */
+    public function searchPosts(string $searchLine)
+    {
+        if (mb_strlen($searchLine) < 4) {
+            return false;
+        }
+
+        $posts = $this->asArray()
+                      ->like('title', $searchLine)
+                      ->findAll();
+
+        return ($posts)
+               ? $posts
+               : false;
+    }
+
+    /**
+     * Создать новый пост.
+     *
+     * @param array $dataPost данные поста, где:
+     * 'title' - заголовок
+     * 'id_author' - id автора
+     * 'text_post' - текст поста
+     * @return array массив с флагами успешности создания поста, где:
+     * 'success' - успешность создания,
+     * 'isDuplicate' - заголовок поста уже занят,
+     * 'idPost' - id созданного поста
+     */
+    public function createPost(array $dataPost)
+    {
+        if ($dataPost['title'] == '' ||
+            $dataPost['id_author'] == '' ||
+            $dataPost['text_post'] == '')
+        {
+                return ['success' => false, 'isEmpty' => true];
+        }
+
+        $post = $this->asArray()
+                     ->where(['title' => $dataPost['title']])
+                     ->first();
+
+        if ($post) {
+            return ['success' => false, 'isDuplicate' => true];
+        }
+
+        $idPost = $this->insert($dataPost);
+        return ['success' => true, 'idPost' => $idPost];
+    }
+
+    /**
+     * Установить новый адрес изображения для поста.
+     *
+     * @param string $imagePath адрес изображения
+     * @param string $titlePost заголовок поста
+     * @return void
+     */
+    public function setImage(string $imagePath, string $titlePost)
+    {
+        $post = $this->asArray()
+                     ->where(['title' => $titlePost])
+                     ->first();
+
+        $this->update($post['id'], ['path_image' => $imagePath]);
     }
 }

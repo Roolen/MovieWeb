@@ -1,0 +1,44 @@
+@import "color.scss";
+@import "Templates/postBlock.scss";
+@import "Templates/author.scss";
+
+.main {
+    margin: auto;
+    padding-top: 30px;
+    box-sizing: border-box;
+    width: 70%;
+
+    .search-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: auto;
+        width: 70%;
+
+        .default-field {
+            width: 85%;
+        }
+
+        .default-button {
+            margin-top: 10px;
+            width: 200px;
+            border-radius: 30px;
+        }
+    }
+
+    .empty-text {
+        margin: auto;
+        margin-top: 50px;
+        font-family: 'Blanch';
+        font-size: 32px;
+        color: $dark_blue;
+        text-align: center;
+    }
+    
+    .posts-block {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 30px;
+    }
+}
