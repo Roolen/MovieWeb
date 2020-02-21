@@ -74,6 +74,7 @@ class Home extends BaseController
 
 		$verify = $model->verifyUser($data_user->nickname, $data_user->password);
 
+		$this->response->setJSON(false);
 		if ($verify['confirmed'] === false) {
 			$this->response->setStatusCode(401);
 			return json_encode($verify);
