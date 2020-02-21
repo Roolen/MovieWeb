@@ -59,7 +59,7 @@ class MessagesModel extends Model
                 if ($message['id_sender'] != $idUser) {
                     $idUsers[] = $message['id_sender'];
                 }
-                else if ($message['id_recipient'] != $idUser) {
+                else {
                     $idUsers[] = $message['id_recipient'];
                 }
             }
