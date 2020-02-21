@@ -12,13 +12,16 @@
                 </div>
                 <div class="user-detail">
                     <h2 class="user-nick"><?= $user_nick; ?></h2>
-                    <textarea v-if="isEditDesc" class="user-desc" v-model="description" maxlength="451" required></textarea>
+                    <textarea v-if="isEditDesc" class="user-desc" v-model="description" maxlength="451"></textarea>
+                    <textarea v-if="isEditMessage" class="user-desc" v-model="textMessage" maxlength="451"></textarea>
                     <div v-if="!isEditDesc" class="user-desc">{{ description }}</div>
                     <?php if (! $isYou) : ?>
-                        <button class="default-button write-icon" id="writeButton">Write</button>
+                        <button v-if="!isEditMessage" @click="isEditMessage = true"
+                            class="default-button write-icon" id="writeButton">Write</button>
+                        <button v-else @click="sendMessage()" class="default-button">Send</button>
                     <?php else : ?>
                         <button v-if="!isEditDesc" @click="isEditDesc = true"
-                         class="default-button desc-icon">Change Description</button>
+                            class="default-button desc-icon">Change Description</button>
                         <button v-else @click="changeDesc()" class="default-button desc-icon">Apply</button>
                     <?php endif ?>
                 </div>
