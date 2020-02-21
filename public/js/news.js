@@ -14,7 +14,7 @@ const news = new Vue({
             const body = await response.json()
             console.log(body)
 
-            if (!body.news) {
+            if (body.isEmpty) {
                 return
             }
 

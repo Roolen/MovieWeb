@@ -155,7 +155,7 @@ class Post extends BaseController
         $this->response->setJSON(false);
 
         if (! $idAuthors) {
-            return json_encode(['news' => false]);
+            return json_encode(['isEmpty' => true]);
         }
 
         $postsModel = new PostsModel();
