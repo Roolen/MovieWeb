@@ -38,7 +38,7 @@ class MessagesModel extends Model
     {
         $messages = $this->asArray()
                          ->whereIn('id_sender', [$idUserOne, $idUserTwo])
-                         ->orWhereIn('id_recipient', [$idUserOne, $idUserTwo])
+                         ->WhereIn('id_recipient', [$idUserOne, $idUserTwo])
                          ->findAll();
 
         return ($messages)
