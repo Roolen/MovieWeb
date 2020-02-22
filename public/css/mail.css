@@ -138,9 +138,10 @@
   padding: 10px;
   box-sizing: border-box;
   resize: none;
-  background: none;
-  border: 1px solid #707070;
+  background: #E9E9E9;
+  border: none;
   border-radius: 15px;
+  box-shadow: -6px -6px 12px rgba(55, 55, 55, 0.3), 6px 6px 12px rgba(55, 55, 55, 0.3);
   font-family: "Akrobat";
   font-size: 22px;
   line-height: 24px;
@@ -148,11 +149,21 @@
 }
 @media screen and (max-width: 500px) {
   .main .write-block .edit-field {
-    width: 99vw;
+    width: 100vw;
+    height: 30vh;
     margin-right: 0;
+    background: #1f1f2f;
+    color: #E9E9E9;
+    box-shadow: none;
   }
 }
 .main .write-block .default-button {
   width: 150px;
   height: 100%;
+}
+@media screen and (max-width: 500px) {
+  .main .write-block .default-button {
+    margin-top: 10px;
+    width: 100vw;
+  }
 }

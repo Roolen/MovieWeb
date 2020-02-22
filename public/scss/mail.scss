@@ -153,23 +153,35 @@
             box-sizing: border-box;
             resize: none;
 
-            background: none;
-            border: 1px solid #707070;
+            background: $white;
+            border: none;
             border-radius: 15px;
+            box-shadow: 
+                -6px -6px 12px rgba(55, 55, 55, .3),
+                6px 6px 12px rgba(55, 55, 55, .3);
             font-family: 'Akrobat';
             font-size: 22px;
             line-height: 24px;
             color: $dark_blue;
 
             @media screen and (max-width: 500px) {
-                width: 99vw;
+                width: 100vw;
+                height: 30vh;
                 margin-right: 0;
+                background: $dark_blue_light;
+                color: $white;
+                box-shadow: none;
             }
         }
 
         .default-button {
             width: 150px;
             height: 100%;
+
+            @media screen and (max-width: 500px) {
+                margin-top: 10px;
+                width: 100vw;
+            }
         }
     }
 }
