@@ -5,7 +5,7 @@
 }
 .footer {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   width: 70%;
   height: 150px;
@@ -31,17 +31,14 @@
 }
 
 .copyright {
-  order: 2;
-  margin-right: 50px;
-  width: 200px;
   font-family: "Amsterdam";
   font-size: 18px;
   color: #1B1D2A;
-  text-align: center;
 }
 @media screen and (max-width: 800px) {
   .copyright {
     margin-right: 0;
+    text-align: center;
   }
 }
 
