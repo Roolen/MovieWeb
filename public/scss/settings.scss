@@ -35,9 +35,29 @@
                 color: $dark_blue;
             }
 
+            .option-hidden {
+                display: none;
+            }
+
+            .option-hidden:checked + .option-check {
+                background: $dark_blue;
+            }
+
+            .option-hidden:checked + .option-check:before {
+                content: "\f00c";
+                margin-left: 1px;
+                font-family: 'Awesome-Solid';
+                font-size: 14px;
+                color: $white;
+            }
+
             .option-check {
+                width: 16px;
+                height: 16px;
                 background: none;
-                border: none;
+                border: 1px solid $dark_blue;
+                border-radius: 5px;
+                cursor: pointer;
             }
         }
     }

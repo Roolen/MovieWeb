@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .main {
   display: flex;
   flex-direction: column;
@@ -31,9 +32,26 @@
   line-height: 28px;
   color: #1B1D2A;
 }
+.main .settings-block .option .option-hidden {
+  display: none;
+}
+.main .settings-block .option .option-hidden:checked + .option-check {
+  background: #1B1D2A;
+}
+.main .settings-block .option .option-hidden:checked + .option-check:before {
+  content: "";
+  margin-left: 1px;
+  font-family: "Awesome-Solid";
+  font-size: 14px;
+  color: #E9E9E9;
+}
 .main .settings-block .option .option-check {
+  width: 16px;
+  height: 16px;
   background: none;
-  border: none;
+  border: 1px solid #1B1D2A;
+  border-radius: 5px;
+  cursor: pointer;
 }
 .main .accept-message {
   margin-bottom: 20px;

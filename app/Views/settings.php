@@ -5,15 +5,18 @@
         <div class="settings-block">
             <div class="option">
                 <label for="hiddenEmail" class="option-label">Hidden Email</label>
-                <input v-model="settings.is_hidden_email" type="checkbox" class="option-check" id="hiddenEmail"/>
+                <input v-model="settings.is_hidden_email" type="checkbox" class="option-hidden" id="hiddenEmail"/>
+                <label for="hiddenEmail" class="option-check"></label>
             </div>
             <div class="option">
                 <label for="hiddenPhone" class="option-label">Hidden Phone</label>
-                <input v-model="settings.is_hidden_phone" value="true" type="checkbox" class="option-check" id="hiddenPhone"/>
+                <input v-model="settings.is_hidden_phone" value="true" type="checkbox" class="option-hidden" id="hiddenPhone"/>
+                <label for="hiddenPhone" class="option-check"></label>
             </div>
             <div class="option">
                 <label for="sendNotif" class="option-label">Send Notifications</label>
-                <input v-model="settings.is_send_notifications" type="checkbox" class="option-check" id="sendNotif"/>
+                <input v-model="settings.is_send_notifications" type="checkbox" class="option-hidden" id="sendNotif"/>
+                <label for="sendNotif" class="option-check"></label>
             </div>
         </div>
         <div :style="messageStyle" class="accept-message">{{ acceptMessage }}</div>
