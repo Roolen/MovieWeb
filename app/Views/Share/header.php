@@ -30,5 +30,5 @@
         <a class="header-link" href="<?= base_url(); ?>/news"> <div id="news_link">Новости</div> </a>
         <a class="header-link" href="<?= base_url(); ?>/search"> <div id="search_link">Поиск</div> </a>
         <a class="header-link" href="<?= base_url(); ?>/mail"> <div id="messages_link">Сообщения</div> </a>
-        <div class="settings-button" id="settings_button"></div>
+        <a class="settings-button" href="<?= base_url(); ?>/settings" id="settings_button"></a>
     </header>
