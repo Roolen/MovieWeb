@@ -47,8 +47,8 @@ class Mail extends BaseController
             $usersData[] = [
                 'nickname' => $user['nickname'],
                 'avatar' => ($user['path_avatar'])
-                            ? $user['path_avatar']
-                            : base_url().'/images/employee.svg'
+                            ? base_url() . $user['path_avatar']
+                            : base_url() . '/images/employee.svg'
             ];
         }
 

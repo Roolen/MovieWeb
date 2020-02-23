@@ -66,7 +66,7 @@ class Write extends BaseController
         write_file($pathImage, $request, 'wb');
         
         $postsModel = new PostsModel();
-        $postsModel->setImage(base_url()."/write/images/posts/".$titlePost.'.png', $titlePost);
+        $postsModel->setImage("/write/images/posts/".$titlePost.'.png', $titlePost);
         
         $this->response->setJSON(false);
         return json_encode(['success' => true]);
