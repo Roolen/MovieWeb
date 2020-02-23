@@ -4,12 +4,12 @@
         <h1 class="user-nick"><?= $nick ?> settings</h1>
         <div class="settings-block">
             <div class="option">
-                <label for="hiddenEmail" class="option-label">Hidden Email</label>
+                <label for="hiddenEmail" class="option-label">Email is hidden</label>
                 <input v-model="settings.is_hidden_email" type="checkbox" class="option-hidden" id="hiddenEmail"/>
                 <label for="hiddenEmail" class="option-check"></label>
             </div>
             <div class="option">
-                <label for="hiddenPhone" class="option-label">Hidden Phone</label>
+                <label for="hiddenPhone" class="option-label">Phone is hidden</label>
                 <input v-model="settings.is_hidden_phone" value="true" type="checkbox" class="option-hidden" id="hiddenPhone"/>
                 <label for="hiddenPhone" class="option-check"></label>
             </div>

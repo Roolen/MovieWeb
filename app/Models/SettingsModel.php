@@ -29,4 +29,13 @@ class SettingsModel extends Model
 
         return $status;
     }
+
+    public function createSettings(int $idUser)
+    {
+        $status = $this->insert(['id' => $idUser]);
+
+        return ($status)
+               ? $status
+               : false;
+    }
 }
