@@ -1,0 +1,58 @@
+@import "color.scss";
+
+.main {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding-top: 30px;
+    width: 70%;
+    box-sizing: border-box;
+
+    .user-nick {
+        font-family: 'Blanch';
+        font-size: 32px;
+        line-height: 48px;
+        color: $dark_blue;
+        text-align: center;
+    }
+
+    .settings-block {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .option {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding-left: 10vw;
+            padding-right: 10vw;
+
+            .option-label {
+                font-family: 'Blanch';
+                font-size: 24px;
+                line-height: 28px;
+                color: $dark_blue;
+            }
+
+            .option-check {
+                background: none;
+                border: none;
+            }
+        }
+    }
+
+    .accept-message {
+        margin-bottom: 20px;
+        font-family: 'Blanch';
+        font-size: 28px;
+        line-height: 32px;
+        text-align: center;
+    }
+
+    .default-button {
+        align-self: center;
+        width: 150px;
+        height: 60px;
+    }
+}

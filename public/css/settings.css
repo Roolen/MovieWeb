@@ -1,0 +1,49 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  padding-top: 30px;
+  width: 70%;
+  box-sizing: border-box;
+}
+.main .user-nick {
+  font-family: "Blanch";
+  font-size: 32px;
+  line-height: 48px;
+  color: #1B1D2A;
+  text-align: center;
+}
+.main .settings-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.main .settings-block .option {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding-left: 10vw;
+  padding-right: 10vw;
+}
+.main .settings-block .option .option-label {
+  font-family: "Blanch";
+  font-size: 24px;
+  line-height: 28px;
+  color: #1B1D2A;
+}
+.main .settings-block .option .option-check {
+  background: none;
+  border: none;
+}
+.main .accept-message {
+  margin-bottom: 20px;
+  font-family: "Blanch";
+  font-size: 28px;
+  line-height: 32px;
+  text-align: center;
+}
+.main .default-button {
+  align-self: center;
+  width: 150px;
+  height: 60px;
+}
