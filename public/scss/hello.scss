@@ -400,6 +400,7 @@ body {
         font-family: 'Amsterdam';
         font-size: 18px;
         color: $accent_color;
+        transition: all .3s ease-in;
     }
 
 .registration-section {
@@ -436,6 +437,10 @@ body {
 
         &::placeholder {
             color: #707070;
+            transition: all .2s ease-in;
+        }
+        &:focus::placeholder {
+            opacity: 0;
         }
 
         @media screen and (max-width: $table_size) {
@@ -456,7 +461,17 @@ body {
         background: $dark_blue;
         border: none;
         border-radius: 15px;
-        box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.3);
+        box-shadow: 6px 6px 12px rgba(0, 0, 0, .3);
+        transition: all .2s linear;
+
+        &:hover {
+            background: $white;
+            color: $dark_blue;
+        }
+
+        &:active {
+            box-shadow: 4px 4px 8px rgba(0, 0, 0, .2);
+        }
     }
 
     .button-authorize {
@@ -553,12 +568,30 @@ body {
 
         .field::placeholder {
             color: #b0b0b0;
+            transition: all .3s ease-in;
+        }
+
+        .field:focus::placeholder {
+            opacity: 0;
         }
 
         .button {
             background: $white;
             color: $dark_blue;
+            transition: all .2s linear;
+
+            &:hover {
+                font-size: 20px;
+                border-radius: 25px;
+            }
+            
+            &:active {
+                background: $dark_blue_light;
+                color: $white;
+            }
         }
+
+        
     }
 
     @media screen and (max-width: 550px) {
