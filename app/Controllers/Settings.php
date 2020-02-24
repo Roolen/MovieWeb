@@ -10,7 +10,7 @@ class Settings extends BaseController
         $session = session();
 
         if (! $session->has('isAuth')) {
-            $this->response->redirect(base_url());
+            return $this->response->redirect(base_url());
         }
 
         $idUser = (int)$session->get('idUser');
