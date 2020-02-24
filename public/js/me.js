@@ -17,7 +17,8 @@ const me = new Vue({
         isSubscribe: false,
         countSubs: 0,
         textMessage: "",
-        isEditMessage: false
+        isEditMessage: false,
+        isLoad: true
     },
     mounted: () => {
         setTimeout(() => { me.getPosts()
@@ -31,6 +32,11 @@ const me = new Vue({
             const body = await response.json()
             console.log(body)
 
+            if (body.empty) {
+                me.isLoad = false
+                return
+            }
+
             for (post of body) {
                 if (post.text_post.length > 250) {
                     post.text_post = post.text_post.substring(0, 246)
@@ -42,6 +48,7 @@ const me = new Vue({
             me.posts = body
             me.posts.reverse()
             me.countPosts = me.posts.length
+            me.isLoad = false;
         },
         getCountSubs: async () => {
             try {

@@ -39,6 +39,7 @@
         </section>
         <section v-bind:class="{ 'line-top': countPosts }" class="posts-block">
             <div class="counter-posts">{{ countPosts }} Posts</div>
+            <div v-if="isLoad" class="load-screen"></div>
             <div class="posts-container">
                 <div v-for="post in posts" class="post">
                     
@@ -57,6 +58,7 @@
                 </div>
             </div>
         </section>
+        
     </main>
     <script>
         const baseUrl = "<?= base_url(); ?>"

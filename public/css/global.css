@@ -73,6 +73,33 @@ body {
   }
 }
 
+.load-screen {
+  position: relative;
+  margin: auto;
+  margin-top: 50px;
+  width: 100%;
+  height: 100%;
+  background: #E9E9E9;
+}
+@keyframes rotate {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.load-screen::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: calc(50% - 19px);
+  font-family: "Awesome-Solid";
+  font-size: 38px;
+  color: #1B1D2A;
+  animation: rotate 1s infinite;
+}
+
 .write-icon::before {
   content: "";
   margin-right: 10px;

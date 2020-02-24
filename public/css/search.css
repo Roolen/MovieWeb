@@ -164,6 +164,9 @@
   width: 200px;
   border-radius: 30px;
 }
+.main .load-screen {
+  margin-top: 30vh;
+}
 .main .empty-text {
   margin: auto;
   margin-top: 50px;

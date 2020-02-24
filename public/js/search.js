@@ -3,11 +3,14 @@ const search = new Vue({
     data: {
         posts: [],
         textSearch: "",
-        isFind: false,
-        urlSearch: baseUrl + "/search/search"
+        isFind: true,
+        urlSearch: baseUrl + "/search/search",
+        isLoad: false
     },
     methods: {
         searchPosts: async () => {
+            search.isLoad = true
+
             const response = await fetch(search.urlSearch, {
                 method: "POST",
                 body: JSON.stringify({
@@ -18,6 +21,7 @@ const search = new Vue({
             const body = await response.json()
             
             if (!body.isEmpty) {
+                search.isLoad = false
                 search.isFind = false
             }
 
@@ -33,6 +37,7 @@ const search = new Vue({
             search.posts = body
             search.posts.reverse()
             search.isFind = true
+            search.isLoad = false
         }
     }
 })
