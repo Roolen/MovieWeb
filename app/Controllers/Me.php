@@ -24,8 +24,8 @@ class Me extends BaseController
 
         $isAvatar = ($user['path_avatar'])?true:false;
         $avatar = ($user['path_avatar'])
-                  ? $user['path_avatar']
-                  : base_url()."/images/employee.svg";
+                  ? base_url() . $user['path_avatar']
+                  : base_url() . "/images/employee.svg";
         
         $data = [
             'title' => 'Me '.$nick,
@@ -170,7 +170,7 @@ class Me extends BaseController
         $imagePath = ROOTPATH.'public/write/images/users/'.$user['nickname'].'.png';
         write_file($imagePath, $request, 'wb');
 
-        $sitePath = base_url()."/write/images/users/".$user['nickname'].'.png';
+        $sitePath = "/write/images/users/".$user['nickname'].'.png';
         $status = $usersModel->changeAvatar($idUser, $sitePath);
 
         if ($status) {

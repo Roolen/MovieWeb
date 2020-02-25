@@ -145,6 +145,37 @@ class PostsModel extends Model
     }
 
     /**
+     * Изменить содержимое поста.
+     *
+     * @param string $idPost id поста
+     * @param array $dataPost массив с новыми данными для поста
+     * @return bool успешность изменения данных поста
+     */
+    public function changePost(string $idPost, array $dataPost)
+    {
+        $post = $this->update($idPost, $dataPost);
+
+        return ($post)
+               ? true
+               : false;
+    }
+
+    /**
+     * Удалить пост.
+     *
+     * @param integer $idPost id поста
+     * @return bool успешность удаления поста
+     */
+    public function removePost(int $idPost)
+    {
+        $status = $this->delete($idPost);
+
+        return ($status)
+               ? true
+               : false;
+    }
+
+    /**
      * Установить новый адрес изображения для поста.
      *
      * @param string $imagePath адрес изображения

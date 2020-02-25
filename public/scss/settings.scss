@@ -1,0 +1,78 @@
+@import "color.scss";
+
+.main {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    padding-top: 30px;
+    width: 70%;
+    box-sizing: border-box;
+
+    .user-nick {
+        font-family: 'Blanch';
+        font-size: 32px;
+        line-height: 48px;
+        color: $dark_blue;
+        text-align: center;
+    }
+
+    .settings-block {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .option {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+            padding-left: 10vw;
+            padding-right: 10vw;
+
+            .option-label {
+                font-family: 'Blanch';
+                font-size: 28px;
+                line-height: 28px;
+                color: $dark_blue;
+            }
+
+            .option-hidden {
+                display: none;
+            }
+
+            .option-hidden:checked + .option-check {
+                background: $dark_blue;
+            }
+
+            .option-hidden:checked + .option-check:before {
+                content: "\f00c";
+                margin-left: 1px;
+                font-family: 'Awesome-Solid';
+                font-size: 14px;
+                color: $white;
+            }
+
+            .option-check {
+                width: 16px;
+                height: 16px;
+                background: none;
+                border: 1px solid $dark_blue;
+                border-radius: 5px;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .accept-message {
+        margin-bottom: 20px;
+        font-family: 'Blanch';
+        font-size: 28px;
+        line-height: 32px;
+        text-align: center;
+    }
+
+    .default-button {
+        align-self: center;
+        width: 150px;
+        height: 60px;
+    }
+}

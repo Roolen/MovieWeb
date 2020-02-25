@@ -17,7 +17,8 @@ const me = new Vue({
         isSubscribe: false,
         countSubs: 0,
         textMessage: "",
-        isEditMessage: false
+        isEditMessage: false,
+        isLoad: true
     },
     mounted: () => {
         setTimeout(() => { me.getPosts()
@@ -31,16 +32,23 @@ const me = new Vue({
             const body = await response.json()
             console.log(body)
 
+            if (body.empty) {
+                me.isLoad = false
+                return
+            }
+
             for (post of body) {
                 if (post.text_post.length > 250) {
                     post.text_post = post.text_post.substring(0, 246)
                     post.text_post += "..."
                 }
                 let date = new Date(post.date_publish);
-                post.date_publish = `${date.getMonth()}.${date.getDate()}\n${date.getFullYear()}`
+                post.date_publish = `${date.getMonth()+1}.${date.getDate()}\n${date.getFullYear()}`
             }
-            me.posts = body;
+            me.posts = body
+            me.posts.reverse()
             me.countPosts = me.posts.length
+            me.isLoad = false;
         },
         getCountSubs: async () => {
             try {

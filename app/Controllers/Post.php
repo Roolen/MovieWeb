@@ -12,6 +12,7 @@ class Post extends BaseController
 {
     public function index(string $titlePost)
     {
+        $session = session();
         $titlePost = rawurldecode($titlePost);
 
         $model = new PostsModel();
@@ -27,8 +28,11 @@ class Post extends BaseController
 
         $post['text_post'] = nl2br($post['text_post']);
 
+        $idUser = (int)$session->get('idUser');
+
         $data = [
             'title' => $titlePost,
+            'isAuthor' => ($idUser == $author['id']),
             'date' => $post['date_publish'],
             'rating' => $post['rating'],
             'text' => $post['text_post'],
@@ -40,7 +44,7 @@ class Post extends BaseController
 
             'nickAuthor' => $author['nickname'],
             'imageAuthor' => ($author['path_avatar'])
-                             ? $author['path_avatar']
+                             ? base_url() . $author['path_avatar']
                              : base_url() . "/images/employee.svg"
 
         ];
@@ -105,7 +109,7 @@ class Post extends BaseController
             unset($comment['id_author']);
             $comment['author'] = $user['nickname'];
             $comment['avatar'] = ($user['path_avatar'])
-                                 ? $user['path_avatar']
+                                 ? base_url() . $user['path_avatar']
                                  : base_url() . "/images/employee.svg";
         }
 
@@ -170,7 +174,7 @@ class Post extends BaseController
             unset($post['id_author']);
             $post['author'] = $author['nickname'];
             $post['authorAvatar'] = ($author['path_avatar'])
-                                     ? $author['path_avatar']
+                                     ? base_url() . $author['path_avatar']
                                      : base_url() . "/images/employee.svg";
 
         }

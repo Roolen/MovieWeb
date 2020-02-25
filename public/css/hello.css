@@ -415,6 +415,7 @@ body {
   font-family: "Amsterdam";
   font-size: 18px;
   color: #F2784B;
+  transition: all 0.3s ease-in;
 }
 
 .registration-section {
@@ -451,6 +452,10 @@ body {
 }
 .registration-section .field::placeholder {
   color: #707070;
+  transition: all 0.2s ease-in;
+}
+.registration-section .field:focus::placeholder {
+  opacity: 0;
 }
 @media screen and (max-width: 800px) {
   .registration-section .field {
@@ -471,6 +476,14 @@ body {
   border: none;
   border-radius: 15px;
   box-shadow: 6px 6px 12px rgba(0, 0, 0, 0.3);
+  transition: all 0.2s linear;
+}
+.registration-section .button:hover {
+  background: #E9E9E9;
+  color: #1B1D2A;
+}
+.registration-section .button:active {
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
 }
 .registration-section .button-authorize {
   margin-top: 20px;
@@ -583,10 +596,23 @@ body {
 }
 .modal-auth .modal-form .field::placeholder {
   color: #b0b0b0;
+  transition: all 0.3s ease-in;
+}
+.modal-auth .modal-form .field:focus::placeholder {
+  opacity: 0;
 }
 .modal-auth .modal-form .button {
   background: #E9E9E9;
   color: #1B1D2A;
+  transition: all 0.2s linear;
+}
+.modal-auth .modal-form .button:hover {
+  font-size: 20px;
+  border-radius: 25px;
+}
+.modal-auth .modal-form .button:active {
+  background: #1f1f2f;
+  color: #E9E9E9;
 }
 @media screen and (max-width: 550px) {
   .modal-auth {

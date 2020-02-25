@@ -10,12 +10,14 @@
     padding-bottom: 200px;
     box-sizing: border-box;
 
-    h2 {
+    .title-label, .text-label {
         font-family: 'Blanch';
         font-size: 48px;
         line-height: 54px;
         color: $dark_blue_light;
     }
+
+    .text-label { font-size: 42px; }
 
     .default-field {
         margin-top: 10px;
@@ -26,11 +28,21 @@
     }
 
     .text-field {
+        margin-top: 10px;
         width: 90%;
         min-height: 300px;
-        resize: none;
-        background: none;
-        border-color: #707070;
+        padding: 10px;
+        resize: height;
+        background: $white;
+        border: none;
+        border-radius: 15px;
+        box-shadow: 
+            -4px -4px 8px rgba(55, 55, 55, .2),
+            4px 4px 8px rgba(55, 55, 55, .2),
+            4px -4px 8px rgba(55, 55, 55, .2),
+            -4px 4px 8px rgba(55, 55, 55, .2);
+        
+        transition: all .2s linear;
 
         font-family: 'Akrobat';
         font-size: 22px;
@@ -46,7 +58,11 @@
         }
 
         &:focus {
-            border-color: $dark_blue;
+            box-shadow: 
+                -8px -8px 12px rgba(55, 55, 55, .2),
+                8px 8px 12px rgba(55, 55, 55, .2),
+                8px -8px 12px rgba(55, 55, 55, .2),
+                -8px 8px 12px rgba(55, 55, 55, .2);
         }
     }
 
@@ -79,7 +95,7 @@
     }
 
     .message-publish {
-        margin-top: 50px;
+        margin-top: 30px;
         margin-bottom: 20px;
 
         font-family: 'Blanch';
@@ -90,5 +106,15 @@
 
     .publish-button {
         height: 90px;
+    }
+
+    .delete-button {
+        margin-top: 20px;
+        background: #933535;
+
+        &:hover {
+            background: #c33535;
+            color: $white;
+        }
     }
 }

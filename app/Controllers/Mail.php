@@ -10,7 +10,7 @@ class Mail extends BaseController
         $session = session();
 
         if (! $session->has('isAuth')) {
-            $this->response->redirect(base_url());
+            return $this->response->redirect(base_url());
         }
 
         $data = [
@@ -19,7 +19,6 @@ class Mail extends BaseController
 
         echo view('Share/header', $data);
         echo view('mail');
-        echo view('Share/footer');
     }
 
     public function senders()
@@ -48,8 +47,8 @@ class Mail extends BaseController
             $usersData[] = [
                 'nickname' => $user['nickname'],
                 'avatar' => ($user['path_avatar'])
-                            ? $user['path_avatar']
-                            : base_url().'/images/employee.svg'
+                            ? base_url() . $user['path_avatar']
+                            : base_url() . '/images/employee.svg'
             ];
         }
 

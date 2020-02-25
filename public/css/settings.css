@@ -1,0 +1,67 @@
+@charset "UTF-8";
+.main {
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  padding-top: 30px;
+  width: 70%;
+  box-sizing: border-box;
+}
+.main .user-nick {
+  font-family: "Blanch";
+  font-size: 32px;
+  line-height: 48px;
+  color: #1B1D2A;
+  text-align: center;
+}
+.main .settings-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.main .settings-block .option {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding-left: 10vw;
+  padding-right: 10vw;
+}
+.main .settings-block .option .option-label {
+  font-family: "Blanch";
+  font-size: 28px;
+  line-height: 28px;
+  color: #1B1D2A;
+}
+.main .settings-block .option .option-hidden {
+  display: none;
+}
+.main .settings-block .option .option-hidden:checked + .option-check {
+  background: #1B1D2A;
+}
+.main .settings-block .option .option-hidden:checked + .option-check:before {
+  content: "";
+  margin-left: 1px;
+  font-family: "Awesome-Solid";
+  font-size: 14px;
+  color: #E9E9E9;
+}
+.main .settings-block .option .option-check {
+  width: 16px;
+  height: 16px;
+  background: none;
+  border: 1px solid #1B1D2A;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.main .accept-message {
+  margin-bottom: 20px;
+  font-family: "Blanch";
+  font-size: 28px;
+  line-height: 32px;
+  text-align: center;
+}
+.main .default-button {
+  align-self: center;
+  width: 150px;
+  height: 60px;
+}

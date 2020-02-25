@@ -1,6 +1,7 @@
 <?php namespace App\Controllers;
 
 use App\Models\UsersModel;
+use App\Models\SettingsModel;
 
 class Home extends BaseController
 {
@@ -48,8 +49,13 @@ class Home extends BaseController
 				return json_encode($check);
 			}
 		}
+		
+		$idUser = $model->createUser($data_user);
 
-		if ($model->createUser($data_user)) {
+		if ($idUser) {
+			$settingsModel = new SettingsModel();
+			$settings = $settingsModel->createSettings($idUser);
+
 			$check['success'] = true;
 			$this->response->setStatusCode(201);
 			return json_encode($check);

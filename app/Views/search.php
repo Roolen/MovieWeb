@@ -5,6 +5,7 @@
             <input v-model="textSearch" type="text" class="default-field" placeholder="Введите слово..."/>
             <button @click="searchPosts()" class="default-button search-icon">Search</button>
         </div>
+        <div v-if="isLoad" class="load-screen"></div>
         <div v-if="!isFind" class="empty-text">Ничего не найдено</div>
         <div class="posts-block">
             <div v-for="post in posts" class="post">

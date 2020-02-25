@@ -1,14 +1,16 @@
 const write = new Vue({
     el: "#write-app",
     data: {
-        title: "",
-        text: "",
-        tags: "",
+        title: title,
+        text: text,
+        tags: tags,
         image: "",
         messagePublish: "",
         messageStyle: "",
         urlCreate: baseUrl + "/write/createPost",
-        urlImage: baseUrl + "/write/loadImage"
+        urlChange: baseUrl + "/write/change",
+        urlImage: baseUrl + "/write/loadImage",
+        urlDelete: baseUrl + "/write/delete"
     },
     methods: {
         changeImage: async (event) => {
@@ -47,13 +49,17 @@ const write = new Vue({
                 write.messagePublish = ""
                 const body = await response.json()
 
-                let res = await fetch(write.urlImage+"/"+write.title, {
-                    method: "POST",
-                    body: write.image
-                })
-                const imageBody = await res.json()
+                if (write.image.length > 0) {
+                    let res = await fetch(write.urlImage+"/"+write.title, {
+                        method: "POST",
+                        body: write.image
+                    })
+
+                    const imageBody = await res.json()
+                    console.log(imageBody)
+                }
+                
     
-                console.log(imageBody)
                 console.log(body)
     
                 write.messageStyle = "color: red;"
@@ -73,6 +79,64 @@ const write = new Vue({
                 }  
             }
             catch (e) {
+                console.log(e)
+            }
+        },
+        changePost: async () => {
+            try {
+                const response = await fetch(write.urlChange, {
+                    method: "POST",
+                    body: JSON.stringify({
+                        title: write.title,
+                        text: write.text,
+                        tags: write.tags
+                    })
+                })
+
+                if (write.image.length > 0) {
+                    let res = await fetch(write.urlImage+"/"+write.title, {
+                        method: "POST",
+                        body: write.image
+                    })
+
+                    const imageBody = await res.json()
+                    console.log(imageBody)
+                }
+
+                const body = await response.json()
+                console.log(body)
+
+                if (body.success) {
+                    write.messagePublish = "Статья изменена"
+                    write.messageStyle = "color: green;"
+                }
+                else {
+                    write.messagePublish = "Ошибка"
+                }
+            } catch (e) {
+                console.log(e)
+            }
+        },
+        deletePost: async () => {
+            try {
+                const isConfirm = confirm("Вы действительно хотите удалить пост?")
+
+                if (!isConfirm) { return }
+
+                const response = await fetch(write.urlDelete+'/'+write.title)
+
+                const body = await response.json()
+                console.log(body)
+
+                if (body.success) {
+                    write.messagePublish = "Пост удалён"
+                    write.messageStyle = "color: yellow;"
+
+                    setTimeout(() => {
+                        window.location.href = baseUrl + "/news"
+                    }, 1000)
+                }
+            } catch (e) {
                 console.log(e)
             }
         }
