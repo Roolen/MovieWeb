@@ -57,6 +57,10 @@
             opacity: 0;
         }
 
+        &::-webkit-resizer {
+            background: $dark_blue;
+        }
+
         &:focus {
             box-shadow: 
                 -8px -8px 12px rgba(55, 55, 55, .2),
