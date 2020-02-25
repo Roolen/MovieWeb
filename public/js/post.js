@@ -56,6 +56,9 @@ const post = new Vue({
                 post.textComment = ""
                 post.getComments()
             }
+        },
+        editPost: () => {
+            window.location.href = baseUrl + "/write/" + title
         }
     }
 })

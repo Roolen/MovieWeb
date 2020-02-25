@@ -12,6 +12,7 @@ class Post extends BaseController
 {
     public function index(string $titlePost)
     {
+        $session = session();
         $titlePost = rawurldecode($titlePost);
 
         $model = new PostsModel();
@@ -27,8 +28,11 @@ class Post extends BaseController
 
         $post['text_post'] = nl2br($post['text_post']);
 
+        $idUser = (int)$session->get('idUser');
+
         $data = [
             'title' => $titlePost,
+            'isAuthor' => ($idUser == $author['id']),
             'date' => $post['date_publish'],
             'rating' => $post['rating'],
             'text' => $post['text_post'],
