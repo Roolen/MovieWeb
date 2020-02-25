@@ -21,6 +21,10 @@ class Write extends BaseController
             $postsModel = new PostsModel();
             $post = $postsModel->getPost($titlePost);
             $idUser = (int)$session->get('idUser');
+
+            if (! $post) {
+                return $this->response->redirect(base_url());
+            }
             
             if (! $idUser = $post['id_author']) {
                 return $this->response->redirect(base_url()."/write");

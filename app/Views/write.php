@@ -26,7 +26,6 @@
 </div>
 <script>
     const baseUrl = "<?= base_url(); ?>"
-    "<?= $text; ?>"
     const text = decodeURI("<?= (isset($text))?$text:''; ?>")
     const tags = "<?= (isset($tags))?$tags:''; ?>"
     const title = "<?= (isset($titlePost))?$titlePost:''; ?>"
