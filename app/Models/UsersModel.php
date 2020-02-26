@@ -227,4 +227,25 @@ class UsersModel extends Model
 
         return $check;
     }
+
+    /**
+     * Находит пользователей по строке поиска.
+     *
+     * @param string $searchLine фрагмент никнэйма
+     * @return array|bool массив данных пользователей или false
+     */
+    public function searchUsers(string $searchLine)
+    {
+        if (mb_strlen($searchLine) < 4) {
+            return false;
+        }
+
+        $users = $this->asArray()
+                      ->like('nickname', $searchLine)
+                      ->findAll();
+
+        return ($users)
+               ? $users
+               : false;
+    }
 }
