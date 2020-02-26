@@ -2,16 +2,39 @@ const search = new Vue({
     el: '#search-app',
     data: {
         posts: [],
+        users: [],
         textSearch: "",
+        typeSearch: 0,
         isFind: true,
         urlSearch: baseUrl + "/search/search",
+        urlSearchUsers: baseUrl + "/search/searchUsers",
         isLoad: false
     },
     methods: {
-        searchPosts: async () => {
+        search: () => {
+            search.posts = []
+            search.users = []
+
+            switch (search.typeSearch) {
+                case '0':
+                    search.searchPosts()
+                    break
+                case '1':
+                    search.searchUsers()
+                    break
+                case '2':
+                    search.searchPosts(true)
+                    break
+            }
+        },
+        searchPosts: async (byText = false) => {
             search.isLoad = true
 
-            const response = await fetch(search.urlSearch, {
+            const url = (byText)
+                        ? search.urlSearch + "/true"
+                        : search.urlSearch
+
+            const response = await fetch(url, {
                 method: "POST",
                 body: JSON.stringify({
                     searchLine: search.textSearch
@@ -19,8 +42,9 @@ const search = new Vue({
             })
 
             const body = await response.json()
+            console.log(body)
             
-            if (!body.isEmpty) {
+            if (body.isEmpty) {
                 search.isLoad = false
                 search.isFind = false
             }
@@ -38,6 +62,29 @@ const search = new Vue({
             search.posts.reverse()
             search.isFind = true
             search.isLoad = false
+        },
+        searchUsers: async () => {
+            search.isLoad = true
+
+            const response = await fetch(search.urlSearchUsers, {
+                method: "POST",
+                body: JSON.stringify({
+                    searchLine: search.textSearch
+                })
+            })
+
+            const body = await response.json()
+            console.log(body)
+
+            if (!body.isEmpty) {
+                search.users = body
+                search.isFind = true
+                search.isLoad = false
+            }
+            else {
+                search.isFind = false
+                search.isLoad = false
+            }
         }
     }
 })
