@@ -235,6 +235,9 @@
   border: 1px solid #1B1D2A;
   border-radius: 50px;
 }
+.main .search-block .search-selector-block .search-selector:first-of-type {
+  margin-left: 0;
+}
 .main .search-block .search-selector-block .selector-hidden {
   display: none;
 }

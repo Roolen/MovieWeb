@@ -37,6 +37,12 @@
                 height: 20px;
                 border: 1px solid $dark_blue;
                 border-radius: 50px;
+
+                
+            }
+
+            .search-selector:first-of-type {
+                margin-left: 0;
             }
 
             .selector-hidden {
