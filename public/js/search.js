@@ -4,7 +4,7 @@ const search = new Vue({
         posts: [],
         users: [],
         textSearch: "",
-        typeSearch: 0,
+        typeSearch: "0",
         isFind: true,
         urlSearch: baseUrl + "/search/search",
         urlSearchUsers: baseUrl + "/search/searchUsers",
