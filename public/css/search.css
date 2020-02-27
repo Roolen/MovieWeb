@@ -234,6 +234,8 @@
   height: 20px;
   border: 1px solid #1B1D2A;
   border-radius: 50px;
+  cursor: pointer;
+  transition: background 0.2s linear;
 }
 .main .search-block .search-selector-block .search-selector:first-of-type {
   margin-left: 0;
@@ -250,6 +252,7 @@
   font-size: 24px;
   line-height: 26px;
   color: #1B1D2A;
+  cursor: pointer;
 }
 .main .load-screen {
   margin-top: 30vh;
