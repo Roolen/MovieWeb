@@ -78,6 +78,7 @@ $routes->get('write/new', 'Write::index');
 $routes->get('write/(:segment)', 'Write::index/$1');
 
 $routes->post('me/changeDescription', 'Me::changeDescription');
+$routes->get('me/logout', 'Me::logout');
 $routes->get('me/(:alpha)', 'Me::index/$1');
 
 $routes->get('post/comments/(:any)', 'Post::comments/$1');

@@ -182,4 +182,13 @@ class Me extends BaseController
             return json_encode(['success' => false]);
         }
     }
+
+    public function logout()
+    {
+        $session = session();
+
+        $session->destroy();
+        
+        $this->response->redirect(base_url());
+    }
 }
