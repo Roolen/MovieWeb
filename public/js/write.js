@@ -109,6 +109,10 @@ const write = new Vue({
                 if (body.success) {
                     write.messagePublish = "Статья изменена"
                     write.messageStyle = "color: green;"
+
+                    setTimeout(() => {
+                        window.location.href = baseUrl + '/post/' + write.title
+                    }, 2000)
                 }
                 else {
                     write.messagePublish = "Ошибка"
