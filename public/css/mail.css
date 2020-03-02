@@ -95,7 +95,7 @@
   font-size: 28px;
   line-height: 48px;
   color: #1B1D2A;
-  text-align: right;
+  text-align: left;
 }
 .main .messages-block .message .text {
   margin-top: 10px;
@@ -110,10 +110,16 @@
   font-family: "Amsterdam";
   font-size: 12px;
   color: #707070;
-  text-align: right;
+  text-align: left;
 }
 .main .messages-block .user-message {
   align-self: flex-end;
+}
+.main .messages-block .user-message .nick {
+  text-align: right;
+}
+.main .messages-block .user-message .date {
+  text-align: right;
 }
 .main .write-block {
   display: flex;

@@ -35,6 +35,10 @@ const mail = new Vue({
 
             if (!body.isEmpty) {
                 mail.messages = body
+                mail.messages.sort((a, b) => (new Date(a.date) > new Date(b.date))
+                                             ? 1
+                                             : -1)
+
                 mail.activeUser = user
                 mail.isMessages = true
 
