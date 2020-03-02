@@ -135,7 +135,7 @@ class Write extends BaseController
 
         $idUser = (int)$session->get('idUser');
 
-        if ($idUser != $post['id']) {
+        if ($idUser != $post['id_author']) {
             return json_encode(['success' => false]);
         }
 
