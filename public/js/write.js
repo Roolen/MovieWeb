@@ -49,7 +49,7 @@ const write = new Vue({
                 write.messagePublish = ""
                 const body = await response.json()
 
-                if (write.image.length > 0) {
+                if (write.image) {
                     let res = await fetch(write.urlImage+"/"+write.title, {
                         method: "POST",
                         body: write.image
@@ -93,7 +93,7 @@ const write = new Vue({
                     })
                 })
 
-                if (write.image.length > 0) {
+                if (write.image) {
                     let res = await fetch(write.urlImage+"/"+write.title, {
                         method: "POST",
                         body: write.image
