@@ -1,20 +1,20 @@
 <link rel="stylesheet" href="<?= base_url(); ?>/css/settings.css" />
 <div id="settings-app">
     <main class="main">
-        <h1 class="user-nick"><?= $nick ?> settings</h1>
+        <h1 class="user-nick"><?= $nick ?> Настройки</h1>
         <div class="settings-block">
             <div class="option">
-                <label for="hiddenEmail" class="option-label">Email is hidden</label>
+                <label for="hiddenEmail" class="option-label">Скрыть email</label>
                 <input v-model="settings.is_hidden_email" type="checkbox" class="option-hidden" id="hiddenEmail"/>
                 <label for="hiddenEmail" class="option-check"></label>
             </div>
             <div class="option">
-                <label for="hiddenPhone" class="option-label">Phone is hidden</label>
+                <label for="hiddenPhone" class="option-label">Скрыть телефон</label>
                 <input v-model="settings.is_hidden_phone" value="true" type="checkbox" class="option-hidden" id="hiddenPhone"/>
                 <label for="hiddenPhone" class="option-check"></label>
             </div>
             <div class="option">
-                <label for="sendNotif" class="option-label">Send Notifications</label>
+                <label for="sendNotif" class="option-label">Сохранить изменения</label>
                 <input v-model="settings.is_send_notifications" type="checkbox" class="option-hidden" id="sendNotif"/>
                 <label for="sendNotif" class="option-check"></label>
             </div>

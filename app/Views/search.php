@@ -3,19 +3,19 @@
     <main class="main">
         <div class="search-block">
             <input v-model="textSearch" type="text" class="default-field" placeholder="Введите слово..."/>
-            <button @click="search()" class="default-button search-icon">Search</button>
+            <button @click="search()" class="default-button search-icon">Поиск</button>
             <div class="search-selector-block">
                 <input v-model="typeSearch" value="0" type="radio" name="search-selector" id="selector-posts" class="selector-hidden">
                 <label for="selector-posts" class="search-selector"></label>
-                <label for="selector-posts" class="selector-label">Posts</label>
+                <label for="selector-posts" class="selector-label">Посты</label>
 
                 <input v-model="typeSearch" value="1" type="radio" name="search-selector" id="selector-users" class="selector-hidden">
                 <label for="selector-users" class="search-selector"></label>
-                <label for="selector-users" class="selector-label">Users</label>
+                <label for="selector-users" class="selector-label">Пользователи</label>
 
                 <input v-model="typeSearch" value="2" type="radio" name="search-selector" id="selector-desc" class="selector-hidden">
                 <label for="selector-desc" class="search-selector"></label>
-                <label for="selector-desc" class="selector-label">Text</label>
+                <label for="selector-desc" class="selector-label">Текст</label>
             </div>
         </div>
         <div v-if="isLoad" class="load-screen"></div>

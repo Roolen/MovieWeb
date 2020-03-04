@@ -91,9 +91,9 @@ body {
 }
 .head-section .head-hello {
   font-family: "Blanch";
-  font-size: 92px;
+  font-size: 82px;
   color: #1B1D2A;
-  line-height: 84px;
+  line-height: 74px;
 }
 @media screen and (max-width: 800px) {
   .head-section .head-hello {

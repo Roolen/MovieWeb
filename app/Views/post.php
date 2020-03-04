@@ -12,7 +12,7 @@
             <div class="tags-block"><?= implode(", ", $tags) ?></div>
             <div class="title-post"><?= $title ?></div>
             <?php if ($isAuthor) : ?>
-                <button @click="editPost()" class="default-button edit-button">Edit</button>
+                <button @click="editPost()" class="default-button edit-button">Редактировать</button>
             <?php endif ?>
         </header>
         <section class="post">

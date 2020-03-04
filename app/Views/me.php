@@ -17,23 +17,23 @@
                     <div v-if="!isEditDesc" class="user-desc">{{ description }}</div>
                     <?php if (! $isYou) : ?>
                         <button v-if="!isEditMessage" @click="isEditMessage = true"
-                            class="default-button write-icon" id="writeButton">Write</button>
-                        <button v-else @click="sendMessage()" class="default-button">Send</button>
+                            class="default-button write-icon" id="writeButton">Написать</button>
+                        <button v-else @click="sendMessage()" class="default-button">Отправить</button>
                     <?php else : ?>
                         <button v-if="!isEditDesc" @click="isEditDesc = true"
-                            class="default-button desc-icon">Change Description</button>
+                            class="default-button desc-icon"> О себе</button>
                         <button v-else @click="changeDesc()" class="default-button desc-icon">Apply</button>
                     <?php endif ?>
                 </div>
             </div>
             <div class="user-manage">
                 <?php if (! $isYou) : ?>
-                    <button v-if="!isSubscribe" @click="subscribe()" class="default-button sub-icon">Subscribe</button>
-                    <button v-else @click="describe()" class="default-button unsub-icon">Describe</button>
+                    <button v-if="!isSubscribe" @click="subscribe()" class="default-button sub-icon">Подписаться</button>
+                    <button v-else @click="describe()" class="default-button unsub-icon">Отписаться</button>
                 <?php else : ?>
-                    <label for="fileInput" class="default-button image-icon">Change Image</label>
+                    <label for="fileInput" class="default-button image-icon">Добавить картинку</label>
                     <input @change="changeImage" id="fileInput" class="file-input" type="file" accept=".jpg, .jpeg, .png" />
-                    <button @click="addPost()" class="default-button plus-icon">Add Post</button>
+                    <button @click="addPost()" class="default-button plus-icon">Добавить пост</button>
                 <?php endif ?>
             </div>
         </section>
