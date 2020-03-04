@@ -156,7 +156,7 @@ class Write extends BaseController
         
         $request = $this->request->getBody();
         
-        $pathImage = ROOTPATH.'public/write/images/posts/'.$titlePost.'.png';
+        $pathImage = ROOTPATH.'public_html/write/images/posts/'.$titlePost.'.png';
         write_file($pathImage, $request, 'wb');
         
         $postsModel = new PostsModel();
