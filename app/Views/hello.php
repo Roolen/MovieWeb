@@ -23,7 +23,7 @@
 			</div>
 			<div class="menu">
 				<ul class="menu-list">
-					<li class="menu-item"><button id="future_button">Планируется</button></li>
+					<li class="menu-item"><button id="future_button">Возможности</button></li>
 					<li class="menu-item"><button id="contacts_button">Контакты</button></li>
 					<li class="menu-item"><button @click="modalOpen" id="authorize_button">Авторизация</button></li>
 				</ul>
@@ -33,9 +33,8 @@
 			<div class="head-section">
 				<div class="head-hello">
 					<h1>
-						Будь<br>
-						В мире<br>
-						Кино!<br>
+						Присоединяйтесь<br>
+						к сообществу кинокритиков<br>
 						 
 					</h1>
 				</div>
@@ -100,25 +99,25 @@
 				</div>
 			</div>
 
-			<div class="registration-section">
+			<div class="registration-section" @keyup.enter="registration">
 				<h2 class="title"><a name="reg">Регистрация</a></h2>
 
 				<div class="info-warning">{{ nameWarning }}</div>
-				<input v-model="firstName" type="text" class="field" id="name_field" placeholder="name">
+				<input v-model="firstName" type="text" class="field" id="name_field" placeholder="Имя">
 
 				<div class="info-warning">{{ nickWarning }}</div>
-				<input v-model="nickname" type="text" class="field" id="nickname_field" placeholder="nickname">
+				<input v-model="nickname" type="text" class="field" id="nickname_field" placeholder="Логин">
 
 				<div class="info-warning">{{ emailWarning }}</div>
-				<input v-model="email" type="email" class="field" id="email_field" placeholder="email">
+				<input v-model="email" type="email" class="field" id="email_field" placeholder="Электронная почта">
 
 				<div class="info-warning">{{ passwordWarning }}</div>
-				<input v-model="password" type="password" class="field" id="password_field" placeholder="password">
+				<input v-model="password" type="password" class="field" id="password_field" placeholder="Пароль">
 
 				<div class="info-warning">{{ phoneWarning }}</div>
-				<input v-model="phone" type="tel" class="field" id="phone_field" placeholder="phone number">
+				<input v-model="phone" type="tel" class="field" id="phone_field" placeholder="Номер телефона">
 
-				<button v-on:click="registration" type="submit" class="button" id="register_button">Регистрация</button>
+				<button @click="registration" type="submit" class="button" id="register_button">Регистрация</button>
 				<button @click="modalOpen" type="button" class="button-authorize">Авторизация</button>
 			</div>
 		</main>
@@ -129,9 +128,9 @@
 				<header>
 					<h2 class="modal-title">Авторизация</h2>
 				</header>
-				<div class="modal-form">
-					<input v-model="nickname" type="text" class="field" placeholder="login">
-					<input v-model="password" type="password" class="field" placeholder="password">
+				<div class="modal-form" @keyup.enter="authorize">
+					<input v-model="nickname" type="text" class="field" placeholder="Логин">
+					<input v-model="password" type="password" class="field" placeholder="Пароль">
 					<div class="info-warning">{{ authWarning }}</div>
 					<button @click="authorize" type="button" class="button">Вход</button>
 				</div>

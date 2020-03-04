@@ -17,7 +17,7 @@
         </div>
         <div v-if="isMessages" class="write-block">
             <textarea v-model="textMessage" type="text" class="edit-field"></textarea>
-            <button @click="sendMessage()" class="default-button">Ок</button>
+            <button @click="sendMessage()" class="default-button"></button>
         </div>
     </main>
 </div>

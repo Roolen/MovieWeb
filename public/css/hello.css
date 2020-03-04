@@ -11,6 +11,11 @@ body {
   background: #E9E9E9;
 }
 
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .header {
   position: relative;
   display: flex;
@@ -91,9 +96,9 @@ body {
 }
 .head-section .head-hello {
   font-family: "Blanch";
-  font-size: 82px;
+  font-size: 92px;
   color: #1B1D2A;
-  line-height: 74px;
+  line-height: 84px;
 }
 @media screen and (max-width: 800px) {
   .head-section .head-hello {

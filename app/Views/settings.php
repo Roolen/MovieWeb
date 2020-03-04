@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="<?= base_url(); ?>/css/settings.css" />
 <div id="settings-app">
     <main class="main">
-        <h1 class="user-nick"><?= $nick ?> Настройки</h1>
+        <h1 class="user-nick">Настройки для <?= $nick ?></h1>
         <div class="settings-block">
             <div class="option">
                 <label for="hiddenEmail" class="option-label">Скрыть email</label>
@@ -14,13 +14,13 @@
                 <label for="hiddenPhone" class="option-check"></label>
             </div>
             <div class="option">
-                <label for="sendNotif" class="option-label">Сохранить изменения</label>
+                <label for="sendNotif" class="option-label">Отправлять уведомления</label>
                 <input v-model="settings.is_send_notifications" type="checkbox" class="option-hidden" id="sendNotif"/>
                 <label for="sendNotif" class="option-check"></label>
             </div>
         </div>
         <div :style="messageStyle" class="accept-message">{{ acceptMessage }}</div>
-        <button @click="acceptSettings()" class="default-button">Accept</button>
+        <button @click="acceptSettings()" class="default-button">Применить</button>
     </main>
 </div>
 <script>

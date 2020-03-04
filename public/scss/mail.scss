@@ -185,6 +185,8 @@
         .default-button {
             width: 150px;
             height: 100%;
+            font-family: 'Awesome-Solid';
+            font-size: 32px;
 
             @media screen and (max-width: 500px) {
                 margin-top: 10px;
