@@ -1,0 +1,124 @@
+@import "color.scss";
+@import "Templates/postBlock.scss";
+@import "Templates/userBlock.scss";
+@import "Templates/author.scss";
+
+.main {
+    margin: auto;
+    padding-top: 30px;
+    box-sizing: border-box;
+    width: 70%;
+
+    .search-block {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: auto;
+        width: 70%;
+
+        .default-field {
+            width: 85%;
+        }
+
+        .default-button {
+            margin-top: 10px;
+            width: 200px;
+            border-radius: 30px;
+        }
+
+        .search-selector-block {
+            display: flex;
+            margin-top: 20px;
+            
+            .search-selector {
+                margin-top: 2px;
+                margin-left: 20px;
+                width: 20px;
+                height: 20px;
+                border: 1px solid $dark_blue;
+                border-radius: 50px;
+                cursor: pointer;
+
+                transition: background .2s linear;
+            }
+
+            .search-selector:first-of-type {
+                margin-left: 0;
+            }
+
+            .selector-hidden {
+                display: none;
+            }
+
+            .selector-hidden:checked + .search-selector {
+                background: $dark_blue;
+            }
+
+            .selector-label {
+                margin-left: 10px;
+                font-family: 'Blanch';
+                font-size: 24px;
+                line-height: 26px;
+                color: $dark_blue;
+                cursor: pointer;
+            }
+        }
+    }
+
+    .load-screen {
+        margin-top: 30vh;
+    }
+
+    .empty-text {
+        margin: auto;
+        margin-top: 50px;
+        font-family: 'Blanch';
+        font-size: 32px;
+        color: $dark_blue;
+        text-align: center;
+    }
+    
+    .posts-block {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 80px;
+
+        @media screen and (max-width: 1200px) {
+            flex-direction: column;
+            align-items: center;
+        }
+    }
+
+    .users-block {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+
+        @media screen and (max-width: 1200px) {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .user {
+            position: relative;
+            width: 45%;
+            margin-bottom: 50px;
+
+            transition: all .5s linear;
+
+            @media screen and (max-width: 1200px) {
+                width: 90%;
+            }
+
+            &:hover .image-user {
+                $shadow-color: rgba(0, 0, 0, .3);
+                box-shadow: 
+                8px 0 14px $shadow-color,
+                0 8px 14px $shadow-color,
+                -8px 0 14px $shadow-color,
+                0 -8px 14px $shadow-color;
+            }
+        }
+    }
+}

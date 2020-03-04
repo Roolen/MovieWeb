@@ -7,7 +7,7 @@
                     <img src="<?= $user_image; ?>" :class="{'default-image':!isAvatar}" alt="user image" />
                     <div class="counter-describers">
                         <div class="count">{{ countSubs }}</div>
-                        <div class="subscribers">Subscribers</div>
+                        <div class="subscribers">Подписчиков</div>
                     </div>
                 </div>
                 <div class="user-detail">
@@ -17,28 +17,28 @@
                     <div v-if="!isEditDesc" class="user-desc">{{ description }}</div>
                     <?php if (! $isYou) : ?>
                         <button v-if="!isEditMessage" @click="isEditMessage = true"
-                            class="default-button write-icon" id="writeButton">Write</button>
-                        <button v-else @click="sendMessage()" class="default-button">Send</button>
+                            class="default-button write-icon" id="writeButton">Написать</button>
+                        <button v-else @click="sendMessage()" class="default-button">Отправить</button>
                     <?php else : ?>
                         <button v-if="!isEditDesc" @click="isEditDesc = true"
-                            class="default-button desc-icon">Change Description</button>
-                        <button v-else @click="changeDesc()" class="default-button desc-icon">Apply</button>
+                            class="default-button desc-icon">Изменить описание</button>
+                        <button v-else @click="changeDesc()" class="default-button desc-icon">Подтвердить</button>
                     <?php endif ?>
                 </div>
             </div>
             <div class="user-manage">
                 <?php if (! $isYou) : ?>
-                    <button v-if="!isSubscribe" @click="subscribe()" class="default-button sub-icon">Subscribe</button>
-                    <button v-else @click="describe()" class="default-button unsub-icon">Describe</button>
+                    <button v-if="!isSubscribe" @click="subscribe()" class="default-button sub-icon">Подписаться</button>
+                    <button v-else @click="describe()" class="default-button unsub-icon">Отписаться</button>
                 <?php else : ?>
-                    <label for="fileInput" class="default-button image-icon">Change Image</label>
+                    <label for="fileInput" class="default-button image-icon">Изменить аватар</label>
                     <input @change="changeImage" id="fileInput" class="file-input" type="file" accept=".jpg, .jpeg, .png" />
-                    <button @click="addPost()" class="default-button plus-icon">Add Post</button>
+                    <button @click="addPost()" class="default-button plus-icon">Новый пост</button>
                 <?php endif ?>
             </div>
         </section>
         <section v-bind:class="{ 'line-top': countPosts }" class="posts-block">
-            <div class="counter-posts">{{ countPosts }} Posts</div>
+            <div class="counter-posts">{{ countPosts }} Постов</div>
             <div v-if="isLoad" class="load-screen"></div>
             <div class="posts-container">
                 <div v-for="post in posts" class="post">
@@ -51,7 +51,7 @@
                                                      'isImage' => "post.isImage",
                                                      'title' => "{{ post.title }}",
                                                      'text' => "{{ post.text_post }}",
-                                                     'comments' => "comments",
+                                                     'comments' => "комментариев",
                                                      'adress' => 'post.address',
                                                      'address_user' => '\''.base_url().'/me/'.$user_nick.'\'']);
                     ?>

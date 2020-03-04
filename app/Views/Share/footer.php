@@ -5,7 +5,7 @@
             <a class="social-link vk" href="#"></a>
         </div>
         <div class="support-container">
-            <div class="support-title">Support</div>
+            <div class="support-title">Контактный телефон</div>
             <div class="support-phone">+7 951 548 45 85</div>
             <div class="logo"><img src="<?= base_url(); ?>/images/Logo.svg" alt="logo"></div>
         </div>

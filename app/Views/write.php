@@ -17,7 +17,7 @@
         <input @change="changeImage" class="file-input" id="file-input" type="file" accept=".jpg, .png, .jpeg" />
         <div :style="messageStyle" class="message-publish">{{ messagePublish }}</div>
         <?php if ($isRewrite) : ?>
-            <button @click="changePost()" class="default-button publish-button">Имзенить</button>
+            <button @click="changePost()" class="default-button publish-button">Изменить</button>
             <button @click="deletePost()" class="default-button delete-button">Удалить пост</button>
         <?php else : ?>
             <button @click="createPost()" class="default-button publish-button">Опубликовать</button>
@@ -26,7 +26,6 @@
 </div>
 <script>
     const baseUrl = "<?= base_url(); ?>"
-    "<?= $text; ?>"
     const text = decodeURI("<?= (isset($text))?$text:''; ?>")
     const tags = "<?= (isset($tags))?$tags:''; ?>"
     const title = "<?= (isset($titlePost))?$titlePost:''; ?>"

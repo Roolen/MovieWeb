@@ -12,9 +12,13 @@ class Home extends BaseController
 	 */
 	public function index()
 	{
-		$model = new UsersModel();
-		$data['users'] = $model->getUsers();
-		echo view('hello', $data);
+		$session = session();
+
+		if ($session->has('isAuth')) {
+			$this->response->redirect(base_url().'/news');
+		}
+
+		echo view('hello');
 	}
 
 	/**

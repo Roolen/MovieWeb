@@ -94,16 +94,20 @@ class PostsModel extends Model
      * Находит посты содержащие искомую строку.
      *
      * @param string $searchLine искомая строка
+     * @param bool $byText осуществлять поиск по содержимому поста
      * @return array|bool массив найденых постов или false если ничего не найдено
      */
-    public function searchPosts(string $searchLine)
+    public function searchPosts(string $searchLine, bool $byText = false)
     {
         if (mb_strlen($searchLine) < 4) {
             return false;
         }
 
+        $findField = ($byText)
+                     ? 'text_post'
+                     : 'title';
         $posts = $this->asArray()
-                      ->like('title', $searchLine)
+                      ->like($findField, $searchLine)
                       ->findAll();
 
         return ($posts)

@@ -21,6 +21,10 @@ class Write extends BaseController
             $postsModel = new PostsModel();
             $post = $postsModel->getPost($titlePost);
             $idUser = (int)$session->get('idUser');
+
+            if (! $post) {
+                return $this->response->redirect(base_url());
+            }
             
             if (! $idUser = $post['id_author']) {
                 return $this->response->redirect(base_url()."/write");
@@ -131,7 +135,7 @@ class Write extends BaseController
 
         $idUser = (int)$session->get('idUser');
 
-        if ($idUser != $post['id']) {
+        if ($idUser != $post['id_author']) {
             return json_encode(['success' => false]);
         }
 
@@ -152,7 +156,7 @@ class Write extends BaseController
         
         $request = $this->request->getBody();
         
-        $pathImage = ROOTPATH.'public/write/images/posts/'.$titlePost.'.png';
+        $pathImage = ROOTPATH.'public_html/write/images/posts/'.$titlePost.'.png';
         write_file($pathImage, $request, 'wb');
         
         $postsModel = new PostsModel();

@@ -45,6 +45,9 @@
 .main .text-field:focus::placeholder {
   opacity: 0;
 }
+.main .text-field::-webkit-resizer {
+  background: #1B1D2A;
+}
 .main .text-field:focus {
   box-shadow: -8px -8px 12px rgba(55, 55, 55, 0.2), 8px 8px 12px rgba(55, 55, 55, 0.2), 8px -8px 12px rgba(55, 55, 55, 0.2), -8px 8px 12px rgba(55, 55, 55, 0.2);
 }

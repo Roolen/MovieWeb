@@ -49,7 +49,7 @@ const write = new Vue({
                 write.messagePublish = ""
                 const body = await response.json()
 
-                if (write.image.length > 0) {
+                if (write.image) {
                     let res = await fetch(write.urlImage+"/"+write.title, {
                         method: "POST",
                         body: write.image
@@ -93,7 +93,7 @@ const write = new Vue({
                     })
                 })
 
-                if (write.image.length > 0) {
+                if (write.image) {
                     let res = await fetch(write.urlImage+"/"+write.title, {
                         method: "POST",
                         body: write.image
@@ -109,6 +109,10 @@ const write = new Vue({
                 if (body.success) {
                     write.messagePublish = "Статья изменена"
                     write.messageStyle = "color: green;"
+
+                    setTimeout(() => {
+                        window.location.href = baseUrl + '/post/' + write.title
+                    }, 2000)
                 }
                 else {
                     write.messagePublish = "Ошибка"
@@ -130,11 +134,11 @@ const write = new Vue({
 
                 if (body.success) {
                     write.messagePublish = "Пост удалён"
-                    write.messageStyle = "color: yellow;"
+                    write.messageStyle = "color: green;"
 
                     setTimeout(() => {
                         window.location.href = baseUrl + "/news"
-                    }, 1000)
+                    }, 2000)
                 }
             } catch (e) {
                 console.log(e)

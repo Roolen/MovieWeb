@@ -24,11 +24,12 @@
                   : base_url();
     ?>
     <header class="header">
-        <div class="logo"><img src="<?= base_url(); ?>/images/Logo.svg" alt="logo"/></div>
+        <div class="logo"><a href="<?= base_url(); ?>"><img src="<?= base_url(); ?>/images/Logo.svg" alt="logo"/></a></div>
         <button class="header-menu" id="header_menu">Новости</button>
         <a class="header-link" href="<?= $meLink; ?>"> <div id="i_am_link">Я</div> </a>
         <a class="header-link" href="<?= base_url(); ?>/news"> <div id="news_link">Новости</div> </a>
         <a class="header-link" href="<?= base_url(); ?>/search"> <div id="search_link">Поиск</div> </a>
         <a class="header-link" href="<?= base_url(); ?>/mail"> <div id="messages_link">Сообщения</div> </a>
+        <a class="header-link" href="<?= base_url(); ?>/me/logout"> <div id="messages_link">Выход</div> </a>
         <a class="settings-button" href="<?= base_url(); ?>/settings" id="settings_button"></a>
     </header>

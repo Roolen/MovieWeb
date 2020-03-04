@@ -130,7 +130,7 @@ const me = new Vue({
             }
         },
         addPost: () => {
-            location.href = baseUrl + "/write/index"
+            location.href = baseUrl + "/write/new"
         },
         changeImage: async (event) => {
             let formats = ["image/jpg", "image/jpeg", "image/png"]

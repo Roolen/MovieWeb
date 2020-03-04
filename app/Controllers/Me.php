@@ -167,7 +167,7 @@ class Me extends BaseController
         $idUser = (int)$session->get('idUser');
         $user = $usersModel->getUserById($idUser);
 
-        $imagePath = ROOTPATH.'public/write/images/users/'.$user['nickname'].'.png';
+        $imagePath = ROOTPATH.'public_html/write/images/users/'.$user['nickname'].'.png';
         write_file($imagePath, $request, 'wb');
 
         $sitePath = "/write/images/users/".$user['nickname'].'.png';
@@ -181,5 +181,14 @@ class Me extends BaseController
             $this->response->setJSON(false);
             return json_encode(['success' => false]);
         }
+    }
+
+    public function logout()
+    {
+        $session = session();
+
+        $session->destroy();
+        
+        $this->response->redirect(base_url());
     }
 }

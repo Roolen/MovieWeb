@@ -13,7 +13,6 @@
 	<link rel="stylesheet" href="<?= base_url(); ?>/css/hello.css" />
 	<link rel="stylesheet" href="<?= base_url(); ?>/css/footer.css" />
 
-
 </head>
 
 <body>
@@ -24,9 +23,9 @@
 			</div>
 			<div class="menu">
 				<ul class="menu-list">
-					<li class="menu-item"><button id="future_button">Future</button></li>
-					<li class="menu-item"><button id="contacts_button">Contacts</button></li>
-					<li class="menu-item"><button @click="modalOpen" id="authorize_button">Authorize</button></li>
+					<li class="menu-item"><button id="future_button">Возможности</button></li>
+					<li class="menu-item"><button id="contacts_button">Контакты</button></li>
+					<li class="menu-item"><button @click="modalOpen" id="authorize_button">Авторизация</button></li>
 				</ul>
 			</div>
 		</header>
@@ -34,19 +33,19 @@
 			<div class="head-section">
 				<div class="head-hello">
 					<h1>
-						Привет <br />
-						Это Сайт для любителей кино <br />
-						И сериалов
+						Присоединяйтесь<br>
+						к сообществу кинокритиков<br>
+						 
 					</h1>
 				</div>
 				<div class="head-info">
-					<button class="registration-button" id="registration_button">Регистрация</button>
+					<button class="registration-button" id="registration_button" ><a href="#reg">Регистрация</a></button>
 					<div class="info">
 						<div class="info-text">
 							<p>
-								Donec sollicitudin molestie malesuada.
-								Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-								Donec velit neque, auctor sit amet aliquam vel, ullamcorper sit amet ligula.
+								Социальные сети играют немаловажную роль в жизни человека.
+								Поэтому мы есть везде! Переходи на нас в социальных сетях и наслаждайся. <br>
+								Не ограничивай себя в общении и развлечениях!
 							</p>
 						</div>
 						<div class="social-container">
@@ -58,7 +57,7 @@
 				</div>
 				<div class="head-monument">
 					<p>
-						Watch<br>Share<br>Comments
+						Смотри<br>Делись<br>Обсуждай
 					</p>
 				</div>
 			</div>
@@ -67,64 +66,59 @@
 				<div class="future">
 					<div class="image-future"><img src="<?= base_url(); ?>/images/Hello/image_1.png" alt="screen of post" /></div>
 					<div class="info-future">
-						<h2 class="head-future">Share critic</h2>
+						<h2 class="head-future">Делись мыслями</h2>
 						<p class="text-future">
-							Quisque velit nisi, pretium ut lacinia in, elementum id enim.
-							Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus.
-							Vivamus suscipit tortor eget felis porttitor volutpat. Praesent sapien massa,
-							convallis a pellentesque nec, egestas non nisi.
+							После просмотра фильма, мультфильма или сериала в нас находится безконечное количество
+							эмоций и впечатлений. Чтобы скорее поделиться ими, просто садись и пиши! Твои подписчики уже ждут
+							новых и интересных рецензий.
 						</p>
-						<button class="button-future">Registration</button>
+						<button class="button-future" ><a href="#reg">Регистрация</a></button>
 					</div>
 				</div>
 				<div class="future">
 					<div class="info-future">
-						<h2 class="head-future">Write comments</h2>
+						<h2 class="head-future">Обсуждай</h2>
 						<p class="text-future">
-							Donec rutrum congue leo eget malesuada. Praesent sapien massa,
-							convallis a pellentesque nec, egestas non nisi.
-							Donec rutrum congue leo eget malesuada.
-							Curabitur aliquet quam id dui posuere blandit.
+							Вышел новый фильм, и к нему вышло уже много рецензий, но вы с ними не согласны?
+							Или наоборот полностью поддерживаете данную рецензию? Тогда открывай комментарии и пиши свое мнение!
 						</p>
-						<button class="button-future">Registration</button>
+						<button class="button-future" ><a href="#reg">Регистрация</a></button>
 					</div>
 					<div class="image-future"><img src="<?= base_url(); ?>/images/Hello/image_2.png" alt="screen of comments" /></div>
 				</div>
 				<div class="future">
 					<div class="image-future"><img src="<?= base_url(); ?>/images/Hello/image_3.png" alt="screen of news" /></div>
 					<div class="info-future">
-						<h2 class="head-future">Search critic posts</h2>
+						<h2 class="head-future">Ищи посты по тегам</h2>
 						<p class="text-future">
-							Quisque velit nisi, pretium ut lacinia in, elementum id enim.
-							Vivamus magna justo, lacinia eget consectetur sed, convallis at tellus.
-							Vivamus suscipit tortor eget felis porttitor volutpat.
-							Praesent sapien massa, convallis a pellentesque nec, egestas non nisi.
+							Чтобы не терять время на листание ленты новостей в поисках нужных постов, просто найти через
+							поиск интересующие тебя посты по тегам.
 						</p>
-						<button class="button-future">Registration</button>
+						<button class="button-future" ><a href="#reg">Регистрация</a></button>
 					</div>
 				</div>
 			</div>
 
-			<div class="registration-section">
-				<h2 class="title">Registration</h2>
+			<div class="registration-section" @keyup.enter="registration">
+				<h2 class="title"><a name="reg">Регистрация</a></h2>
 
 				<div class="info-warning">{{ nameWarning }}</div>
-				<input v-model="firstName" type="text" class="field" id="name_field" placeholder="name">
+				<input v-model="firstName" type="text" class="field" id="name_field" placeholder="Имя">
 
 				<div class="info-warning">{{ nickWarning }}</div>
-				<input v-model="nickname" type="text" class="field" id="nickname_field" placeholder="nickname">
+				<input v-model="nickname" type="text" class="field" id="nickname_field" placeholder="Логин">
 
 				<div class="info-warning">{{ emailWarning }}</div>
-				<input v-model="email" type="email" class="field" id="email_field" placeholder="email">
+				<input v-model="email" type="email" class="field" id="email_field" placeholder="Электронная почта">
 
 				<div class="info-warning">{{ passwordWarning }}</div>
-				<input v-model="password" type="password" class="field" id="password_field" placeholder="password">
+				<input v-model="password" type="password" class="field" id="password_field" placeholder="Пароль">
 
 				<div class="info-warning">{{ phoneWarning }}</div>
-				<input v-model="phone" type="tel" class="field" id="phone_field" placeholder="phone number">
+				<input v-model="phone" type="tel" class="field" id="phone_field" placeholder="Номер телефона">
 
-				<button v-on:click="registration" type="submit" class="button" id="register_button">Register</button>
-				<button @click="modalOpen" type="button" class="button-authorize">Authorize</button>
+				<button @click="registration" type="submit" class="button" id="register_button">Регистрация</button>
+				<button @click="modalOpen" type="button" class="button-authorize">Авторизация</button>
 			</div>
 		</main>
 
@@ -132,13 +126,13 @@
 			<div class="modal-dialog">
 				<button @click="modalClose" type="button" class="close-modal"></button>
 				<header>
-					<h2 class="modal-title">Authorization</h2>
+					<h2 class="modal-title">Авторизация</h2>
 				</header>
-				<div class="modal-form">
-					<input v-model="nickname" type="text" class="field" placeholder="login">
-					<input v-model="password" type="password" class="field" placeholder="password">
+				<div class="modal-form" @keyup.enter="authorize">
+					<input v-model="nickname" type="text" class="field" placeholder="Логин">
+					<input v-model="password" type="password" class="field" placeholder="Пароль">
 					<div class="info-warning">{{ authWarning }}</div>
-					<button @click="authorize" type="button" class="button">Authorize</button>
+					<button @click="authorize" type="button" class="button">Вход</button>
 				</div>
 			</div>
 		</div>
