@@ -92,8 +92,8 @@ class UsersModel extends Model
         $password = $data_user->password;
         $data_user->password = password_hash($password, PASSWORD_BCRYPT);
 
-        $this->insert($data_user);
-        return true;
+        $idUser = $this->insert($data_user);
+        return $idUser;
     }
 
     /**
@@ -200,13 +200,14 @@ class UsersModel extends Model
     public function checkDataUser(object $data_user)
     {
         $check = [];
-        $name = $data_user->first_name;
-        if (! preg_match("/^([А-Я]{1}[а-яё]{1,23}|[A-Z]{1}[a-z]{1,23})$/", $name)) {
+        $fName = $data_user->first_name;
+        if (! preg_match("/^([А-Я]{1}[а-яё]{1,23}|[A-Z]{1}[a-z]{1,23})$/u", $fName)) {
             $check['nameIncorrect'] = true;
+            $check['name'] = $fName;
         }
 
         $nick = $data_user->nickname;
-        if (! preg_match("/^[a-zA-Zа-яА-Я]{1}[a-zа-яA-ZА-Я0-9]{2,17}$/", $nick)) {
+        if (! preg_match("/^[a-zA-Zа-яА-Я]{1}[a-zа-яA-ZА-Я0-9]{2,17}$/u", $nick)) {
             $check['nickIncorrect'] = true;
         }
 
