@@ -7,6 +7,7 @@ class SettingsModel extends Model
     protected $table = 'settings';
     protected $primaryKey = 'id';
     protected $allowedFields = [
+        'id',
         'is_hidden_email',
         'is_hidden_phone',
         'is_send_notifications'
