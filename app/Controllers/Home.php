@@ -34,6 +34,7 @@ class Home extends BaseController
 	{
 		$data_user = $this->request->getJSON();
 		$model = new UsersModel();
+		$password = $data_user->password;
 
 		$data_user->phone_number = preg_replace("/[\-\(\)\+]/", "",
 												$data_user->phone_number);
@@ -59,6 +60,18 @@ class Home extends BaseController
 		if ($idUser) {
 			$settingsModel = new SettingsModel();
 			$settings = $settingsModel->createSettings($idUser);
+
+			$email = \Config\Services::email();
+
+			$email->setFrom('admin@critics.fun', 'critics.fun');
+			$email->setTo($data_user->email);
+
+			$email->setSubject('Registration on critics.fun');
+			$email->setMessage(view('Templates/registrationMail', [
+				'nick' => $data_user->nickname,
+				'password' => $password
+			]));
+			$email->send();
 
 			$check['success'] = true;
 			$this->response->setStatusCode(201);
