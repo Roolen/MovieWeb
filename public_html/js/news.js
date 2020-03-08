@@ -4,7 +4,7 @@ const news = new Vue({
         posts: [],
         isLoad: true,
         emptyLabel: "",
-        urlNews: "http://" + window.location.hostname + "/post/getNews"
+        urlNews: "https://" + window.location.hostname + "/post/getNews"
     },
     mounted: () => {
         setTimeout(() => {
