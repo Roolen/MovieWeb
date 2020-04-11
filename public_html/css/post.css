@@ -48,8 +48,8 @@
   text-align: center;
 }
 .author-block .nickname a {
-  font-family: "Blanch";
-  font-size: 24px;
+  font-family: "Akrobat";
+  font-size: 22px;
   line-height: 20px;
   color: #1B1D2A;
   text-decoration: none;
@@ -132,8 +132,8 @@
   }
 }
 .main .post .text-post {
-  font-family: "Akrobat";
-  font-size: 24px;
+  font-family: "Roboto";
+  font-size: 20px;
   line-height: 32px;
   color: #1B1D2A;
 }

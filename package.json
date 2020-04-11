@@ -28,7 +28,7 @@
     "webpack-cli": "^3.3.10"
   },
   "scripts": {
-    "build": "sass --no-source-map public/scss:public/css/"
+    "build": "sass --no-source-map public_html/scss:public_html/css/"
   },
   "repository": {
     "type": "git",
