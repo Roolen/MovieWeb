@@ -110,14 +110,17 @@
   box-sizing: border-box;
 }
 .post .post-info .title-post {
+  margin-bottom: 10px;
   width: fit-content;
 }
 .post .post-info .title-post a {
-  font-family: "Blanch";
-  font-size: 46px;
-  line-height: 42px;
+  font-family: "Amsterdam";
+  font-size: 30px;
+  line-height: 30px;
+  font-weight: bold;
   color: #1B1D2A;
   text-decoration: none;
+  text-transform: capitalize;
 }
 .post .post-info .text-post {
   width: 100%;
@@ -138,7 +141,6 @@
   font-family: "Akrobat";
   font-size: 20px;
   line-height: 25px;
-  border-bottom: 1px solid #1B1D2A;
   color: #1B1D2A;
   opacity: 0.72;
 }
@@ -223,9 +225,10 @@
   width: 100%;
 }
 .main .user-block .user-info .user-detail .user-nick {
-  font-family: "Blanch";
-  font-size: 58px;
-  line-height: 63px;
+  font-family: "Amsterdam";
+  font-size: 40px;
+  line-height: 52px;
+  font-weight: bold;
   color: #1B1D2A;
 }
 .main .user-block .user-info .user-detail .user-desc {
@@ -262,9 +265,11 @@
   padding-top: 30px;
 }
 .main .posts-block .counter-posts {
-  font-family: "Blanch";
-  font-size: 32px;
-  line-height: 35px;
+  font-family: "Amsterdam";
+  font-size: 24px;
+  line-height: 30px;
+  font-weight: bold;
+  text-transform: uppercase;
   color: #1B1D2A;
 }
 .main .posts-block .posts-container {

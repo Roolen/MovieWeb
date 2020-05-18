@@ -66,14 +66,17 @@
         box-sizing: border-box;
         
         .title-post {
+            margin-bottom: 10px;
             width: fit-content;
             
             a {
-                font-family: 'Blanch';
-                font-size: 46px;
-                line-height: 42px;
+                font-family: 'Amsterdam';
+                font-size: 30px;
+                line-height: 30px;
+                font-weight: bold;
                 color: $dark_blue;
                 text-decoration: none;
+                text-transform: capitalize;
             }
         }
         
@@ -98,7 +101,6 @@
             font-family: 'Akrobat';
             font-size: 20px;
             line-height: 25px;
-            border-bottom: 1px solid $dark_blue;
             color: $dark_blue;
             opacity: .72;
         }

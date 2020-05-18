@@ -30,7 +30,7 @@
                                                  'isImage' => 'post.isImage',
                                                  'title' => '{{ post.title }}',
                                                  'text' => '{{ post.text_post }}',
-                                                 'comments' => "comments",
+                                                 'comments' => "{{ post.comments }}",
                                                  'adress' => '\''.base_url().'/post/\''.' + post.title',
                                                  'address_user' => '\''.base_url().'/me/\''.' + post.author']);
                 ?>

@@ -71,9 +71,18 @@ class Post extends BaseController
             return json_encode(['empty' => true]);
         }
 
+        $commentsModel = new CommentsModel();
         for ($i = 0; $i < count($post_s); $i++) {
             $post = &$post_s[$i];
             $post['address'] = base_url().'/post/'.rawurlencode($post['title']);
+            $comments = $commentsModel->getComments($post['id']);
+            if (! $comments) {
+                $post['comments'] = 0;
+                continue;
+            }
+            else {
+                $post['comments'] = count($comments);
+            }
         }
 
         $this->response->setStatusCode(200);
@@ -166,17 +175,27 @@ class Post extends BaseController
         $posts = $postsModel->getPostsByAuthors($idAuthors);
 
         $usersModel = new UsersModel();
+        $commentsModel = new CommentsModel();
 
         for ($i = 0; $i < count($posts); $i++) {
             $post = &$posts[$i];
             $author = $usersModel->getUserById($post['id_author']);
-            unset($post['id']);
-            unset($post['id_author']);
             $post['author'] = $author['nickname'];
             $post['authorAvatar'] = ($author['path_avatar'])
-                                     ? base_url() . $author['path_avatar']
-                                     : base_url() . "/images/employee.svg";
-
+                                    ? base_url() . $author['path_avatar']
+                                    : base_url() . "/images/employee.svg";
+            
+            $comments = $commentsModel->getComments($post['id']);
+            if (! $comments) {
+                $post['comments'] = 0;
+                continue;
+            }
+            else {
+                $post['comments'] = count($comments);
+            }
+            
+            unset($post['id']);
+            unset($post['id_author']);
         }
 
         if ($posts) {

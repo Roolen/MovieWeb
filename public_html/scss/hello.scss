@@ -126,14 +126,15 @@ a {
     }
 
     .head-hello {
-        font-family: 'Blanch';
-        font-size: 92px;
+        font-family: 'Amsterdam';
+        font-weight: bold;
+        font-size: 68px;
         color: $dark_blue;
-        line-height: 84px;
+        line-height: 72px;
 
         @media screen and (max-width: $table_size) {
-            font-size: 62px;
-            line-height: 64px;
+            font-size: 48px;
+            line-height: 48px;
         }
 
     }
@@ -246,11 +247,13 @@ a {
             right: 19%;
             width: 283px;
             height: 283px;
+            padding-right: 5px;
 
-            font-family: 'Blanch';
-            font-size: 5vw;
+            font-family: 'Amsterdam';
+            font-size: 2.2vw;
             color: $white;
-            line-height: 82px;
+            line-height: 72px;
+            font-weight: 600;
             text-align: right;
         }
 
@@ -354,12 +357,12 @@ a {
         }
 
         .head-future {
-            font-family: 'Blanch';
-            font-size: 98px;
-            line-height: 92px;
+            font-family: 'Amsterdam';
+            font-size: 60px;
+            line-height: 54px;
 
             @media screen and (max-width: $table_size) {
-                font-size: 64px;
+                font-size: 48px;
             }
         }
 

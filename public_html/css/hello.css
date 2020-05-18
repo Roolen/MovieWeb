@@ -121,15 +121,16 @@ a {
   }
 }
 .head-section .head-hello {
-  font-family: "Blanch";
-  font-size: 92px;
+  font-family: "Amsterdam";
+  font-weight: bold;
+  font-size: 68px;
   color: #1B1D2A;
-  line-height: 84px;
+  line-height: 72px;
 }
 @media screen and (max-width: 800px) {
   .head-section .head-hello {
-    font-size: 62px;
-    line-height: 64px;
+    font-size: 48px;
+    line-height: 48px;
   }
 }
 .head-section .registration-button {
@@ -246,10 +247,12 @@ a {
   right: 19%;
   width: 283px;
   height: 283px;
-  font-family: "Blanch";
-  font-size: 5vw;
+  padding-right: 5px;
+  font-family: "Amsterdam";
+  font-size: 2.2vw;
   color: #E9E9E9;
-  line-height: 82px;
+  line-height: 72px;
+  font-weight: 600;
   text-align: right;
 }
 @media screen and (max-width: 1750px) {
@@ -375,13 +378,13 @@ a {
   }
 }
 .future-section .info-future .head-future {
-  font-family: "Blanch";
-  font-size: 98px;
-  line-height: 92px;
+  font-family: "Amsterdam";
+  font-size: 60px;
+  line-height: 54px;
 }
 @media screen and (max-width: 800px) {
   .future-section .info-future .head-future {
-    font-size: 64px;
+    font-size: 48px;
   }
 }
 .future-section .info-future .text-future {

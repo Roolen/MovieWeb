@@ -113,11 +113,13 @@
   color: #1B1D2A;
 }
 .main .header-post .title-post {
-  font-family: "Blanch";
-  font-size: 48px;
-  line-height: 53px;
+  font-family: "Amsterdam";
+  font-size: 32px;
+  line-height: 38px;
+  font-weight: bold;
   color: #1B1D2A;
   text-align: center;
+  overflow-wrap: break-word;
 }
 .main .post {
   margin-top: 30px;
@@ -148,10 +150,12 @@
   width: 80%;
 }
 .main .comments-block .counter-comments {
-  margin-bottom: 20px;
-  font-family: "Blanch";
-  font-size: 48px;
-  line-height: 53px;
+  margin-bottom: 30px;
+  font-family: "Amsterdam";
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 38px;
+  text-transform: uppercase;
   color: #1B1D2A;
 }
 .main .comments-block .comment {

@@ -61,11 +61,13 @@
         }
 
         .title-post {
-            font-family: 'Blanch';
-            font-size: 48px;
-            line-height: 53px;
+            font-family: 'Amsterdam';
+            font-size: 32px;
+            line-height: 38px;
+            font-weight: bold;
             color: $dark_blue;
             text-align: center;
+            overflow-wrap: break-word;
         }
     }
 
@@ -98,10 +100,12 @@
         width: 80%;
 
         .counter-comments {
-            margin-bottom: 20px;
-            font-family: 'Blanch';
-            font-size: 48px;
-            line-height: 53px;
+            margin-bottom: 30px;
+            font-family: 'Amsterdam';
+            font-size: 20px;
+            font-weight: bold;
+            line-height: 38px;
+            text-transform: uppercase;
             color: $dark_blue;
         }
 

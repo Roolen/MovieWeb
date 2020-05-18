@@ -1,5 +1,6 @@
 <?php namespace App\Controllers;
 
+use App\Models\CommentsModel;
 use App\Models\PostsModel;
 use App\Models\UsersModel;
 
@@ -33,12 +34,12 @@ class Search extends BaseController
         }
 
         $usersModel = new UsersModel();
+        $commentsModel = new CommentsModel();
 
         for ($i = 0; $i < count($findedPosts); $i++) {
             $post = &$findedPosts[$i];
             $author = $usersModel->getUserById($post['id_author']);
-            unset($post['id']);
-            unset($post['id_author']);
+            
             $post['author'] = $author['nickname'];
             $post['authorAvatar'] = ($author['path_avatar'])
                                      ? base_url() . $author['path_avatar']
@@ -47,6 +48,18 @@ class Search extends BaseController
             $post['path_image'] = ($post['path_image'])
                                   ? base_url() . $post['path_image']
                                   : base_url() . "/images/post.svg";
+
+            $comments = $commentsModel->getComments($post['id']);
+            if (! $comments) {
+                $post['comments'] = 0;
+                continue;
+            }
+            else {
+                $post['comments'] = count($comments);
+            }
+
+            unset($post['id']);
+            unset($post['id_author']);
         }
 
         return json_encode($findedPosts);

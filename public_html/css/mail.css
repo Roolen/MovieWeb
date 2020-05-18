@@ -91,9 +91,10 @@
   height: fit-content;
 }
 .main .messages-block .message .nick {
-  font-family: "Blanch";
-  font-size: 28px;
-  line-height: 48px;
+  font-family: "Amsterdam";
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: bold;
   color: #1B1D2A;
   text-align: left;
 }

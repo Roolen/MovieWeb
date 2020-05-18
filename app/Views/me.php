@@ -38,7 +38,7 @@
             </div>
         </section>
         <section v-bind:class="{ 'line-top': countPosts }" class="posts-block">
-            <div class="counter-posts">{{ countPosts }} Постов</div>
+            <div class="counter-posts">Постов {{ countPosts }}</div>
             <div v-if="isLoad" class="load-screen"></div>
             <div class="posts-container">
                 <div v-for="post in posts" class="post">
@@ -51,7 +51,7 @@
                                                      'isImage' => "post.isImage",
                                                      'title' => "{{ post.title }}",
                                                      'text' => "{{ post.text_post }}",
-                                                     'comments' => "комментариев",
+                                                     'comments' => "{{ post.comments }}",
                                                      'adress' => 'post.address',
                                                      'address_user' => '\''.base_url().'/me/'.$user_nick.'\'']);
                     ?>

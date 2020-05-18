@@ -20,7 +20,7 @@
             <div class="rating-button"></div>
         </section>
         <section class="comments-block">
-            <div class="counter-comments">{{ countComments }} Комментариев</div>
+            <div class="counter-comments">Коментариев {{ countComments }}</div>
             <div v-for="comment in comments" class="comment">
                 <header class="comment-head">
                     <div class="avatar"><img :src="comment.avatar" alt="avatar"/></div>

@@ -11,6 +11,6 @@
         <h3 class="title-post"><a :href="<?= $adress; ?>"><?= $title ?></a></h3>
         <div class="rating-line"></div>
         <div class="text-post"><?= $text ?></div>
-        <div class="count-comments"><?= $comments ?></div>
+        <div class="count-comments comments-icon"><?= $comments ?></div>
     </div>
 </a>

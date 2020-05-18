@@ -51,7 +51,6 @@ class PostsModel extends Model
         if ($posts) {
             for ($i = 0; $i < count($posts); $i++) {
                 $post = &$posts[$i];
-                unset($post['id']);
                 $post['isImage'] = ($post['path_image'])?true:false;
                 if (! $post['path_image']) {
                     $post['path_image'] = base_url() . "/images/post.svg";
@@ -79,7 +78,6 @@ class PostsModel extends Model
         if ($posts) {
             for ($i = 0; $i < count($posts); $i++) {
                 $post = &$posts[$i];
-                unset($post['id']);
                 $post['isImage'] = ($post['path_image'])?true:false;
                 if (! $post['path_image']) {
                     $post['path_image'] = base_url() . "/images/post.svg";
