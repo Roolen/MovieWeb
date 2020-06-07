@@ -63,7 +63,7 @@
     <script>
         const baseUrl = "<?= base_url(); ?>"
         const user = "<?= $user_nick ?>"
-        const description = "<?= $user_desc; ?>"
+        const description = `<?= $user_desc; ?>`
         const isAvatar = <?= ($isAvatar)?1:0 ?>
     </script>
 </div>
